@@ -25,8 +25,8 @@ Here:
 - ~<!DOCTYPE html>~ is the /Document type declaration/; it tells the browser the specifications that the page follows.
 - ~<html>~ and ~</html>~ enclose the page itself.
 
-The fundamental element of a web page is... well, an ~element~.
-By definition, an ~element~ is composed by (example inside the parentheses):
+The fundamental element of a web page is... well, an =element=.
+By definition, an =element= is composed by (example inside the parentheses):
 - opening tag (~<html>~);
 - everything in between (called /content/);
 - closing tag (~</html>~).
@@ -47,4 +47,4 @@ A /cool/ first web page would be:
 </html>
 #+end_src
 
-*Note*: Here the contents of the ~element~ ~<p>~ are "Hello, world!".
+*Note*: Here the contents of the =element= ~<p>~ are "Hello, world!".
