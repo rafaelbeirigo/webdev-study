@@ -50,7 +50,7 @@ A /cool/ first web page would be:
 *Note*: Here the contents of the =element= ~<p>~ are "Hello, world!".
 
 The ~<html>~ element contains all the elements of the whole page.
-Only two tags should be immediately inside it: ~<head>~ and ~<body>~.[fn:1]
+Only two tags should be immediately inside it: ~<head>~ and ~<body>~.
 Then, each element of the page is either inside ~<head>~ or inside ~<body>~.
 
 #+begin_src
@@ -85,7 +85,3 @@ We'll put a ~<title>~ inside it.
   </body>
 </html>
 #+end_src
-
-* Footnotes
-
-[fn:1]Yes, I goofed up above!
