@@ -119,8 +119,10 @@ They give us /six/ of them: ~<h1>~ to ~<h6>~.
 
     <h2>Phil Coulson</h2>
     <p>The calm in the storm, proving loyalty is a superpower. Coulson bridges heroes and humans with tact and understanding. He carries a quiet strength that inspires trust. Even in chaos, his steady hand guides the team.</p>
+
     <h2>Maria Hill</h2>
     <p>Strategic, precise, and always ready for action. Hill can handle the toughest missions with clarity and focus. Her decisiveness keeps S.H.I.E.L.D. running smoothly. She never hesitates when lives are on the line.</p>
+
     <h2>Melinda May</h2>
     <p>The Cavalry—silent, deadly, and unstoppable. May’s combat skills are unmatched in the field. Beneath her stoic exterior lies fierce loyalty to her team. Every mission she undertakes is executed with perfection.</p>
 
