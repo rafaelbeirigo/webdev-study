@@ -155,7 +155,7 @@ It forces a line break in the text.
 It is an /empty/ element, meaning it has no content.
 This implies it does *not* need nor have an end tag.
 
-In the example below, the poem has two versions: in the first one, the line breaks are only in the source code, and the second version forces them with ~<br>~.
+In the example below, the poem has two versions: in the first one, the line breaks are only in the source code, and the second version /forces/ them with ~<br>~.
 Only the second one gets the expected result (well, at least on a big screen).
 
 [[file:br.html][br.html]] ≡
