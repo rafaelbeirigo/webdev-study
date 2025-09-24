@@ -62,6 +62,15 @@ Then, each element of the page is either inside ~<head>~ or inside ~<body>~.
 #+end_src
 
 The page that /the user sees/ in the browser is entirely inside ~<body>~; ~<head>~ contains /metadata/.
+
+Let's then fix our first page!
+It had a ~<p>~ element immediately inside ~<html>~, which is against the specs.
+It must be inside ~<body>~
+
+We also have to add a ~<head>~ inside ~<html>~.
+We could leave it empty, but that's not cool.
+We'll put a ~<title>~ inside it.
+~<title>~ is the /page/ title, that appears as the "name" of the browser window or the page's tab in the browser.
 * Footnotes
 
 [fn:1]Yes, I goofed up above!
