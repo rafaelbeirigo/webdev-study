@@ -22,7 +22,7 @@ A minimal html page [[https://html.spec.whatwg.org/multipage/syntax.html?utm_sou
 #+end_src
 
 Here:
-- ~<!DOCTYPE html>~ is the /Document type declaration/; it tells the browser the specifications that the page follows.
+- ~<!DOCTYPE html>~ is the /Document Type Declaration/; it tells the browser the specifications that the page follows.
 - ~<html>~ and ~</html>~ enclose the page itself.
 
 The fundamental element of a web page is... well, an =element=.
