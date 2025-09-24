@@ -65,7 +65,7 @@ The page that /the user sees/ in the browser is entirely inside ~<body>~; ~<head
 
 Let's then fix our first page!
 It had a ~<p>~ element immediately inside ~<html>~, which is against the specs.
-It must be inside ~<body>~
+It must be inside ~<body>~.
 
 We also have to add a ~<head>~ inside ~<html>~.
 We could leave it empty, but that's not cool.
