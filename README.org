@@ -47,7 +47,7 @@ A /cool/ first web page would be:
 </html>
 #+end_src
 
-*Note*: Here the contents of the =element= ~<p>~ are "Hello, world!".
+*Note*: Here the /contents/ of the =element= ~<p>~ are "Hello, world!".
 
 The ~<html>~ element contains all the elements of the whole page.
 Only two tags should be immediately inside it: ~<head>~ and ~<body>~.
