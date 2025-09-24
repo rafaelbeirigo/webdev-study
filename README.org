@@ -71,6 +71,21 @@ We also have to add a ~<head>~ inside ~<html>~.
 We could leave it empty, but that's not cool.
 We'll put a ~<title>~ inside it.
 ~<title>~ is the /page/ title, that appears as the "name" of the browser window or the page's tab in the browser.
+
+~​[[file:hello-world-fixed.html][hello-world-fixed.html]] ≡~
+
+#+begin_src html :tangle hello-world-fixed.html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My first fixed page</title>
+  </head>
+  <body>
+    <p>Hello, World!</p>
+  </body>
+</html>
+#+end_src
+
 * Footnotes
 
 [fn:1]Yes, I goofed up above!
