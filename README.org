@@ -2,3 +2,10 @@ So, we're learning Web Dev.
 Well, at least /I/ am!
 
 Let's make it easier and more fun with Literate Programming in Org Mode.
+
+Starting from the fundamentals.
+Web pages are all about navigating through content.
+To make things easier, we have:
+- HTML, for /structure/;
+- CSS, for /style/;
+- Javascript, for /logic/.
