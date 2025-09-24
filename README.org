@@ -48,3 +48,19 @@ A /cool/ first web page would be:
 #+end_src
 
 *Note*: Here the contents of the =element= ~<p>~ are "Hello, world!".
+
+The ~<html>~ element contains all the elements of the whole page.
+Only two tags should be immediately inside it: ~<head>~ and ~<body>~.[fn:1]
+Then, each element of the page is either inside ~<head>~ or inside ~<body>~.
+
+#+begin_src
+<html>
+|
++- <head>
+|
++- <body>
+#+end_src
+
+* Footnotes
+
+[fn:1]Yes, I goofed up above!
