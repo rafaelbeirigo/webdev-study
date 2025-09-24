@@ -9,3 +9,12 @@ To make things easier, we have:
 - HTML, for /structure/;
 - CSS, for /style/;
 - Javascript, for /logic/.
+
+
+A minimal html page [[https://html.spec.whatwg.org/multipage/syntax.html?utm_source=chatgpt.com#writing][must have]]:
+
+#+begin_src html
+<!DOCTYPE html>
+<html>
+</html>
+#+end_src
