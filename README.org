@@ -85,3 +85,8 @@ We'll put a ~<title>~ inside it.
   </body>
 </html>
 #+end_src
+
+If you open both ~hello-world.html~ and ~hello-world-fixed.html~, you'll see that they look the same.
+This shows how /forgiving/ HTML is.
+It really tries to help us get there.
+Good on you, HTML!
