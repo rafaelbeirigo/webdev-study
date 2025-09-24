@@ -1,2 +1,4 @@
 So, we're learning Web Dev.
 Well, at least /I/ am!
+
+Let's make it easier and more fun with Literate Programming in Org Mode.
