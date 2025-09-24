@@ -1,3 +1,5 @@
+# -*- auto-fill-function: nil; eval: (add-hook 'after-save-hook 'org-babel-tangle nil t); -*-
+
 So, we're learning Web Dev.
 Well, at least /I/ am!
 
@@ -44,8 +46,3 @@ A /cool/ first web page would be:
   <p>Hello, World!</p>
 </html>
 #+end_src
-
-# Local Variables:
-# auto-fill-function: nil
-# eval: (add-hook 'after-save-hook 'org-babel-tangle nil t)
-# End:
