@@ -19,6 +19,11 @@ A minimal html page [[https://html.spec.whatwg.org/multipage/syntax.html?utm_sou
 </html>
 #+end_src
 
+The fundamental element of a web page is... well, an ~element~.
+By definition, an ~element~ is composed by (example inside the parentheses):
+- opening tag (~<html>~);
+- everything in between (called /content/);
+- closing tag (~</html>~).
 # Local Variables:
 # auto-fill-function: nil
 # eval: (add-hook 'after-save-hook 'org-babel-tangle nil t)
