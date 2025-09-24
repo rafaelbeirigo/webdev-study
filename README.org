@@ -182,3 +182,5 @@ Only the second one gets the expected result (well, at least on a big screen).
 
 Now is a good time to note that the tag names are case-insensitive.
 Very sensible of forgiving HTML.
+But (there's always one (well, not /always/)) *lowercase is recommended* in general and *demanded* for stricter document types like XHTML.
+Let's keep it down low then.
