@@ -61,6 +61,7 @@ Then, each element of the page is either inside ~<head>~ or inside ~<body>~.
 +- <body>
 #+end_src
 
+The page that /the user sees/ in the browser is entirely inside ~<body>~; ~<head>~ contains /metadata/.
 * Footnotes
 
 [fn:1]Yes, I goofed up above!
