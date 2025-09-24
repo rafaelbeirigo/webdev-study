@@ -38,7 +38,7 @@ Example: ~<!DOCTYPE html>~.
 
 A /cool/ first web page would be:
 
-~hello-world.html ≡~
+~​[[file:hello-world.html][hello-world.html]] ≡~
 
 #+begin_src html :tangle hello-world.html
 <!DOCTYPE html>
