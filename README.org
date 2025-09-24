@@ -31,7 +31,7 @@ By definition, an =element= is composed by (example inside the parentheses):
 - everything in between (called /content/);
 - closing tag (~</html>~).
 
-The page is made of a sequence of elements.
+The page is made of a /sequence of elements/.
 
 Some elements may be /empty/: they don't have a closing tag.
 Example: ~<!DOCTYPE html>~.
