@@ -63,7 +63,14 @@ This is illustrated below.
 +- <body>
 #+end_src
 
-The page that /the user sees/ in the browser is entirely inside ~<body>~; ~<head>~ contains /metadata/.
+Then, each element of the page is either inside ~<head>~ or ~<body>~.
+To help make things more clear, we'll call
+- /Document/: the ~<!DOCTYPE>~ and ~<head>~ elements, and
+- /Page/: the ~<body>~ element.
+
+
+For instance: ~hello-world.html~ contains the whole /document/.
+When we open it on a browser, we see the (obviously /visible/) /page/, which is inside ~<body>~.
 
 Let's then fix our first page!
 It had a ~<p>~ element immediately inside ~<html>~, which is against the specs.
