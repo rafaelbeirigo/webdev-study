@@ -146,3 +146,33 @@ They give us /six/ of them: ~<h1>~ to ~<h6>~.
 #+end_src
 
 Interesting to note that the paragraphs inside a heading are *not* nested inside it.
+
+Now comes the ~<br>~ element.
+It forces a line break in the text.
+It is an /empty/ element, meaning it has no content.
+This implies it does *not* need nor have and end tag.
+
+In the example below, the poem has two versions: in the first one, the line breaks are only in the source code, and the second version forces them with ~<br>~.
+Only the second one gets the expected result (well, at least on a big screen).
+
+[[file:br.html][br.html]] ≡
+
+#+begin_src html :tangle br.html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>br, but not for Brazil</title>
+  </head>
+  <body>
+    <p>He-Man stands tall, sword held high,
+      Shadows flee where his heroes fly.
+      In Eternia’s heart, he lights the night,
+      Strength and courage his endless might.</p>
+
+    <p>He-Man stands tall, sword held high,<br>
+      Shadows flee where his heroes fly.<br>
+      In Eternia’s heart, he lights the night,<br>
+      Strength and courage his endless might.</p>
+  </body>
+</html>
+#+end_src
