@@ -24,6 +24,18 @@ By definition, an ~element~ is composed by (example inside the parentheses):
 - opening tag (~<html>~);
 - everything in between (called /content/);
 - closing tag (~</html>~).
+
+A /cool/ first web page would be:
+
+~hello-world.html ≡~
+
+#+begin_src html :tangle hello-world.html
+<!DOCTYPE html>
+<html>
+  <p>Hello, World!</p>
+</html>
+#+end_src
+
 # Local Variables:
 # auto-fill-function: nil
 # eval: (add-hook 'after-save-hook 'org-babel-tangle nil t)
