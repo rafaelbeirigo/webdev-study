@@ -38,7 +38,7 @@ Example: ~<!DOCTYPE html>~.
 
 A /cool/ first web page would be:
 
-~​[[file:hello-world.html][hello-world.html]] ≡~
+[[file:hello-world.html][hello-world.html]] ≡
 
 #+begin_src html :tangle hello-world.html
 <!DOCTYPE html>
@@ -72,7 +72,7 @@ We could leave it empty, but that's not cool.
 We'll put a ~<title>~ inside it.
 ~<title>~ is the /page/ title, that appears as the "name" of the browser window or the page's tab in the browser.
 
-~​[[file:hello-world-fixed.html][hello-world-fixed.html]] ≡~
+[[file:hello-world-fixed.html][hello-world-fixed.html]] ≡
 
 #+begin_src html :tangle hello-world-fixed.html
 <!DOCTYPE html>
