@@ -179,3 +179,6 @@ Only the second one gets the expected result (well, at least on a big screen).
   </body>
 </html>
 #+end_src
+
+Now is a good time to note that the tag names are case-insensitive.
+Very sensible of forgiving HTML.
