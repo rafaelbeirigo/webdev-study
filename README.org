@@ -2,7 +2,7 @@
 #+PROPERTY: header-args :noweb no-export
 
 * [2025-09-26 Fri]
-Feel like snowballing.
+** Feel like snowballing.
 Was drifting and rabbit-holling, as per usual
 Checking out the [[https://www.theodinproject.com/dashboard][Odin Project]], thought it was cool they also develop /character/.
 Grit, resilience, and the rollercoaster to mastery were eye-openers to me.
@@ -50,7 +50,10 @@ Could finish all the initial readings and setup stuff.
 
 Next: HTML!
 
-** 1h Coding
+** 1h Coding, Hello World, HTML Boilerplate
+:PROPERTIES:
+:header-args: :session hello world
+:END:
 End of the day, after busking.
 Kinda desperate that I didn't code today's 1h.
 But there's plenty of time.
@@ -62,6 +65,7 @@ Can't really do the exercises without knowing the language, and don't think grin
 Gonna go back to Odin, even if it is more /theory/ now.
 There's hopefully some coding even now in the beginning.
 If not, I'll reserve some time later and code elisp.
+
 
 * Odin recommended a site that has some JS.
 Let's see if I remember it.
