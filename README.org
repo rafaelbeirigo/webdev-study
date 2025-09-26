@@ -49,6 +49,19 @@ Could finish all the initial readings and setup stuff.
 
 Next: HTML!
 
+** 1h Coding
+End of the day, after busking.
+Kinda desperate that I didn't code today's 1h.
+But there's plenty of time.
+Thought of doing some elisp, but wanna focus on JS.
+
+Let's try Exercism.
+Can't really do the exercises without knowing the language, and don't think grinding on Exercism is a good use of my time.
+
+Gonna go back to Odin, even if it is more /theory/ now.
+There's hopefully some coding even now in the beginning.
+If not, I'll reserve some time later and code elisp.
+
 *  [2025-09-24 Wed]
 So, we're learning Web Dev.
 Well, at least /I/ am!
