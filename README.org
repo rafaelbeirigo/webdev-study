@@ -1,4 +1,5 @@
 # -*- auto-fill-function: nil; eval: (add-hook 'after-save-hook 'org-babel-tangle nil t); -*-
+#+PROPERTY: header-args :noweb no-export
 
 * [2025-09-26 Fri]
 Feel like snowballing.
@@ -61,6 +62,123 @@ Can't really do the exercises without knowing the language, and don't think grin
 Gonna go back to Odin, even if it is more /theory/ now.
 There's hopefully some coding even now in the beginning.
 If not, I'll reserve some time later and code elisp.
+
+* Odin recommended a site that has some JS.
+Let's see if I remember it.
+It's the code to sum two numbers.
+It's a bit more complicated, because involves accessing the DOM.
+Let's simplify it.
+Just sum the contents of two variables, and assign it to another variable.
+
+#+begin_src js
+function sum (a, b) {
+    let total = a + b;
+    return total;
+}
+#+end_src
+
+#+begin_quote
+function NAME (ARGS) { STATEMENT; ... }
+#+end_quote
+
+And it returns with =return=.
+
+Node.js is used to run JS in the server.
+
+HTML: the page has *content*, which is enclosed in *tags*, forming *elements*.
+
+An HTML tag is the markup language entity used to define elements with the content that will be shown on the page.
+
+The element has
+1. Opening tag;
+2. Content;
+3. Closing tag.
+
+
+Void elements
+- Don't have a closing tag; and
+- Have no content.
+
+
+We're coding, baby!
+
+[[file:html-boilerplate/index.html][html-boilerplate/index.html]] ≡
+
+#+begin_src html :tangle html-boilerplate/index.html
+<!DOCTYPE html>
+<html lang="en">
+  <<head Block>>
+
+  <<body Block>>
+</html>
+#+end_src
+
+The =head= contains metadata and rendering instructions.
+*No page content* here.
+Always the first element inside =<html>=.
+
+~<head Block> +≡~
+
+#+begin_src html :noweb-ref head Block
+<head>
+  <<charset>>
+  <<title>>
+</head>
+#+end_src
+
+Let's make sure all glyphs show correctly.
+
+~<<charset>> +≡~
+
+#+begin_src html :noweb-ref charset
+<meta charset="UTF-8">
+#+end_src
+
+Now the title.
+
+~<<title>> +≡~
+
+#+begin_src html :noweb-ref title
+<title>My first page from Odin</title>
+#+end_src
+
+~<<body Block>> +≡~
+
+#+begin_src html :noweb-ref body Block
+<body>
+  <<body Contents>>
+</body>
+#+end_src
+
+Now add this to Emacs =web-mode=.
+
+#+begin_src elisp
+(add-to-list 'web-mode-snippets
+               '("my-odin-html-boilerplate"
+                 "<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>My first page from Odin</title>
+  </head>
+
+  <body>
+  </body>
+</html>
+"))
+#+end_src
+
+~<<body Contents>> +≡~
+
+#+begin_src html :noweb-ref body Contents
+<h1>Hello, World!</h1>
+#+end_src
+
+And W3 validate, baby!
+
+I did some coding in HTML, and some debugging in Emacs.  Either Org or =noweb= were misbehaving.
+Didn't know which though---I just restarted Emacs, and everything went back to normal.
+Could apply the steps recommended by Odin for analyzing the problem, and it helped.
 
 *  [2025-09-24 Wed]
 So, we're learning Web Dev.
