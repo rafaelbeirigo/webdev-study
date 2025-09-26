@@ -112,6 +112,11 @@ You can use Lorem Ipsum to generate dummy text, in place of real text as you bui
 
 #+end_src
 
+** First Seinfeld checkmark!
+And this coding session warranted me my first one Seinfeld checkmark!
+
+[[file:images/2025-09-26_seinfeld_checked.jpeg]]
+
 * Odin recommended a site that has some JS.
 Let's see if I remember it.
 It's the code to sum two numbers.
