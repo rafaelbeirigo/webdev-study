@@ -234,7 +234,7 @@ And this coding session warranted me my first one Seinfeld checkmark!
 
 [[file:images/2025-09-26_seinfeld_checked.jpeg]]
 
-*  [2025-09-24 Wed]
+* [2025-09-24 Wed]
 So, we're learning Web Dev.
 Well, at least /I/ am!
 
