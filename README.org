@@ -1,5 +1,34 @@
 # -*- auto-fill-function: nil; eval: (add-hook 'after-save-hook 'org-babel-tangle nil t); -*-
 
+* [2025-09-26 Fri]
+Feel like snowballing.
+Was drifting and rabbit-holling, as per usual
+Checking out the [[https://www.theodinproject.com/dashboard][Odin Project]], thought it was cool they also develop /character/.
+Grit, resilience, and the rollercoaster to mastery were eye-openers to me.
+
+Asked ChatGPT for help there.
+Got realistic market analysis, criticism about main goal, specific roadmap with projects, and milestones.
+
+Started applying the Seinfeld checkmarks.
+I want to code a minimum of 1 hour every day.
+Almost procrastinated until I bought a cool sheet with the squares, but ended up doing it by hand.
+
+[[file:images/2025-09-26_seinfeld.jpeg]]
+
+Decided to turn this into a journal for accountability.
+A bit of afraid this will derail me (happened in the past), but more confident on my resilience and emotional regulation skills this time.
+Let's see.
+
+Reading a lot of the initial material from Odin.
+Decided on the Foundations.
+Gonna follow this one---and *not* derail!
+Need to feel secure about this.
+But have to be careful about rabbit holes.
+
+Personally, I tend to try to become a "specialist" on every detail.
+Many times I don't get past the first stages of the learning process.
+Journaling helps me a lot here.
+
 *  [2025-09-24 Wed]
 So, we're learning Web Dev.
 Well, at least /I/ am!
