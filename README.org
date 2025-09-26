@@ -44,6 +44,11 @@ Just found out I goofed-up: the /real/ issue was my eagerness...
 The issue is non-existant: I misread the text...
 Well, one good opportunity to learn about this current personality trait!
 
+Fitst session of the day ended.
+Could finish all the initial readings and setup stuff.
+
+Next: HTML!
+
 *  [2025-09-24 Wed]
 So, we're learning Web Dev.
 Well, at least /I/ am!
