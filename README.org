@@ -40,6 +40,10 @@ Just opened a new issue on Odin's page.
 I want to start collaborating.
 It's a really easy one, but it's a start.
 
+Just found out I goofed-up: the /real/ issue was my eagerness...
+The issue is non-existant: I misread the text...
+Well, one good opportunity to learn about this current personality trait!
+
 *  [2025-09-24 Wed]
 So, we're learning Web Dev.
 Well, at least /I/ am!
