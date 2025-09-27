@@ -1,5 +1,4 @@
 # -*- auto-fill-function: nil; eval: (add-hook 'after-save-hook 'org-babel-tangle nil t); -*-
-#+PROPERTY: header-args :noweb no-export
 
 * [2025-09-27 Sat]
 Starting later today.
