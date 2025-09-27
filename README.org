@@ -20,7 +20,7 @@ To get some practice using lists, create a new HTML document and create the foll
 
 Create the structure for main HTML doc:
 
-[[file:~/dev/webdev-study/odin/assignments/foundations/lists/index.html][~/dev/webdev-study/odin/assignments/foundations/lists/index.html]] ≡
+[[file:odin/assignments/foundations/lists/index.html][odin/assignments/foundations/lists/index.html]] ≡
 
 #+begin_src html :tangle ~/dev/webdev-study/odin/assignments/foundations/lists/index.html
 <!DOCTYPE html>
