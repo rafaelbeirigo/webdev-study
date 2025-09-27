@@ -57,6 +57,48 @@ mkdir ./odin/assignments/foundations/odin-links-and-images
 
 [2025-09-27 Sat 11:57] Pausing for lunch.
 
+[2025-09-27 Sat 17:57] Coming back, after busking.
+
+The Web is made out of links.
+Let's add our first one.
+We need to add an *anchor* element, and give it some attributes.
+We'll leave a placeholder for the attributes.
+
+~<<body Content odin-links-and-images>> +≡~
+
+#+begin_src html :noweb-ref body Content odin-links-and-images :noweb-seb nil
+<a
+  <<attributes for Odin about page href>>
+  >About the Odin Project.</a>
+#+end_src
+
+The first attribute contains the /link/ itself, and is called *href*.
+
+~<<attributes for Odin about page href>> +≡~
+
+#+begin_src html :noweb-ref attributes for Odin about page href
+href="https://www.theodinproject.com/about"
+#+end_src
+
+The link now would open on the same tab.
+Let's open in a new one, using the attribute *target*.
+
+~<<attributes for Odin about page href>> +≡~
+
+#+begin_src html :noweb-ref attributes for Odin about page href
+target="_blank"
+#+end_src
+
+Now we add some security measures.
+This new attribute and value prevents some dangers when linking to another page.
+Possible attacks include phishing and tabnabbing.
+
+~<<attributes for Odin about page href>> +≡~
+
+#+begin_src html :noweb-ref attributes for Odin about page href
+rel="noopener noreferrer"
+#+end_src
+
 ** Odin, Foundations, List
 *** Assignment
 
