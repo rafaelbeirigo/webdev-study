@@ -99,6 +99,59 @@ Possible attacks include phishing and tabnabbing.
 rel="noopener noreferrer"
 #+end_src
 
+**** Relative links
+
+Create a page on our own server.
+
+[[file:odin/assignments/foundations/odin-links-and-images/about.html][odin/assignments/foundations/odin-links-and-images/about.html]] ≡
+
+#+begin_src html :tangle odin/assignments/foundations/odin-links-and-images/about.html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Odin Links and Images</title>
+  </head>
+
+  <body>
+    <h1>About Page</h1>
+  </body>
+</html>
+#+end_src
+
+Add a /relative/ link to it on the main page.
+
+~<<body Content odin-links-and-images>> +≡~
+
+#+begin_src html :noweb-ref body Content odin-links-and-images
+<a href="about.html">About</a>
+#+end_src
+
+Let's organize it: add a folder for all the other pages besides =index.html=.
+
+#+begin_src shell :dir ~/dev/webdev-study/odin/assignments/foundations/odin-links-and-images/
+mkdir pages
+#+end_src
+
+#+RESULTS:
+
+And move =about.html= there.
+
+#+begin_src shell :dir ~/dev/webdev-study/odin/assignments/foundations/odin-links-and-images/
+mv about.html pages
+#+end_src
+
+#+RESULTS:
+
+Now we update the *href*.
+It's a good practice to start the reference with "./", it may prevent some errors.
+
+~<<body Content odin-links-and-images>> +≡~
+
+#+begin_src html :noweb-ref body Content odin-links-and-images
+<a href="./pages/about.html">About (subfolder)</a>
+#+end_src
+
 ** Odin, Foundations, List
 *** Assignment
 
