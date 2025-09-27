@@ -7,6 +7,56 @@ Overslept.
 
 Let's do this!
 
+** [2025-09-27 Sat 11:40] Links and Images
+*** Assignment
+:PROPERTIES:
+:header-args:html: :session *links-and-images*
+:END:
+#+begin_quote
+1. Create a new directory named odin-links-and-images.
+#+end_quote
+
+#+begin_src bash
+mkdir ./odin/assignments/foundations/odin-links-and-images
+#+end_src
+
+#+RESULTS:
+
+#+begin_quote
+2. Within that directory, create a new file named index.html.
+3. Open the file in VS Code and fill in the usual HTML boilerplate.
+#+end_quote
+
+[[file:odin/assignments/foundations/odin-links-and-images/index.html][odin/assignments/foundations/odin-links-and-images/index.html]] ≡
+
+#+begin_src html :tangle odin/assignments/foundations/odin-links-and-images/index.html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>My first page from Odin</title>
+  </head>
+
+  <body>
+    <<body Content odin-links-and-images>>
+  </body>
+</html>
+#+end_src
+
+#+begin_quote
+4. Finally, add the following h1 to the body:
+
+<h1>Homepage</h1>
+#+end_quote
+
+~<<body Content odin-links-and-images>> +≡~
+
+#+begin_src html :noweb-ref body Content odin-links-and-images
+<h1>Homepage</h1>
+#+end_src
+
+[2025-09-27 Sat 11:57] Pausing for lunch.
+
 ** Odin, Foundations, List
 *** Assignment
 
