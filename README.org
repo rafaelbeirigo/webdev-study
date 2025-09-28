@@ -211,6 +211,218 @@ Now the size attributes.
 width="604" height="806"
 #+end_src
 
+*** [2025-09-27 Sat 19:37] Assignment on [[https://internetingishard.netlify.app/html-and-css/links-and-images/][Interneting]]
+:PROPERTIES:
+:header-args:
+:END:
+
+[[file:odin/assignments/foundations/interneting-links-and-images/links.html][odin/assignments/foundations/interneting-links-and-images/links.html]] ≡
+
+#+begin_src html :tangle odin/assignments/foundations/interneting-links-and-images/links.html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Links</title>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <h1>Links</h1>
+    <p>This particular page is about links! There are three kinds of links:</p>
+
+    <ul>
+      <<links>>
+    </ul>
+  </body>
+</html>
+#+end_src
+
+[[file:odin/assignments/foundations/interneting-links-and-images/images.html][odin/assignments/foundations/interneting-links-and-images/images.html]] ≡
+
+#+begin_src html :tangle odin/assignments/foundations/interneting-links-and-images/images.html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Images</title>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <h1>Images</h1>
+    <p>This page covers common image formats, but you may also be looking for
+      <a href='links.html'>links</a> and
+      <a href='misc/extras.html'>useful extras</a>.
+    </p>
+    <<images>>
+  </body>
+</html>
+#+end_src
+
+[[file:odin/assignments/foundations/interneting-links-and-images/misc/extras.html][odin/assignments/foundations/interneting-links-and-images/misc/extras.html]] ≡
+
+#+begin_src html :tangle odin/assignments/foundations/interneting-links-and-images/misc/extras.html :mkdirp yes
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Extras</title>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <h1>Extras</h1>
+    <p>This page is about miscellaneous HTML things,
+      but you may also be interested in
+      <a href='../links.html'>links</a> or
+      <a href='../images.html'>images</a>.
+    </p>
+    <h2>Character Sets</h2>
+    <p>You can use UTF-8 to count in Turkish:</p>
+    <ol>
+      <li>bir</li>
+      <li>iki</li>
+      <li>üç</li>
+      <li>dört</li>
+      <li>beş</li>
+    </ol>
+    <<Reserved Characters>>
+    <<Curly Quotes>>
+  </body>
+</html>
+#+end_src
+
+Unzip images.
+
+#+begin_src shell :dir odin/assignments/foundations/interneting-links-and-images/
+unzip images-4149f7.zip
+rm images-4149f7.zip
+#+end_src
+
+#+RESULTS:
+| Archive:   | images-4149f7.zip |
+| inflating: | -4149f7.zip       |
+
+Absolute links.
+
+~<<links>> +≡~
+
+#+begin_src html :noweb-ref links
+<li>Absolute links, like to
+  <a href='https://developer.mozilla.org/en-US/docs/Web/HTML'
+    target='_blank'>Mozilla
+    Developer Network</a>,
+  which is a very good resource for web developers.
+</li>
+#+end_src
+
+Relative Links.
+
+~<<links>> +≡~
+
+#+begin_src html :noweb-ref links
+<li>Relative links, like to our <a href='misc/extras.html'>extras page</a>.
+</li>
+#+end_src
+
+~<<links>> +≡~
+
+#+begin_src html :noweb-ref links
+<!-- This won't work for our local HTML files -->
+<li>Root-relative links, like to the
+  <a href='/'>home page</a>
+  of our website, but those aren't useful to us right now.
+</li>
+#+end_src
+
+Add the images.
+First a JPG, good for *pictures* (large color palettes).
+
+~<<images>> +≡~
+
+#+begin_src html :noweb-ref images
+<h2>JPGs</h2>
+<p>JPG images are good for photos.</p>
+<img src='images/mochi.jpg' width='75'
+<<alt jpg>>
+  >
+#+end_src
+
+Then a GIF, for *animations*, (short color palettes, crude transparency).
+
+~<<images>> +≡~
+
+#+begin_src html :noweb-ref images
+<h2>GIFs</h2>
+<p>GIFs are good for animations.</p>
+<img src='images/mochi.gif' width='75'
+<<alt gif>>
+  >
+#+end_src
+
+Now a PNG, good transparency, large color palletes, but bigger than JPG.
+Useful for small images that need good transparency, like icons and logos.
+
+~<<images>> +≡~
+
+#+begin_src html :noweb-ref images
+<h2>PNGs</h2>
+<p>PNGs are good for icons and logos.</p>
+<img src='images/mochi.png' width='75'
+<<alt png>>
+  >
+#+end_src
+
+Finally the SVG, /vector/ based (as opposed to /pixel/-): scales without loss of quality.
+Use them instead of PNGs whenever possible.
+
+~<<images>> +≡~
+
+#+begin_src html :noweb-ref images
+<h2>SVGs</h2>
+<p>SVGs are <em>amazing</em>. Use them wherever you can.</p>
+<img src='images/mochi.svg' width='75'
+<<alt svg>>
+  >
+#+end_src
+
+~<<alt jpg>> +≡~
+
+#+begin_src html :noweb-ref alt jpg
+alt='A mochi ball in a bubble'
+#+end_src
+
+~<<alt gif>> +≡~
+
+#+begin_src html :noweb-ref alt gif
+alt='A dancing mochi ball'
+#+end_src
+
+~<<alt png>> +≡~
+
+#+begin_src html :noweb-ref alt png
+alt='A mochi ball'
+#+end_src
+
+~<<alt svg>> +≡~
+
+#+begin_src html :noweb-ref alt svg
+alt='A mochi ball with Bézier handles'
+#+end_src
+
+~<<Curly Quotes>> +≡~
+
+#+begin_src html :noweb-ref Curly Quotes
+<p>If you&rsquo;re into &ldquo;web typography,&rdquo; you&rsquo;ll also find
+   yourself using curly quotes quite a bit.
+</p>
+#+end_src
+
+**** Reserved Characters
+~<<Reserved Characters>> +≡~
+
+#+begin_src html :noweb-ref Reserved Characters
+<h2>HTML Entities</h2>
+<p> There are three reserved characters in HTML:
+  <strong>&lt;</strong> <strong>&gt;</strong> and <strong>&amp;</strong>.
+  You should always use HTML entities for these three characters.
+</p>
+#+end_src
 ** Odin, Foundations, List
 *** Assignment
 
