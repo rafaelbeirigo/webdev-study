@@ -6,8 +6,106 @@ Overslept.
 
 Let's do this!
 
+** Lists
+#+begin_quote
+To get some practice using lists, create a new HTML document and create the following lists:
+1. An unordered shopping list of your favorite foods
+2. An ordered list of todo’s you need to get done today
+3. An unordered list of places you’d like to visit someday
+4. An ordered list of your all time top 5 favorite video games or movies
+#+end_quote
+
+Create the structure for main HTML doc:
+
+[[file:odin/assignments/foundations/lists/index.html][odin/assignments/foundations/lists/index.html]] ≡
+
+#+begin_src html :tangle ~/dev/webdev-study/odin/assignments/foundations/lists/index.html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>My first page from Odin</title>
+  </head>
+
+  <body>
+    <<food>>
+    <<todos>>
+    <<places>>
+    <<games>>
+  </body>
+</html>
+#+end_src
+
+#+begin_quote
+1. An unordered shopping list of your favorite foods
+#+end_quote
+
+~<<food>> +≡~
+
+#+begin_src html :noweb-ref food
+<h1>My favorite foods</h1>
+<ul>
+  <li>Lasagna</li>
+  <li>Pork ribs</li>
+  <li>Avocado with lemon</li>
+  <li>Oatmeal</li>
+  <li>Warm bread with (real) butter</li>
+</ul>
+#+end_src
+
+#+begin_quote
+2. An ordered list of todo’s you need to get done today
+#+end_quote
+
+~<<todos>> +≡~
+
+#+begin_src html :noweb-ref todos
+<h1>Todos for Todays</h1>
+<ol>
+  <li>Code a minimum of 1h</li>
+  <li>Exercise and stretch</li>
+  <li>Busking</li>
+  <li>Play with dogs</li>
+  <li>RPG with ChatGPT</li>
+</ol>
+#+end_src
+
+#+begin_quote
+3. An unordered list of places you’d like to visit someday
+#+end_quote
+
+~<<places>> +≡~
+
+#+begin_src html :noweb-ref places
+<h1>Places I want to visit</h1>
+<ul>
+  <li>Paris</li>
+  <li>Japan</li>
+  <li>Portugal</li>
+  <li>Germany</li>
+  <li>Canada</li>
+</ul>
+#+end_src
+
+#+begin_quote
+4. An ordered list of your all time top 5 favorite video games or movies
+#+end_quote
+
+~<<games>> +≡~
+
+#+begin_src html :noweb-ref games
+<h1>My favorite games of all time</h1>
+<ol>
+  <li>Zelda (Ocarina)</li>
+  <li>Pokémon Blue/R./Y.</li>
+  <li>Metal Slug</li>
+  <li>Super Mario World</li>
+  <li>Harvest Moon (NES)</li>
+</ol>
+#+end_src
+
 ** [2025-09-27 Sat 11:40] Links and Images
-*** Assignment
+*** Links
 :PROPERTIES:
 :header-args:html: :session *links-and-images*
 :END:
@@ -101,7 +199,8 @@ rel="noopener noreferrer"
 **** Relative links
 
 Create a page on our own server.
-NOTE: the =pages/= was added later in this assignment.
+
+*NOTE:* the =pages/= was added later in this assignment.
 
 [[file:odin/assignments/foundations/odin-links-and-images/about.html][odin/assignments/foundations/odin-links-and-images/pages/about.html]] ≡
 
@@ -144,7 +243,7 @@ mv about.html pages
 
 #+RESULTS:
 
-**** Images
+*** Images
 :PROPERTIES:
 :header-args: :dir ~/dev/webdev-study/odin/assignments/foundations/odin-links-and-images/
 :END:
@@ -202,7 +301,7 @@ Add the alternative text.
 alt="A black dog (pug) with a gray wool blanket."
 #+end_src
 
-***** Image size attributes
+**** Image size attributes
 Now the size attributes.
 
 ~<<dog pic attributes>> +≡~
@@ -422,105 +521,6 @@ alt='A mochi ball with Bézier handles'
   <strong>&lt;</strong> <strong>&gt;</strong> and <strong>&amp;</strong>.
   You should always use HTML entities for these three characters.
 </p>
-#+end_src
-** Odin, Foundations, List
-*** Assignment
-
-#+begin_quote
-To get some practice using lists, create a new HTML document and create the following lists:
-1. An unordered shopping list of your favorite foods
-2. An ordered list of todo’s you need to get done today
-3. An unordered list of places you’d like to visit someday
-4. An ordered list of your all time top 5 favorite video games or movies
-#+end_quote
-
-Create the structure for main HTML doc:
-
-[[file:odin/assignments/foundations/lists/index.html][odin/assignments/foundations/lists/index.html]] ≡
-
-#+begin_src html :tangle ~/dev/webdev-study/odin/assignments/foundations/lists/index.html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>My first page from Odin</title>
-  </head>
-
-  <body>
-    <<food>>
-    <<todos>>
-    <<places>>
-    <<games>>
-  </body>
-</html>
-#+end_src
-
-#+begin_quote
-1. An unordered shopping list of your favorite foods
-#+end_quote
-
-~<<food>> +≡~
-
-#+begin_src html :noweb-ref food
-<h1>My favorite foods</h1>
-<ul>
-  <li>Lasagna</li>
-  <li>Pork ribs</li>
-  <li>Avocado with lemon</li>
-  <li>Oatmeal</li>
-  <li>Warm bread with (real) butter</li>
-</ul>
-#+end_src
-
-#+begin_quote
-2. An ordered list of todo’s you need to get done today
-#+end_quote
-
-~<<todos>> +≡~
-
-#+begin_src html :noweb-ref todos
-<h1>Todos for Todays</h1>
-<ol>
-  <li>Code a minimum of 1h</li>
-  <li>Exercise and stretch</li>
-  <li>Busking</li>
-  <li>Play with dogs</li>
-  <li>RPG with ChatGPT</li>
-</ol>
-#+end_src
-
-#+begin_quote
-3. An unordered list of places you’d like to visit someday
-#+end_quote
-
-~<<places>> +≡~
-
-#+begin_src html :noweb-ref places
-<h1>Places I want to visit</h1>
-<ul>
-  <li>Paris</li>
-  <li>Japan</li>
-  <li>Portugal</li>
-  <li>Germany</li>
-  <li>Canada</li>
-</ul>
-#+end_src
-
-#+begin_quote
-4. An ordered list of your all time top 5 favorite video games or movies
-#+end_quote
-
-~<<games>> +≡~
-
-#+begin_src html :noweb-ref games
-<h1>My favorite games of all time</h1>
-<ol>
-  <li>Zelda (Ocarina)</li>
-  <li>Pokémon Blue/R./Y.</li>
-  <li>Metal Slug</li>
-  <li>Super Mario World</li>
-  <li>Harvest Moon (NES)</li>
-</ol>
 #+end_src
 
 * [2025-09-26 Fri]
@@ -804,7 +804,7 @@ A /cool/ first web page would be:
 </html>
 #+end_src
 
-*Note*: Here the /contents/ of the =element= ~<p>~ are "Hello, world!".
+*NOTE:* Here the /contents/ of the =element= ~<p>~ are "Hello, world!".
 
 The ~<html>~ element contains all the elements of the whole page.
 Only two tags should be immediately inside it: ~<head>~ and ~<body>~.
