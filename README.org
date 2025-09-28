@@ -523,6 +523,9 @@ alt='A mochi ball with Bézier handles'
 </p>
 #+end_src
 
+** Seinfeld Checkmark
+[[file:images/2025-09-27_seinfeld.jpeg]]
+
 * [2025-09-26 Fri]
 ** Feel like snowballing.
 Was drifting and rabbit-holling, as per usual
