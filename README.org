@@ -4,10 +4,158 @@
 Thought of doing some elisp coding this sunday.
 I have this [[https://github.com/rafaelbeirigo/ma-github][project that creates Github repositories directly from inside Emacs]].
 As they say: "Life is better when you don't have to leave your editor".
+
 Last time I touched it was 3 years ago.
 
 Today I thought of checking it out, seeing how it stands, and maybe hacking it a bit.
-So, for this coding, all the action will happen [[https://github.com/rafaelbeirigo/ma-github][here.]]
+So, for this coding, all the action will happen  [[https://github.com/rafaelbeirigo/ma-github/commits/dev/][commit history for the dev branch of the repository of that project]].
+
+This is how it went.
+
+** Create a Github token
+*** First try: Generate a classic token with all the powers
+**** Generate
+I just checked out if I had the repo in my machine, and it was there.
+
+Then I followed the repo's instructions to run it.
+You need an *access token*, and I had to create one.
+The proccess was cryptic:
+- You have to choose the powers of your token;
+- I wanted the power to *create a repository*;
+- I couldn't find that option there.
+
+
+After getting scared by the implications of them insisting on an /expiration date/ for the token, I wanted to create the least powerful, but still useful token.
+Invested a dozen minutes trying to read throught the docs, and then realized *I was going down a rabbit hole*.
+
+Decided on just creating the most powerful token possible, with a very short expiration date---seven days (/The Ring/, anyone?).
+The steps were:
+
+1. Open the [[https://github.com/settings/tokens/new][page to generate a /Classic/ token]]
+2. Put on *Note*: ma-github
+3. On *Expiration*: 7 days
+4. On *Select scopes*: select everything
+5. Click *Generate token*
+6. Copy the generated token and paste it on a safe place
+
+**** Access from inside Emacs
+Here I Needed some help from ChatGPT:
+
+#+begin_quote
+i want to have my Github token accessed by Emacs
+How should I do it?
+#+end_quote
+
+Then ChatGPT inspired me to change gears.
+
+*** Second try (ChatGPT): Generate a fine-grained token with minimal powers
+**** Generate
+1. Go to the [[https://github.com/settings/personal-access-tokens][Github page to generate a fine-grained token]]
+2. Click *Generate new token*
+3. *Token name*: ma-github
+4. *Resource owner*: the Github account where the repositories will be created
+5. *Expiration*: 30 days
+6. *Repository access*: All repositories
+7. *Permissions*
+   1. Click the *+* button on the upper-right corner
+   2. Select *Administration*
+   3. Click outside of the selection thingy to make it disappear
+   4. On the new item *Administration*, change from *Read-only* to *Read and write*
+8. Click *Generate token*
+9. Click *Generate token* again, on the pop-up window
+10. Copy the token
+11. Paste it somewhere safe
+
+**** Access from inside Emacs
+
+***** Set up *authinfo*
+
+1. Follow this [[https://www.masteringemacs.org/article/keeping-secrets-in-emacs-gnupg-auth-sources][instructions to create =~/.authinfo.gpg~]]
+
+   1. Create a key
+
+      1. Open a terminal and run the command
+
+         #+begin_src shell
+         gpg --gen-key
+         #+end_src
+
+      2. Inform your real name and then your email
+
+      3. It will generate a key in =~/.gnupg=
+
+2. Create (or edit) the file =~/.authinfo.gpg= in Emacs. Use this format (one line per entry):
+
+   #+begin_example
+   machine api.github.com login YOUR_GITHUB_USERNAME password <YOUR_TOKEN>
+   #+end_example
+
+3. Change the permissions of the file to make it more secure
+
+   #+begin_src shell
+   chmod 600 ~/.authinfo.gpg
+   #+end_src
+
+***** Fetch the token using *authinfo*
+
+This code snippet uses the token created before to give =ma-github= access to Github.
+It
+
+1. Asks for a Github username, and then
+
+2. Sets the environment variables needed by =ma-github=.
+
+#+begin_src elisp
+;; ensure auth-source uses the default backends (it does by default)
+;; Here is a tiny helper that reads the token and (optionally) sets env var:
+
+(require 'auth-source)
+
+(defun ma-github-token-from-authinfo (&optional username)
+  "Find a GitHub token from auth-source for api.github.com and return the secret string."
+  (let* ((host "api.github.com")
+         (user (or username user-login-name))
+         (entry (car (auth-source-search :host host :user user :max 1))))
+    (when entry
+      (let ((secret (plist-get entry :secret)))
+        (if (functionp secret) (funcall secret) secret)))))
+
+;; optional: make token available to Emacs subprocesses (e.g. `curl` from Emacs)
+(let* ((user (read-string "Github username: "))
+       (tok (my/github-token-from-authinfo user)))
+  (when user
+    (setenv "MA_GITHUB_USER" tok))
+  (when tok
+    (setenv "MA_GITHUB_TOKEN" tok)))
+#+end_src
+
+Now let's try and create a repo with ma-github.
+
+#+begin_quote
+M-x ma-github-create
+#+end_quote
+
+And here is the [[https://github.com/rafaelbeirigo/hello-ma-github][Github repository created using ma-github]]!
+
+Now let's integrate the *auth-source* functionality.
+
+Timeline (I tried, but too distracting!):
+
+1. [2025-09-28 Sun 13:13] Breaking the code down in LP blocks.
+
+2. [2025-09-28 Sun 13:13] info on defun optional arguments
+
+3. [...] All the action is on the [[https://github.com/rafaelbeirigo/ma-github/commits/dev/][commit history for the dev branch]].
+
+4. [2025-09-28 Sun 21:02] Ported to LP and tested: (ma-github-create NAME)
+
+I tried my best to be organized, but it's messy.
+Next step is to reorganize the commits.
+Not for /functionality/, but /learning/.
+
+** Seinfeld Checkmark
+
+[[file:images/2025-09-28_seinfeld.jpeg]]
 
 * [2025-09-27 Sat]
 Starting later today.
