@@ -11,6 +11,14 @@ Just learned about Commit Messages.
 
 Next is a project, and then we start CSS.
 
+** Digression on Git
+
+I have been thinking about yesterday's work, with lots of refactoring, while porting to LP.
+It was difficult to keep a clean commit history.
+
+I believe the best way to accomplish it is by planning beforehand.
+I have some ideas, that I will experiment with in this next project.
+
 * [2025-09-28 Sun]
 Thought of doing some elisp coding this sunday.
 I have this [[https://github.com/rafaelbeirigo/ma-github][project that creates Github repositories directly from inside Emacs]].
