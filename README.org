@@ -1,5 +1,16 @@
 # -*- auto-fill-function: nil; eval: (add-hook 'after-save-hook 'org-babel-tangle nil t); -*-
 
+* [2025-09-29 Mon]
+Back to HTML!
+
+We're approaching a project on Odin!
+
+Starting with Git.
+
+Just learned about Commit Messages.
+
+Next is a project, and then we start CSS.
+
 * [2025-09-28 Sun]
 Thought of doing some elisp coding this sunday.
 I have this [[https://github.com/rafaelbeirigo/ma-github][project that creates Github repositories directly from inside Emacs]].
