@@ -19,6 +19,16 @@ It was difficult to keep a clean commit history.
 I believe the best way to accomplish it is by planning beforehand.
 I have some ideas, that I will experiment with in this next project.
 
+** Project: Recipes
+
+Check it out [[https://github.com/rafaelbeirigo/odin-recipes][here]].
+
+** Seinfeld Checkmark
+
+Hoje foi um dia difícil, mas consegui o X!
+
+[[file:images/2025-09-29_seinfeld.jpeg]]
+
 * [2025-09-28 Sun]
 Thought of doing some elisp coding this sunday.
 I have this [[https://github.com/rafaelbeirigo/ma-github][project that creates Github repositories directly from inside Emacs]].
