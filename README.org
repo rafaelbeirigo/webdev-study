@@ -9,6 +9,11 @@ I'll try another approach today: write the commit messages /before/ coding.
 Let's see how that goes.
 (Still working on the [[https://github.com/rafaelbeirigo/odin-recipes][project Recipes from Odin]]).
 
+** Systems Thinking
+Just heard about it this week.
+I believe I applied it today.
+I love it!
+
 * [2025-09-29 Mon]
 Back to HTML!
 
