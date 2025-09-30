@@ -9,11 +9,17 @@ I'll try another approach today: write the commit messages /before/ coding.
 Let's see how that goes.
 (Still working on the [[https://github.com/rafaelbeirigo/odin-recipes][project Recipes from Odin]]).
 
+Edit: You can see the final version of the page [[https://rafaelbeirigo.github.io/odin-recipes/][here]] (three recipes inspired on Harry Potter's books).
+
 ** Systems Thinking
 Just heard about it this week.
 I believe I applied it today.
 I love it!
 
+** Results: Writing the commits before coding
+/Very/ helpful, much better!
+Knowing that each task had a purpose, and that we would get to the final product was very empowering and calming.
+I'd call it a success!
 * [2025-09-29 Mon]
 Back to HTML!
 
