@@ -13,7 +13,16 @@ Will focus on [[https://www.theodinproject.com/][Odin]].
 
 Now, I start learning CSS!
 
-The action is happening in my [[https://github.com/rafaelbeirigo/odin-css-exercises][forked repo of the CSS Exercises]].
+The action is happening in my [[https://github.com/rafaelbeirigo/odin-css-exercises/blob/main/foundations/intro-to-css/01-css-methods/README.org][forked repo of the CSS Exercises]].
+
+** Notes from today
+- I'm clocking my work, and this is helping to keep me grounded, and also learn realistic timetable expectations;
+- CSS is fun
+- Literate Programming is really helpful to organize the work, especially so when I must leave the work half-finished, and come back later: it's faster to hit the ground running with LP
+
+** Seinfeld Checkmark
+
+[[file:images/2025-10-01_seinfeld.jpeg]]
 
 * [2025-09-30 Tue]
 Back at it!
