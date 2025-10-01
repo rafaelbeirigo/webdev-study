@@ -13,6 +13,8 @@ Will focus on [[https://www.theodinproject.com/][Odin]].
 
 Now, I start learning CSS!
 
+The action is happening in my [[https://github.com/rafaelbeirigo/odin-css-exercises][forked repo of the CSS Exercises]].
+
 * [2025-09-30 Tue]
 Back at it!
 
