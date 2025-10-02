@@ -29,6 +29,10 @@ But I believe this is a nice approach.
 This one was the quickest so far!
 Again, LP, and then commit helped.
 
+** 05-descendant-combinator
+This was even quicker: 8 minutes!
+
+And with it, I finished the first branch, =intro-to-css=!
 * [2025-10-01 Wed]
 Today started with some final polishing on the [[https://github.com/rafaelbeirigo/odin-recipes][Recipes Project]].
 
