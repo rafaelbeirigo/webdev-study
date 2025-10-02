@@ -33,6 +33,10 @@ Again, LP, and then commit helped.
 This was even quicker: 8 minutes!
 
 And with it, I finished the first branch, =intro-to-css=!
+
+** Seinfeld Checkmark
+[[file:images/2025-10-02_seinfeld.jpeg]]
+
 * [2025-10-01 Wed]
 Today started with some final polishing on the [[https://github.com/rafaelbeirigo/odin-recipes][Recipes Project]].
 
