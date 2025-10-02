@@ -26,6 +26,8 @@ It was much easier to get things flowing, but a little bit messier when dealing 
 But I believe this is a nice approach.
 
 ** 04-chaining-selectors
+This one was the quickest so far!
+Again, LP, and then commit helped.
 
 * [2025-10-01 Wed]
 Today started with some final polishing on the [[https://github.com/rafaelbeirigo/odin-recipes][Recipes Project]].
