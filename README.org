@@ -1,5 +1,13 @@
 # -*- auto-fill-function: nil; eval: (add-hook 'after-save-hook 'org-babel-tangle nil t); -*-
 
+* [2025-10-02 Thu]
+Just finished second CSS Assignment, and added a checkmark to the [[https://github.com/rafaelbeirigo/odin-css-exercises/tree/main][main README of the tasks]].
+This one I had to fix a minor detail after finishing it, and then looking at the recommended solution.
+I didn't catch one shared property among elements, which could make code legibility and maintenance much easier.
+Learned another one!
+
+Now, out to busking, and later some more!
+
 * [2025-10-01 Wed]
 Today started with some final polishing on the [[https://github.com/rafaelbeirigo/odin-recipes][Recipes Project]].
 
