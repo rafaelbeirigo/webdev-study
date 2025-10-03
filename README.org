@@ -13,6 +13,11 @@ Also did some cleanup for the other assignments (portfolios should be good looki
 Finished this one today.
 It was about that apparently bothers devs a lot: find out the culprit for unexpected styling behavior.
 I like that type of mental game!
+
+** Seinfeld Checkmark
+
+[[file:images/2025-10-03_seinfeld.jpeg]]
+
 * [2025-10-02 Thu]
 
 Check out the links for each exercise, with all the action [[https://github.com/rafaelbeirigo/odin-css-exercises][here]].
