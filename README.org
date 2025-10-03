@@ -6,6 +6,13 @@ Just read the lesson text, and now am complementing with the Wikipedia article.
 I realized that the more formal texts (like standards) work better for me.
 Maybe it's because I like the /raw/ info/rules, and then make my own analogies.
 
+Doing some clean-up on the 02-... assignment.
+Also did some cleanup for the other assignments (portfolios should be good looking!)
+
+** 01-cascade-fix
+Finished this one today.
+It was about that apparently bothers devs a lot: find out the culprit for unexpected styling behavior.
+I like that type of mental game!
 * [2025-10-02 Thu]
 
 Check out the links for each exercise, with all the action [[https://github.com/rafaelbeirigo/odin-css-exercises][here]].
