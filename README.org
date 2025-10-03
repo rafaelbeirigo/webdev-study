@@ -1,5 +1,11 @@
 # -*- auto-fill-function: nil; eval: (add-hook 'after-save-hook 'org-babel-tangle nil t); -*-
 
+* [2025-10-03 Fri]
+Today I start a new lesson, and a new branch on the assignment tree: /Cascade/, the *C* from CSS.
+Just read the lesson text, and now am complementing with the Wikipedia article.
+I realized that the more formal texts (like standards) work better for me.
+Maybe it's because I like the /raw/ info/rules, and then make my own analogies.
+
 * [2025-10-02 Thu]
 
 Check out the links for each exercise, with all the action [[https://github.com/rafaelbeirigo/odin-css-exercises][here]].
