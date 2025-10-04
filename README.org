@@ -2,6 +2,19 @@
 
 Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Development Foundations Course from The Odin Project]].
 
+* [2025-10-04 Sat]
+
+** Google's course
+
+Today I wanna do something "risky": peak at [[https://web.dev/][Google's webdev course]].
+I’m feeling curious about a lot of technical nuances and details, and kinda looking for some course that is a middle ground between /hands-on/-focused and /technical-standards/-focused.
+The idea is to go over the curriculum, and then reflect.
+When I was reading the HTML tech specs, I saw a lot of things that weren't covered on the tutorials; /cool/ things!
+I don't know if I should focus on those specs first, or courses, or books.
+But I believe a quick look at the curriculum can't hurt.
+Let's do it!
+
+The HTML Course is heavily based on the official HTML Standard, but, still, very /fragmented/, and sometimes /vague/.
 * [2025-10-03 Fri]
 Today I start a new lesson, and a new branch on the assignment tree: /Cascade/, the *C* from CSS.
 Just read the lesson text, and now am complementing with the Wikipedia article.
