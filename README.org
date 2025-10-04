@@ -21,6 +21,10 @@ The HTML Course is heavily based on the official HTML Standard, but, still, very
 I'm feeling /adventurous/.
 Gonna give a peek at the Standard this weekend.
 
+Just read the first 3 chapters; very /technical/---skipped a lot of details.
+But the advantage I see is: /not/ consuming a piece of information is /voluntary/, as opposed to consuming third-party tutorials and courses, where they /decide/ which information to ommit.
+The problem is: there are no /exercises/; I'll have to deal with that deficiency somehow; probably with tutorials and courses, but /after/ having a general idea of the whole shabang.
+
 * [2025-10-03 Fri]
 Today I start a new lesson, and a new branch on the assignment tree: /Cascade/, the *C* from CSS.
 Just read the lesson text, and now am complementing with the Wikipedia article.
