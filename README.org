@@ -1,5 +1,7 @@
 # -*- auto-fill-function: nil; eval: (add-hook 'after-save-hook 'org-babel-tangle nil t); -*-
 
+Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Development Foundations Course from The Odin Project]].
+
 * [2025-10-03 Fri]
 Today I start a new lesson, and a new branch on the assignment tree: /Cascade/, the *C* from CSS.
 Just read the lesson text, and now am complementing with the Wikipedia article.
