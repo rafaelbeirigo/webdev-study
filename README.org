@@ -15,6 +15,12 @@ But I believe a quick look at the curriculum can't hurt.
 Let's do it!
 
 The HTML Course is heavily based on the official HTML Standard, but, still, very /fragmented/, and sometimes /vague/.
+
+** HTML Standard
+
+I'm feeling /adventurous/.
+Gonna give a peek at the Standard this weekend.
+
 * [2025-10-03 Fri]
 Today I start a new lesson, and a new branch on the assignment tree: /Cascade/, the *C* from CSS.
 Just read the lesson text, and now am complementing with the Wikipedia article.
