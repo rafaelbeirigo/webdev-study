@@ -2,6 +2,12 @@
 
 Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Development Foundations Course from The Odin Project]].
 
+* [2025-10-05 Sun]
+
+** web.dev HTML Course
+
+Going over the curriculum again, this time specifically to know which *projects* it has.
+
 * [2025-10-04 Sat]
 
 ** Google's course
