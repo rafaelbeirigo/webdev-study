@@ -117,6 +117,388 @@ A leaflet.
 
 Initial whitespace ("prefixing" w.) matters.
 
+** ~blockquote~
+
+[[file:pages/blockquote.html][pages/blockquote.html]] ≡
+
+#+begin_src html :tangle pages/blockquote.html
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+  </head>
+
+  <body>
+    <blockquote>
+      <p>I contend that we are both atheists. I just believe in one fewer
+        god than you do. When you understand why you dismiss all the other
+        possible gods, you will understand why I dismiss yours.</p>
+    </blockquote>
+    <p>— Stephen Roberts</p>
+    <hr>
+    <figure>
+      <blockquote>
+        <p>The truth may be puzzling. It may take some work to grapple with.
+          It may be counterintuitive. It may contradict deeply held
+          prejudices. It may not be consonant with what we desperately want to
+          be true. But our preferences do not determine what's true. We have a
+          method, and that method helps us to reach not absolute truth, only
+          asymptotic approaches to the truth — never there, just closer
+          and closer, always finding vast new oceans of undiscovered
+          possibilities. Cleverly designed experiments are the key.</p>
+      </blockquote>
+      <figcaption>Carl Sagan, in "<cite>Wonder and Skepticism</cite>", from
+        the <cite>Skeptical Inquirer</cite> Volume 19, Issue 1 (January-February
+        1995)</figcaption>
+        </figure>
+    <hr/>
+    <article>
+      <h1><a href="https://bacon.example.com/?blog=109431">Bacon on a crowbar</a></h1>
+      <article>
+        <header><strong>t3yw</strong> 12 points 1 hour ago</header>
+        <p>I bet a narwhal would love that.</p>
+        <footer><a href="?pid=29578">permalink</a></footer>
+        <article>
+          <header><strong>greg</strong> 8 points 1 hour ago</header>
+          <blockquote><p>I bet a narwhal would love that.</p></blockquote>
+          <p>Dude narwhals don't eat bacon.</p>
+          <footer><a href="?pid=29579">permalink</a></footer>
+          <article>
+            <header><strong>t3yw</strong> 15 points 1 hour ago</header>
+            <blockquote>
+              <blockquote><p>I bet a narwhal would love that.</p></blockquote>
+              <p>Dude narwhals don't eat bacon.</p>
+            </blockquote>
+            <p>Next thing you'll be saying they don't get capes and wizard
+              hats either!</p>
+            <footer><a href="?pid=29580">permalink</a></footer>
+            <article>
+              <article>
+                <header><strong>boing</strong> -5 points 1 hour ago</header>
+                <p>narwhals are worse than ceiling cat</p>
+                <footer><a href="?pid=29581">permalink</a></footer>
+              </article>
+            </article>
+          </article>
+        </article>
+        <article>
+          <header><strong>fred</strong> 1 points 23 minutes ago</header>
+          <blockquote><p>I bet a narwhal would love that.</p></blockquote>
+          <p>I bet they'd love to peel a banana too.</p>
+          <footer><a href="?pid=29582">permalink</a></footer>
+        </article>
+      </article>
+    </article>
+    <hr>
+    <p>He began his list of "lessons" with the following:</p>
+    <blockquote>One should never assume that his side of
+      the issue will be recognized, let alone that it will
+      be conceded to have merits.</blockquote>
+    <p>He continued with a number of similar points, ending with:</p>
+    <blockquote>Finally, one should be prepared for the threat
+      of breakdown in negotiations at any given moment and not
+      be cowed by the possibility.</blockquote>
+    <p>We shall now discuss these points...</p>
+  </body>
+</html>
+#+end_src
+
+** ~ol~
+
+[[file:pages/ol.html][pages/ol.html]] ≡
+
+#+begin_src html :tangle pages/ol.html
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>ol</title>
+  </head>
+
+  <body>
+    <p>I have lived in the following countries (given in the order of when
+      I first lived there):</p>
+    <hr>
+    <ol>
+      <li>Switzerland
+        <li>United Kingdom
+          <li>United States
+            <li>Norway
+    </ol>
+    <hr>
+    <ol start="-1">
+      <li>Switzerland
+        <li>United Kingdom
+          <li>United States
+            <li>Norway
+    </ol>
+    <hr>
+    <ol reversed>
+      <li>Switzerland
+        <li>United Kingdom
+          <li>United States
+            <li>Norway
+    </ol>
+    <hr>
+    <ol reversed start="3">
+      <li>Switzerland
+        <li>United Kingdom
+          <li>United States
+            <li>Norway
+    </ol>
+    <hr>
+    <ol reversed start="2">
+      <li>Switzerland
+        <li>United Kingdom
+          <li>United States
+            <li>Norway
+    </ol>
+    <hr>
+    <ol type="I" start="-1">
+      <li>Switzerland
+        <li>United Kingdom
+          <li>United States
+            <li>Norway
+    </ol>
+    <hr>
+    <ol type="i" start="-1">
+      <li>Switzerland
+        <li>United Kingdom
+          <li>United States
+            <li>Norway
+    </ol>
+    <hr>
+    <ol type="A" start="-1">
+      <li>Switzerland
+        <li>United Kingdom
+          <li>United States
+            <li>Norway
+    </ol>
+    <hr>
+    <ol type="a" start="-1">
+      <li>Switzerland
+        <li>United Kingdom
+          <li>United States
+            <li>Norway
+    </ol>
+  </body>
+</html>
+#+end_src
+
+** ~menu~
+
+[[file:pages/menu.html][pages/menu.html]] ≡
+
+#+begin_src html :tangle pages/menu.html
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>menu</title>
+  </head>
+
+  <body>
+    <menu>
+      <li><button onclick="copy()"><img src="copy.svg" alt="Copy"></button></li>
+      <li><button onclick="cut()"><img src="cut.svg" alt="Cut"></button></li>
+      <li><button onclick="paste()"><img src="paste.svg" alt="Paste"></button></li>
+    </menu>
+  </body>
+</html>
+#+end_src
+
+** ~dl~
+
+[[file:pages/dl.html][pages/dl.html]] ≡
+
+#+begin_src html :tangle pages/dl.html
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>dl</title>
+  </head>
+
+  <body>
+    <dl>
+      <dt> Authors
+        <dd> John
+          <dd> Luke
+            <dt> Editor
+              <dd> Frank
+    </dl>
+    <hr>
+    <dl>
+      <div itemscope itemtype="http://schema.org/Product">
+        <dt itemprop="name">Café ou Chocolat Liégeois
+          <dd itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+            <span itemprop="price">3.50</span>
+            <data itemprop="priceCurrency" value="EUR">€</data>
+            <dd itemprop="description">
+              2 boules Café ou Chocolat, 1 boule Vanille, sauce café ou chocolat, chantilly
+      </div>
+
+      <div itemscope itemtype="http://schema.org/Product">
+        <dt itemprop="name">Américaine
+          <dd itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+            <span itemprop="price">3.50</span>
+            <data itemprop="priceCurrency" value="EUR">€</data>
+            <dd itemprop="description">
+              1 boule Crème brûlée, 1 boule Vanille, 1 boule Caramel, chantilly
+      </div>
+    </dl>
+    <hr>
+    <dl>
+      <dt><dfn>happiness</dfn></dt>
+      <dd class="pronunciation">/ˈhæpinəs/</dd>
+      <dd class="part-of-speech"><i><abbr>n.</abbr></i></dd>
+      <dd>The state of being happy.</dd>
+      <dd>Good fortune; success. <q>Oh <b>happiness</b>! It worked!</q></dd>
+      <dt><dfn>rejoice</dfn></dt>
+      <dd class="pronunciation">/rɪˈdʒɔɪs/</dd>
+      <dd><i class="part-of-speech"><abbr>v.intr.</abbr></i> To be delighted oneself.</dd>
+      <dd><i class="part-of-speech"><abbr>v.tr.</abbr></i> To cause one to be delighted.</dd>
+    </dl>
+  </body>
+</html>
+#+end_src
+
+** ~figure~
+
+Things with a caption.
+
+[[file:pages/figure.html][pages/figure.html]] ≡
+
+#+begin_src html :tangle pages/figure.html
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>figure</title>
+  </head>
+
+  <body>
+    <p>In <a href="#l4">listing 4</a> we see the primary core interface
+      API declaration.</p>
+    <figure id="l4">
+      <figcaption>Listing 4. The primary core interface API declaration.</figcaption>
+      <pre><code>interface PrimaryCore {
+  boolean verifyDataLine();
+  undefined sendData(sequence&lt;byte> data);
+  undefined initSelfDestruct();
+}</code></pre>
+    </figure>
+    <p>The API is designed to use UTF-8.</p>
+    <hr/>
+    <figure>
+      <figcaption>The castle through the ages: 1423, 1858, and 1999 respectively.</figcaption>
+      <figure>
+        <figcaption>Etching. Anonymous, ca. 1423.</figcaption>
+        <img src="castle1423.jpeg" alt="The castle has one tower, and a tall wall around it.">
+      </figure>
+      <figure>
+        <figcaption>Oil-based paint on canvas. Maria Towle, 1858.</figcaption>
+        <img src="castle1858.jpeg" alt="The castle now has two towers and two walls.">
+      </figure>
+      <figure>
+        <figcaption>Film photograph. Peter Jankle, 1999.</figcaption>
+        <img src="castle1999.jpeg" alt="The castle lies in ruins, the original tower all that remains in one piece.">
+      </figure>
+    </figure>
+    <hr/>
+    <figure>
+      <img src="castle1423.jpeg" title="Etching. Anonymous, ca. 1423."
+        alt="The castle has one tower, and a tall wall around it.">
+      <img src="castle1858.jpeg" title="Oil-based paint on canvas. Maria Towle, 1858."
+        alt="The castle now has two towers and two walls.">
+      <img src="castle1999.jpeg" title="Film photograph. Peter Jankle, 1999."
+        alt="The castle lies in ruins, the original tower all that remains in one piece.">
+      <figcaption>The castle through the ages: 1423, 1858, and 1999 respectively.</figcaption>
+    </figure>
+  </body>
+</html>
+#+end_src
+
+** ~main~
+
+[[file:pages/main.html][pages/main.html]] ≡
+
+#+begin_src html :tangle pages/main.html
+<!DOCTYPE html>
+<html lang="en">
+  <title>RPG System 17</title>
+  <style>
+  header, nav, aside, main, footer {
+    margin: 0.5em; border: thin solid; padding: 0.5em;
+    background: #EFF; color: black; box-shadow: 0 0 0.25em #033;
+  }
+  h1, h2, p { margin: 0; }
+  nav, main { float: left; }
+  aside { float: right; }
+  footer { clear: both; }
+  </style>
+  <header>
+    <h1>System Eighteen</h1>
+  </header>
+  <nav>
+    <a href="../16/">← System 17</a>
+    <a href="../18/">RPXIX →</a>
+  </nav>
+  <aside>
+    <p>This system has no HP mechanic, so there's no healing.
+  </aside>
+  <main>
+    <h2>Character creation</h2>
+    <p>Attributes (magic, strength, agility) are purchased at the cost of one point per level.</p>
+    <h2>Rolls</h2>
+    <p>Each encounter, roll the dice for all your skills. If you roll more than the opponent, you win.</p>
+  </main>
+  <footer>
+    <p>Copyright © 2013
+  </footer>
+</html>
+#+end_src
+
+[[file:pages/main-2.html][pages/main-2.html]] ≡
+
+#+begin_src html :tangle pages/main-2.html
+<!doctype html>
+<html lang=en-CA>
+<meta charset=utf-8>
+<title> … </title>
+<link rel=stylesheet href=spa.css>
+<script src=spa.js async></script>
+<nav>
+ <a href=/>Home</a>
+ <a href=/about>About</a>
+ <a href=/contact>Contact</a>
+</nav>
+<main>
+ <h1>Home</h1>
+ …
+</main>
+<main hidden>
+ <h1>About</h1>
+ …
+</main>
+<main hidden>
+  <h1>Contact</h1>
+  …
+</main>
+<footer>Made with ❤️ by <a href=https://example.com/>Example 👻</a>.</footer>
+#+end_src
+
 * [2025-10-04 Sat]
 
 ** Google's course

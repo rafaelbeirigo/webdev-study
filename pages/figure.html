@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>figure</title>
+  </head>
+
+  <body>
+    <p>In <a href="#l4">listing 4</a> we see the primary core interface
+      API declaration.</p>
+    <figure id="l4">
+      <figcaption>Listing 4. The primary core interface API declaration.</figcaption>
+      <pre><code>interface PrimaryCore {
+  boolean verifyDataLine();
+  undefined sendData(sequence&lt;byte> data);
+  undefined initSelfDestruct();
+}</code></pre>
+    </figure>
+    <p>The API is designed to use UTF-8.</p>
+    <hr/>
+    <figure>
+      <figcaption>The castle through the ages: 1423, 1858, and 1999 respectively.</figcaption>
+      <figure>
+        <figcaption>Etching. Anonymous, ca. 1423.</figcaption>
+        <img src="castle1423.jpeg" alt="The castle has one tower, and a tall wall around it.">
+      </figure>
+      <figure>
+        <figcaption>Oil-based paint on canvas. Maria Towle, 1858.</figcaption>
+        <img src="castle1858.jpeg" alt="The castle now has two towers and two walls.">
+      </figure>
+      <figure>
+        <figcaption>Film photograph. Peter Jankle, 1999.</figcaption>
+        <img src="castle1999.jpeg" alt="The castle lies in ruins, the original tower all that remains in one piece.">
+      </figure>
+    </figure>
+    <hr/>
+    <figure>
+      <img src="castle1423.jpeg" title="Etching. Anonymous, ca. 1423."
+        alt="The castle has one tower, and a tall wall around it.">
+      <img src="castle1858.jpeg" title="Oil-based paint on canvas. Maria Towle, 1858."
+        alt="The castle now has two towers and two walls.">
+      <img src="castle1999.jpeg" title="Film photograph. Peter Jankle, 1999."
+        alt="The castle lies in ruins, the original tower all that remains in one piece.">
+      <figcaption>The castle through the ages: 1423, 1858, and 1999 respectively.</figcaption>
+    </figure>
+  </body>
+</html>
