@@ -507,7 +507,6 @@ Things with a caption.
 - ~strong~ is for *importance*
   - ~b~: keywords
 
-
 ** ~small~
 
 For small print.
@@ -587,7 +586,6 @@ When I started reading, I wanted to
   - This was advanced, but I need to practice.
 - Learn about Web Workers (and Worklets)
   - Idem.
-
 
 ** What now?
 
