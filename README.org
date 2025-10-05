@@ -499,6 +499,102 @@ Things with a caption.
 <footer>Made with ❤️ by <a href=https://example.com/>Example 👻</a>.</footer>
 #+end_src
 
+** ~em~ and ~strong~
+
+- ~em~ is for *emphasis*
+  - same voice, different tone
+  - ~i~: different voice
+- ~strong~ is for *importance*
+  - ~b~: keywords
+
+
+** ~small~
+
+For small print.
+
+[[file:pages/small.html][pages/small.html]] ≡
+
+#+begin_src html :tangle pages/small.html
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>small</title>
+  </head>
+
+  <body>
+    <p>Example Corp today announced record profits for the
+      second quarter <small>(Full Disclosure: Foo News is a subsidiary of
+      Example Corp)</small>, leading to speculation about a third quarter
+      merger with Demo Group.
+    </p>
+    <p><q>This is correct</q>, said Ian.</p>
+  </body>
+</html>
+#+end_src
+
+** Web Workers
+
+[[file:pages/web-worker.html][pages/web-worker.html]] ≡
+
+#+begin_src html :tangle pages/web-worker.html
+<!DOCTYPE HTML>
+<html lang="en">
+ <head>
+  <meta charset="utf-8">
+  <title>Worker example: One-core computation</title>
+ </head>
+ <body>
+  <p>The highest prime number discovered so far is: <output id="result"></output></p>
+  <script>
+   var worker = new Worker('./worker.js');
+   worker.onmessage = function (event) {
+     console.log('hehe');
+     document.getElementById('result').textContent = event.data;
+   };
+  </script>
+ </body>
+</html>
+#+end_src
+
+[[file:pages/worker.js][pages/worker.js]] ≡
+
+#+begin_src js :tangle pages/worker.js
+var n = 1;
+search: while (true) {
+  n += 1;
+  for (var i = 2; i <= Math.sqrt(n); i += 1)
+    if (n % i == 0)
+     continue search;
+  // found a prime!
+  postMessage(n);
+}
+#+end_src
+
+** Finished reading the HTML Standard (kind of)
+
+Just finished reading the HTML Standard---skipping a lot of technical details.
+Very interesting.
+Funny to see the authors have a sense of humor :)
+
+When I started reading, I wanted to
+
+- Have a basic knowledge of all the elements
+  - This was accomplished, as the Standard lists them all, with all the details.
+- Learn how to do /responsive/ work with images
+  - This was advanced, but I need to practice.
+- Learn about Web Workers (and Worklets)
+  - Idem.
+
+
+** What now?
+
+After reading the Standard, I still need to practice that knowledge.
+I couldn't memorize each and every detail, so I need to apply to learn.
+There are several good ways to learn, but I'll stick to Odin for now--- I'm invested.
+
 * [2025-10-04 Sat]
 
 ** Google's course
