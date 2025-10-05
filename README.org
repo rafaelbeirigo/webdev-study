@@ -209,6 +209,11 @@ Learned another one!
 
 Surprisingly, it took me just about one hour to do those!
 Good on you, ChatGPT!
+
+** Seinfeld Checkmark
+
+[[file:images/2025-10-04_seinfeld.jpeg]]
+
 * [2025-10-03 Fri]
 Today I start a new lesson, and a new branch on the assignment tree: /Cascade/, the *C* from CSS.
 Just read the lesson text, and now am complementing with the Wikipedia article.
