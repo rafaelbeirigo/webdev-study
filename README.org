@@ -707,6 +707,10 @@ But learned a lot!
 </html>
 #+end_src
 
+** Seinfeld Checkmark
+
+[[file:images/2025-10-05_seinfeld.jpeg]]
+
 * [2025-10-04 Sat]
 
 ** Google's course
