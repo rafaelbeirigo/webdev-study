@@ -49,6 +49,74 @@ The Standard says ~section~ and ~hr~ have some "equivalences"---let's experiment
 
 Visually, there's no explicit "equivalence"; maybe we need some CSS for that.
 
+** ~pre~
+
+[[file:pages/pre.html][pages/pre.html]] ≡
+
+#+begin_src html :tangle pages/pre.html
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>&lt;pre&gt;</title>
+  </head>
+
+  <body>
+    <h1>The <code>&lt;pre&gt; element</code></h1>
+    <h2>Just <code>&lt;pre&gt;</code></h2>
+    <pre>
+      function greet(name) {
+        console.log(`Hello, ${name}`);
+      }
+    </pre>
+
+    <h2><code>&lt;pre&gt;&lt;code&gt;&lt;code&gt;&lt;pre&gt;</code></h2>
+    <pre>
+      <code>
+        function greet(name) {
+          console.log(`Hello, ${name}`);
+        }
+      </code>
+    </pre>
+  </body>
+</html>
+#+end_src
+
+Both use monospaced fonts.
+
+** ~kbd~
+
+[[file:pages/kbd.html][pages/kbd.html]] ≡
+
+#+begin_src html :tangle pages/kbd.html
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+  </head>
+
+  <body>
+    <pre><samp>You are in an open field west of a big white house with a boarded
+front door.
+There is a small mailbox here.
+
+></samp> <kbd>open mailbox</kbd>
+
+<samp>Opening the mailbox reveals:
+A leaflet.
+
+></samp></pre>
+  </body>
+</html>
+#+end_src
+
+Initial whitespace ("prefixing" w.) matters.
+
 * [2025-10-04 Sat]
 
 ** Google's course
