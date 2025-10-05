@@ -25,6 +25,190 @@ Just read the first 3 chapters; very /technical/---skipped a lot of details.
 But the advantage I see is: /not/ consuming a piece of information is /voluntary/, as opposed to consuming third-party tutorials and courses, where they /decide/ which information to ommit.
 The problem is: there are no /exercises/; I'll have to deal with that deficiency somehow; probably with tutorials and courses, but /after/ having a general idea of the whole shabang.
 
+** Coding hour
+
+I was half-intending to consider reading the HTML Standard as /valid coding/ for the 1h/day streak.
+But... nah.
+Then I tried to find something to code.
+I want either Elisp or JavaScript.
+JavaScript, for focus on current major learning goals.
+Exercism, HackerRank, LeetCode, all very advanced problems.
+Then asked ChatGPT for some, and this is what I got:
+
+#+begin_src html
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>JS with ChatGPT</title>
+  </head>
+  <body>
+    <section>
+      <button id="leButton">Je suis leButton</button>
+      <p id="leP">Je suis leP.</p>
+    </section>
+    <section>
+      <button id="buttonColorize">Colorize!</button>
+    </section>
+    <section>
+      <input id="leInput" type="Text">
+      <button id="leInputButton">Je suis leInputButton</button>
+      <p id="leInputP">Je suis leInputP.</p>
+    </section>
+    <section>
+      <p id="leCounterP">0</p>
+      <button id="leCounterButtonPlus">+</button>
+      <button id="leCounterButtonMinus">-</button>
+    </section>
+
+    <script>
+     /* 1. Print “Hello, world!” in the console. */
+     console.log('Hello, World!');
+
+     /* 2. Store your name in a variable and log Hello, <name>!. */
+     const name="Rafael";
+     console.log(`Hello, ${name}!`);
+
+     /* 3. Write a function double(n) that returns n * 2.
+        Test it with
+        console.log(double(5)). */
+     function double(n) {
+       return n * 2;
+     }
+     console.log(double(5));
+
+     /* 4. Ask the user for a number (prompt). If it’s even, log “even”; else “odd”. */
+     /* const number = Number(prompt('Give me a number, please.'));
+      * if (number % 2 === 0) {
+      *   console.log('even');
+      * } else {
+      *   console.log('odd');
+      * } */
+
+     /* 5. Create a function max(a, b) that returns the bigger number. */
+     function max(a, b) {
+       if (a > b) {
+         return a;
+       } else {
+         return b;
+       }
+     }
+
+     /* 6. Make an array of 5 fruits. Loop through it and log each fruit. */
+     const fruits = ['apple', 'banana', 'pineapple', 'grapefruit', 'orange'];
+     for (let i = 0; i < fruits.length; i++) {
+       console.log(fruits[i]);
+     }
+
+     for (const fruit of fruits) {
+       console.log(fruit.toUpperCase());
+     }
+
+     /* 7. Write a function that takes an array of numbers and returns their sum. */
+     const numbers = [1, 2, 3];
+     const sum = numbers.reduce((sum, number) => sum + number);
+     console.log(sum);
+
+     /* 8. In HTML, add a <button> and a <p>.
+        In JS, when you click the button, change the <p> text to “Button clicked!”. */
+     const leButton = document.getElementById("leButton");
+     const leP = document.getElementById("leP");
+     leButton.addEventListener("click", function () {
+       leP.textContent = "Button clicked!";
+     });
+
+     /* 9. Add another button that, when clicked, changes the page background color randomly. */
+     function randomColor() {
+       const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+       // Pad with leading zeros if the hex string is shorter than 6 characters
+       return `#${randomColor.padStart(6, '0')}`;
+     }
+
+     const buttonColorize = document.getElementById("buttonColorize");
+     buttonColorize.addEventListener("click", function () {
+       color = randomColor();
+       console.log(color);
+       document.body.style.backgroundColor = color;
+     });
+
+     /* 10. Add an <input> and a button.
+        When you click the button, display “Hello, <input value>!” in a <p>. */
+     const leInput = document.getElementById("leInput");
+     const leInputButton = document.getElementById("leInputButton");
+     const leInputP = document.getElementById("leInputP");
+     leInputButton.addEventListener("click", function () {
+       leInputP.textContent = `Hello, ${leInput.value}!`;
+     });
+
+     /* Minute 50–60: Mini-project
+      * 11. Build a tiny “counter”:
+      *     - Add a <p> that shows 0.
+      *     - Add “+” and “–” buttons.
+      *       - Clicking “+” increases the number, “–” decreases it. */
+     const leCounterP = document.getElementById("leCounterP");
+     const leCounterButtonPlus = document.getElementById("leCounterButtonPlus");
+     const leCounterButtonMinus = document.getElementById("leCounterButtonMinus");
+     leCounterButtonPlus.addEventListener("click", function () {
+       leCounterP.textContent = `${Number(leCounterP.textContent) + 1}`;
+     });
+     leCounterButtonMinus.addEventListener("click", function () {
+       leCounterP.textContent = `${Number(leCounterP.textContent) - 1}`;
+     });
+    </script>
+  </body>
+</html>
+#+end_src
+
+After I submitted my solutions, ChatGPT
+- complimented the random color generator (Google's LOL)
+
+  #+begin_quote
+  Stylistic note
+  Your random color generator is neat — padding the hex code was a smart touch! That’s something even many beginners forget.
+  #+end_quote
+- gave some stylistic and best practices that I didn't agree at first
+
+  #+begin_quote
+  Counter readability
+  Instead of converting textContent back and forth each click, you could keep a separate variable:
+  #+end_quote
+
+  #+begin_src js
+  let counter = 0;
+  function updateCounter() {
+    leCounterP.textContent = counter;
+  }
+  leCounterButtonPlus.addEventListener("click", () => {
+    counter++;
+    updateCounter();
+  });
+  leCounterButtonMinus.addEventListener("click", () => {
+    counter--;
+    updateCounter();
+  });
+  updateCounter();
+  #+end_src
+
+  My version is more compact, but looks clumsier.
+  I could have also done away with the ~`...`~, as it accepts numbers.
+
+  #+begin_src js
+  leCounterButtonPlus.addEventListener("click", function () {
+      leCounterP.textContent = `${Number(leCounterP.textContent) + 1}`;
+  });
+  leCounterButtonMinus.addEventListener("click", function () {
+      leCounterP.textContent = `${Number(leCounterP.textContent) - 1}`;
+  });
+  #+end_src
+
+
+
+Learned another one!
+
+Surprisingly, it took me just about one hour to do those!
+Good on you, ChatGPT!
 * [2025-10-03 Fri]
 Today I start a new lesson, and a new branch on the assignment tree: /Cascade/, the *C* from CSS.
 Just read the lesson text, and now am complementing with the Wikipedia article.
