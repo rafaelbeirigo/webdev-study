@@ -595,6 +595,120 @@ After reading the Standard, I still need to practice that knowledge.
 I couldn't memorize each and every detail, so I need to apply to learn.
 There are several good ways to learn, but I'll stick to Odin for now--- I'm invested.
 
+** 1h of Coding
+
+Wow!
+Today another 1h of coding provided by our friend ChatGPT.
+This time I had a harder time keeping up!
+Couldn’t finish all the exercises in 1h.
+But learned a lot!
+
+[[file:pages/2025-10-05_1h.html][pages/2025-10-05_1h.html]] ≡
+
+#+begin_src html :tangle pages/2025-10-05_1h.html
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>JS with ChatGPT</title>
+    <style>
+    .dark {
+      background-color: black;
+      color: white;
+    }
+    </style>
+  </head>
+
+  <body id="body">
+    <ul>
+      <li><button id="start">Start Timer</button></li>
+      <li><button id="stop">Stop Timer</button></li>
+      <li><p id="display">0</p></li>
+      <li><button id="buttonDarkMode">Toggle Dark Mode</button></li>
+      <li><button id="buttonRandomFruit">Random Fruit</button></li>
+      <li><p id="pRandomFruit"></p></li>
+    </ul>
+    <hr>
+    <ul id="tasksUl"></ul>
+    <script>
+    /* Minute 0–10: Timers
+     ,* 12. Add a button “Start Timer” and a <p> that starts counting up seconds when clicked.
+     ,* Bonus: add a “Stop Timer” button.
+     ,* Learn: setInterval, clearInterval. */
+    const display = document.getElementById("display");
+    function updateDisplay() {
+      display.textContent = Number(display.textContent) + 1;
+    }
+    const start = document.getElementById("start");
+    const stop = document.getElementById("stop");
+    let intervalID = 0;
+    start.addEventListener("click", () => {
+      if (!intervalID) {
+        intervalID = setInterval(updateDisplay, 1000);
+      }
+    });
+    stop.addEventListener("click", () => {
+      clearInterval(intervalID);
+      intervalID = 0;
+    });
+
+    /* Minute 10–20: Toggle behavior
+     ,* 13. Add a button “Toggle Dark Mode.”
+     ,* Clicking it should switch the page background to black and text to white, and back again.
+     ,* Learn: class toggling (element.classList.toggle). */
+    const body = document.getElementById("body");
+    document.getElementById("buttonDarkMode")
+            .addEventListener("click", () => {
+              body.classList.toggle("dark");
+            });
+
+    /* Minute 20–30: Random fun
+     ,* 14. Add a button “Random Fruit.”
+     ,* Reuse your fruits array. Each click should display one random fruit in a <p>.
+     ,* Learn: Math.floor(Math.random() * arr.length). */
+    function getRandomItem(arr) {
+      const i = Math.floor(Math.random() * arr.length);
+      return arr[i];
+    }
+    const fruits = ['apple', 'banana', 'pineapple', 'grapefruit', 'orange'];
+    document.getElementById("buttonRandomFruit")
+            .addEventListener("click", () => {
+              document.getElementById("pRandomFruit").textContent =
+                getRandomItem(fruits);
+            });
+
+    /* Minute 30–40: Arrays of objects
+     ,* 15. Create an array of “tasks,” each object with {text: "Do homework", done: false}.
+     ,* Write a function to print them all into a <ul>.
+     ,* Bonus: strike-through text if done is true.
+     ,* Learn: DOM lists, iterating objects. */
+    const tasks = [
+      {text: "Do homework", done: false,},
+      {text: "Do laundry", done: false,},
+      {text: "Walk the dogs", done: false,},
+      {text: "Fix spaceship", done: false,},
+      {text: "Adopt a giraffe", done: true,},
+    ];
+
+    for (const task of tasks) {
+      let taskLi = document.createElement('li');
+      let taskText = document.createTextNode(task.text);
+      if (task.done) {
+        let sElement = document.createElement("s");
+        sElement.appendChild(taskText);
+        taskLi.appendChild(sElement);
+      } else {
+        taskLi.appendChild(taskText);
+      }
+      document.getElementById("tasksUl").appendChild(taskLi);
+    }
+    </script>
+  </body>
+</html>
+#+end_src
+
 * [2025-10-04 Sat]
 
 ** Google's course
