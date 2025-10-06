@@ -133,6 +133,10 @@ document.getElementById("buttonGuessNumber")
     });
 #+end_src
 
+** Seinfeld Checkmark
+
+[[file:images/2025-10-06_seinfeld.jpeg]]
+
 * [2025-10-05 Sun]
 
 ** web.dev HTML Course
