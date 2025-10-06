@@ -12,6 +12,127 @@ Went do MDN and ChatGPT for clarifications.
 
 Downloading some CSS books for reference.
 
+Just read some chapters of some CSS books.
+Nice to see they have much more structure than several online resources---editorial pressure, probably.
+
+Now, I need to *practice*.
+
+** Burn out WARNING
+
+Today I studied too much, didn't go busking, and didn't properly rest.
+
+I'll work on my 1h coding now, and then rest.
+
+** 1h of Hack!
+
+I'll experiment with LP.
+Two code blocks: HTML and JS.
+
+First we tangle.
+
+[[file:~/dev/js-ChatGPT/2025-10-06.html][~/dev/js-ChatGPT/2025-10-06.html]] ≡
+
+#+begin_src html :tangle ~/dev/js-ChatGPT/2025-10-06.html
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>JS with ChatGPT</title>
+  </head>
+
+  <body>
+    <dl>
+      <<html>>
+    </dl>
+
+    <script>
+      <<js>>
+    </script>
+  </body>
+</html>
+#+end_src
+
+*** Minute 40–50: Keyboard events
+Now the task:
+#+begin_quote
+Minute 40–50: Keyboard events
+16. Add a <p> that shows which key the user presses (keydown event).
+Learn: event.key.
+#+end_quote
+
+~<<html>> +≡~
+
+#+begin_src html :noweb-ref html
+<dt>Keyboard Events</dt>
+<dd><p id="pKeyPress"></p></dd>
+#+end_src
+
+~event.key~
+
+Need to add an event listener.
+Will add it to ~window~.
+
+~<<js>> +≡~
+
+#+begin_src js :noweb-ref js
+const pKeyPress = document.getElementById("pKeyPress");
+window.addEventListener("keydown", (e) => {
+    pKeyPress.textContent = e.key;
+})
+#+end_src
+
+*** Minute 50–60: Mini-project — Guess the Number
+
+#+begin_quote
+Minute 50–60: Mini-project — Guess the Number
+17. Build a simple game:
+
+Generate a random number between 1 and 10.
+
+Add an <input> and a button.
+
+User guesses the number. Show “Too high”, “Too low”, or “Correct!”.
+Learn: combining input, random, conditionals, and DOM updates.
+#+end_quote
+
+Add the controls.
+Will use a ~dl~.
+
+~<<html>> +≡~
+
+#+begin_src html :noweb-ref html
+<dt>Guess the number</dt>
+<dd>Enter a number between 1 and 10</dd>
+<dd><input id="inputGuessNumber" type="text"><button id="buttonGuessNumber">Go!</button></dd>
+<dd>Result:</dd>
+<dd id="ddGuessNumberResult"></dd>
+#+end_src
+
+Create a function to choose a random number between 1 and 10.
+
+~<<js>> +≡~
+
+#+begin_src js :noweb-ref js
+<<allow user to press Enter instead of clicking the button>>
+let number = Math.floor(Math.random() * 10) + 1;
+const ddGuessNumberResult = document.getElementById("ddGuessNumberResult");
+document.getElementById("buttonGuessNumber")
+    .addEventListener("click", () => {
+        let guess = Number(document.getElementById("inputGuessNumber").value);
+        if (guess < number) {
+            ddGuessNumberResult.textContent = "Too low";
+        } else {
+            if (guess > number) {
+                ddGuessNumberResult.textContent = "Too High";
+            } else {
+                ddGuessNumberResult.textContent = "Correct!";
+            }
+        }
+    });
+#+end_src
+
 * [2025-10-05 Sun]
 
 ** web.dev HTML Course
