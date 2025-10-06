@@ -2,6 +2,16 @@
 
 Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Development Foundations Course from The Odin Project]].
 
+* [2025-10-06 Mon]
+
+** Odin Foundations Course
+
+Started reding the theory for The Box Model.
+
+Went do MDN and ChatGPT for clarifications.
+
+Downloading some CSS books for reference.
+
 * [2025-10-05 Sun]
 
 ** web.dev HTML Course
