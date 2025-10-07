@@ -2,6 +2,23 @@
 
 Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Development Foundations Course from The Odin Project]].
 
+* [2025-10-07 Tue]
+
+** CSS has some obscurities
+
+The first one just appeared: The Box Model.
+I'll try and be systematic here.
+
+Reading CSS Standar Box Model.
+https://www.w3.org/TR/css-box-3/
+
+Again, much better.
+Tutorials and books are hesitant about terminology and analogies.
+Better go to the source.
+
+First small joy: yes, everything in CSS is either a *box* or a *text sequence*.
+CSS has its own tree, the *box tree*, derived from the DOM.
+
 * [2025-10-06 Mon]
 
 ** Odin Foundations Course
