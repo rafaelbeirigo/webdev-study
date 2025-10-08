@@ -1,0 +1,24 @@
+body {
+  all: unset;
+}
+
+ul {
+  margin: 10px;
+  padding: 10px;
+  background-color: red;
+  border: 10px dashed;
+  list-style: none;
+}
+
+li {
+  color: white;
+  background-color: blue;
+  width: fit-content;
+  margin: 10px 10px 10px auto;
+  padding: 10px;
+  border: 10px dashed black;
+}
+
+.undecided-p {
+  display: list-item;
+}

@@ -8,6 +8,27 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 
 See how things evolved is good when there is so much confusion in the terminology.
 
+The margin collapse from the Box Model makes sense for typography, not graphics layout.
+It was introduced at a time where you /maybe/ would add a picture to a page; a time where the page was thought as a /book/ or /newspaper/ page (but without ads, comic strips or other elements demanding a more sophisticated and precise layout engine).
+
+It was also the /first/ major attempt at adding styles to a page.
+/Style/ at that time was mainly choosing the text font, and color; background color or image.
+And back then, many users had only access to text terminals, so the important part of the page for them was mainly the text, and its structure.
+
+I keep going back and forth from the specs to ChatGPT.
+ChatGPT is great to teach me about the historical context.
+It also makes great parallels with newer versions, points out things that have changed over time.
+And it agrees with me about the quirks---but also often gives plausible motivations at the time for the quirks.
+
+I just found out that modern alternatives like Flex and Grid do not collapse margins.
+Thank God for them.
+But this is not screamed all over the web tutorials as I believe it should be.
+Advices like:
+
+#+begin_quote
+Avoid using the box model for layout, use the flex model instead.
+#+end_quote
+
 * [2025-10-07 Tue]
 
 ** CSS has some obscurities
@@ -32,35 +53,23 @@ CSS has its own tree, the *box tree*, derived from the DOM.
 <HTML>
   <HEAD>
     <TITLE>Examples of margins, padding, and borders</TITLE>
-    <P>This paragraph is inside &lt;head&gt;.<P>
     <STYLE type="text/css">
-      UL { 
-        background: yellow; 
-        margin: 12px 12px 12px 12px;
-        padding: 3px 3px 3px 3px;
-                                     /* No borders set */
-      }
-      LI { 
-        color: white;                /* text color is white */ 
-        background: blue;            /* Content, padding will be blue */
-        margin: 12px 12px 12px 12px;
-        padding: 12px 0px 12px 12px; /* Note 0px padding right */
-        list-style: none             /* no glyphs before a list item */
-                                     /* No borders set */
-      }
-      LI.withborder {
-        border-style: dashed;
-        border-width: medium;        /* sets border width on all sides */
-        border-color: lime;
-      }
     </STYLE>
+    <link rel="stylesheet" href="css2.1-margins-padding-border-experiments.css">
   </HEAD>
   <BODY>
-    <UL>
-      <LI>First element of list
-      <LI class="withborder">Second element of list is
-           a bit longer to illustrate wrapping.
-    </UL>
+    
+    <div class="ul">
+      <UL>
+        <div class="li">
+          <LI >First element of list
+        </div>
+        <div class="li">
+          <LI class="withborder">Second element of list is a bit longer to illustrate wrapping.
+        </div>
+      </UL>
+      <p class="undecided-p">Is this a paragraph or a list item?</p>
+    </div>
   </BODY>
 </HTML>
 #+end_src
