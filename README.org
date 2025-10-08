@@ -70,6 +70,10 @@ Today I really spent most of the time on the specs.
 I also did lots of free explorations on the Dev Tools in Firefox, with the help of ChatGPT.
 I'm counting those as coding; all in all, I feel today's work granted me that.
 
+** Seinfeld Checkmark
+
+[[file:images/2025-10-07_seinfeld.jpeg]]
+
 * [2025-10-06 Mon]
 
 ** Odin Foundations Course
