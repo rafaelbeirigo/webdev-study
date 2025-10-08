@@ -29,6 +29,33 @@ Advices like:
 Avoid using the box model for layout, use the flex model instead.
 #+end_quote
 
+Just finished reading it.
+Very nice.
+Lots of quirks.
+
+The one thing I really think would be useful is: when setting a property valeu, being able to reference the /current/ value.
+For instance: If I want to make the first letter of a paragraph twice as big, I could say something like:
+
+#+begin_src css
+p::first-letter {
+  font-size: calc(current * 2);  /* or  '2*'  */
+}
+#+end_src
+
+Or if I wanted it to be 10 pixels bigger:
+
+#+begin_src css
+p::first-letter {
+  font-size: calc(current + 10px);
+}
+#+end_src
+
+** CSS2.1 Standard
+
+It mentions "webmasters" LOL.
+
+Starts talking about JavaScript.
+
 * [2025-10-07 Tue]
 
 ** CSS has some obscurities

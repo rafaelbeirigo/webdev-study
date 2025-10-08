@@ -1,24 +1,81 @@
+--li {
+  list-style-type: square;
+  list-style-image: url(../images/2025-10-07_seinfeld.jpeg);
+  list-style: none;
+}
+
+.display-list-item {
+  display: list-item;
+  background-color: tomato;
+}
+
+.first-paragraph::first-letter {
+  float: left;
+  
+  background: linear-gradient(90deg, hsl(120, 50%, 75%), white);
+  color: hsl(120, 50%, 35%);
+
+  background: linear-gradient(90deg, black, white);
+  color: black;
+  color: white;
+  
+  padding: 0.05em 0.05em 0.05em 0.025em;
+  font-size: 400%;
+}
+
+.first-paragraph::first-line {
+  text-transform: uppercase;
+}
+
+.display-block {
+  display: block;
+  float: inline-start;
+  background-color: aquamarine;
+  margin: 1em;
+}
+
+.float-left {
+  background-color: tomato;
+  height: fit-content;
+  width: 4em;
+  margin: 1em;
+  float: inline-end;
+}
+
+
+
+p {
+  text-align: justify;
+  text-decoration: blink;
+}
+
+--* {
+  outline: 1px solid red;
+}
+
 body {
   all: unset;
 }
 
-ul {
+--ul {
   margin: 10px;
   padding: 10px;
   background-color: red;
-  border: 10px dashed;
+  border: 10px black dashed;
   list-style: none;
 }
 
-li {
+--li {
   color: white;
   background-color: blue;
   width: fit-content;
   margin: 10px 10px 10px auto;
   padding: 10px;
-  border: 10px dashed black;
+  border: 10px black dashed;
+  border-style: dashed;
 }
 
-.undecided-p {
-  display: list-item;
+small {
+  vertical-align: top;
+  font-size: x-small;
 }
