@@ -75,7 +75,7 @@ CSS has its own tree, the *box tree*, derived from the DOM.
 
 [[file:pages/css2.1-margins-padding-border.html][pages/css2.1-margins-padding-border.html]] ≡
 
-#+begin_src html :tangle pages/css2.1-margins-padding-border.html
+#+begin_src html
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <HTML>
   <HEAD>
