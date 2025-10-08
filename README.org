@@ -19,6 +19,57 @@ Better go to the source.
 First small joy: yes, everything in CSS is either a *box* or a *text sequence*.
 CSS has its own tree, the *box tree*, derived from the DOM.
 
+[[file:pages/css2.1-margins-padding-border.html][pages/css2.1-margins-padding-border.html]] ≡
+
+#+begin_src html :tangle pages/css2.1-margins-padding-border.html
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HTML>
+  <HEAD>
+    <TITLE>Examples of margins, padding, and borders</TITLE>
+    <P>This paragraph is inside &lt;head&gt;.<P>
+    <STYLE type="text/css">
+      UL { 
+        background: yellow; 
+        margin: 12px 12px 12px 12px;
+        padding: 3px 3px 3px 3px;
+                                     /* No borders set */
+      }
+      LI { 
+        color: white;                /* text color is white */ 
+        background: blue;            /* Content, padding will be blue */
+        margin: 12px 12px 12px 12px;
+        padding: 12px 0px 12px 12px; /* Note 0px padding right */
+        list-style: none             /* no glyphs before a list item */
+                                     /* No borders set */
+      }
+      LI.withborder {
+        border-style: dashed;
+        border-width: medium;        /* sets border width on all sides */
+        border-color: lime;
+      }
+    </STYLE>
+  </HEAD>
+  <BODY>
+    <UL>
+      <LI>First element of list
+      <LI class="withborder">Second element of list is
+           a bit longer to illustrate wrapping.
+    </UL>
+  </BODY>
+</HTML>
+#+end_src
+
+** I started reading CSS1 specs
+
+Very enlightening.
+Using ChatGPT to answer questions; usualy involve historical quirks.
+
+** 1h coding
+
+Today I really spent most of the time on the specs.
+I also did lots of free explorations on the Dev Tools in Firefox, with the help of ChatGPT.
+I'm counting those as coding; all in all, I feel today's work granted me that.
+
 * [2025-10-06 Mon]
 
 ** Odin Foundations Course
