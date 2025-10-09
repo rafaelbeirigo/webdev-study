@@ -2,6 +2,41 @@
 
 Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Development Foundations Course from The Odin Project]].
 
+* [2025-10-09 Thu]
+
+** Back to Odin
+
+Now that I had a taste of the "ground truth" (official specs), I feel more confident about navigating the uncertainties and vagueness of the world.
+Also, Wikipedia has a lot of good resources on alternatives to The Box Model...
+I probably need to improve my Google-fu.
+
+I feel that I tend to underestimate CSS.
+I've been thinking about this.
+Webdev is HTML, CSS, and JS.
+Instinctively, I think: JS is harder than HTML, that is harder than CSS.
+But this is not the case---at least for me.
+CSS has lots of intellectual demands:
+- The official docs are declarative: they don't teach how to implement, but what they want as a result (from the browser implementers).
+  This removes a lot of pressure that is usually present when defining a language (like JS and even HTML).
+  The documentation is more vague, there are lots of exceptions.
+  And what trips me up the most is the terminology.
+  It all started in CSS1 with
+  - For the background: ~background-color~
+  - For the foreground: ~color~ (!)
+
+
+This list goes on and on.
+I belive it stems from the fact that the people involved with the development of CSS have a different mindset than what I'm used to when dealing with tech specs.
+And this is probably good, because they are also developing an aspect that is normally difficult for programmers: make things look good.
+And I've seen what CSS can do, and it's great.
+Also, I've seen the latest developments in layout---this is what made me go to the specs, I couldn't believe The Box Model could be a thing they would settle on---and thank God they didn't!
+During this journey I learned a lot about realistic expectations on webdev and stuff---including my own capabilities and limits.
+The most important thing was to see that when I go slowly on a CSS exercise things tend to flow better, and quicker.
+My initial impulse is to underestimate and get frustrated with the delay, lack of info... when I could just stop, take a deep breath, and dedicate some time to think.
+
+Another curious development: my inner artist is coming out, sniffing the territory, and I catch myself sometimes thinking about ideas for websites.
+This is cool!
+
 * [2025-10-08 Wed]
 
 ** CSS1 Standard
