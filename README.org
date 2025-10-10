@@ -2,6 +2,13 @@
 
 Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Development Foundations Course from The Odin Project]].
 
+* [2025-10-10 Fri]
+
+Well, I'm pursuing some CTF goals.
+Totally derailed.
+But, I am investigating my core reasons to program.
+The burn out happened because of lack of this.
+
 * [2025-10-09 Thu]
 
 ** Back to Odin
