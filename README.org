@@ -207,6 +207,11 @@ Don't see the need for this.
       (face-reset face))))
 #+end_src
 
+
+** Seinfeld Checkmark
+
+[[file:images/2025-10-12_seinfeld.jpeg]]
+
 * [2025-10-11 Sat]
 
 Productive day.
