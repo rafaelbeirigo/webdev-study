@@ -7,6 +7,11 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 Productive day.
 But only because learned about my limitations while struggling to get results.
 Learned a lot!
+
+** Seinfeld Checkmark
+
+[[file:images/2025-10-11_seinfeld.jpeg]]
+
 * [2025-10-10 Fri]
 
 Well, I'm pursuing some CTF goals.
