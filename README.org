@@ -2,6 +2,11 @@
 
 Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Development Foundations Course from The Odin Project]].
 
+* [2025-10-11 Sat]
+
+Productive day.
+But only because learned about my limitations while struggling to get results.
+Learned a lot!
 * [2025-10-10 Fri]
 
 Well, I'm pursuing some CTF goals.
