@@ -2,6 +2,211 @@
 
 Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Development Foundations Course from The Odin Project]].
 
+* [2025-10-12 Sun]
+
+Today I used a good part of the sunny Sunday to do something I have been wanting to do for years: reset Org Mode font colors; it is /too/ colorful!
+I get distracted just by looking at the screen, and trying to figure out the rules for the colors, and the semantics, etc; not very focus-inducing!
+
+This is the result.
+
+** Introduction
+
+This has some face-related functions and settings, including the configuration of the default face for Emacs.
+
+[[file:~/elisp/faces.el][~/elisp/faces.el]] ≡
+
+#+begin_src elisp :tangle ~/elisp/faces.el
+<<define the functions>>
+<<reset the faces>>
+(face-set-after-frame-default (selected-frame))
+#+end_src
+
+** Faces
+
+*** ~default~
+
+Reset face: all settings to default.
+
+~<<reset the faces>> +≡~
+
+#+begin_src elisp :noweb-ref reset the faces
+(face-reset 'default)
+#+end_src
+
+*** Org
+
+Go nuclear: Reset all Org faces.
+
+~<<reset the faces>> +≡~
+
+#+begin_src elisp :noweb-ref reset the faces
+<<push all known Org faces into a list>>
+<<reset all Org faces from that list>>
+#+end_src
+
+~<<push all known Org faces into a list>> +≡~
+
+#+begin_src elisp :noweb-ref push all known Org faces into a list
+;; Collect all org faces
+(setq org-faces (seq-filter
+                 (lambda (face)
+                   (string-prefix-p "org-" (symbol-name face)))
+                 (face-list)))
+#+end_src
+
+~<<reset all Org faces from that list>> +≡~
+
+#+begin_src elisp :noweb-ref reset all Org faces from that list
+(face-reset-list org-faces)
+#+end_src
+
+** Functions
+
+~<<define the functions>> +≡~
+
+#+begin_src elisp :noweb-ref define the functions
+<<define a function to reset a face>>
+<<define a function to reset a list of faces>>
+#+end_src
+
+*** ~face-reset~
+
+~<<define a function to reset a face>> +≡~
+
+#+begin_src elisp :noweb-ref define a function to reset a face
+(defun face-reset (face)
+  "Sets FACE attributes to absolute and average values."
+  (interactive)
+  (set-face-attribute
+   face
+   <<FRAME>>
+   <<&rest ARGS>>))
+#+end_src
+
+**** Frame
+
+We set it to ~t~, this way new frames honor it.
+
+#+begin_quote
+If FRAME is a frame, set the FACE’s attributes only for that frame.  If
+FRAME is nil, set attribute values for all existing frames, as well as
+the default for new frames.  If FRAME is t, change the default values
+of attributes for new frames.
+#+end_quote
+
+~<<FRAME>> +≡~
+
+#+begin_src elisp :noweb-ref FRAME
+t
+#+end_src
+
+**** ~family~ and ~foundry~
+
+~<<&rest ARGS>> +≡~
+
+#+begin_src elisp  :noweb-ref &rest ARGS
+:family "Lat15Fixed16"
+:foundry "PfEd"
+#+end_src
+
+**** ~width~ and ~height~
+
+#+begin_quote
+Note that for the ‘default’ face, you must specify an absolute height (since there is nothing for it to be relative to).
+#+end_quote
+
+This height was being used before I started working.
+I am not sure what it means, or how it is calculated.
+
+~<<&rest ARGS>> +≡~
+
+#+begin_src elisp :noweb-ref &rest ARGS
+:width 'normal
+:height 128
+#+end_src
+
+**** ~weight~ and ~slant~
+
+~<<&rest ARGS>> +≡~
+
+#+begin_src elisp :noweb-ref &rest ARGS
+:weight 'medium
+:slant 'normal
+#+end_src
+
+**** ~foreground~ and ~background~
+
+~<<&rest ARGS>> +≡~
+
+#+begin_src elisp :noweb-ref &rest ARGS
+:foreground "dark gray"
+:background "black"
+#+end_src
+
+**** Decorations
+
+~<<&rest ARGS>> +≡~
+
+#+begin_src elisp :noweb-ref &rest ARGS
+:underline nil
+:overline nil
+:strike-through nil
+:box nil
+#+end_src
+
+**** ~inverse-video~
+
+~<<&rest ARGS>> +≡~
+
+#+begin_src elisp :noweb-ref &rest ARGS
+:inverse-video nil
+#+end_src
+
+**** ~stipple~
+
+~<<&rest ARGS>> +≡~
+
+#+begin_src elisp :noweb-ref &rest ARGS
+:stipple nil
+#+end_src
+
+**** ~extend~
+
+~<<&rest ARGS>> +≡~
+
+#+begin_src elisp :noweb-ref &rest ARGS
+:extend nil
+#+end_src
+
+**** ~font~
+
+Don't see the need for this.
+
+~<<&rest ARGS>> +≡~
+
+**** ~inherit~
+
+#+begin_src elisp :noweb-ref &rest ARGS
+:inherit nil
+#+end_src
+
+*** ~face-reset-list~
+
+~<<define a function to reset a list of faces>> +≡~
+
+#+begin_src elisp :noweb-ref define a function to reset a list of faces
+(defun face-reset-list (face-list)
+  "Apply function `face-reset' to a list of faces."
+  (interactive)
+  ;; Lists of faces usually are automatically obtained by taking all symbols
+  ;; from a context with "face" in their names.  But surprisingly this is not an
+  ;; infallible approach.  Then we ignore any errors here.  This is not bad,
+  ;; because we only ignore---and do not-reset---the ones that are _not_ faces.
+  (ignore-errors
+    (dolist (face face-list)
+      (face-reset face))))
+#+end_src
+
 * [2025-10-11 Sat]
 
 Productive day.
