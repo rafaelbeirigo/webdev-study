@@ -376,6 +376,10 @@ In short: do the check and the use on the same resolved kernel object (the same 
 
 f0n8h2iWLP
 
+** Seinfeld Checkmark
+
+[[file:images/2025-10-13_seinfeld.jpeg]]
+
 * [2025-10-12 Sun]
 
 Today I used a good part of the sunny Sunday to do something I have been wanting to do for years: reset Org Mode font colors; it is /too/ colorful!
