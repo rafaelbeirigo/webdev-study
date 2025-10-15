@@ -16,6 +16,10 @@ Today I read the Primer and worked on some playlists:
 - Sleuthkit Series 2/2
 - PW Crack Series 5/5
 
+** Seinfeld Checkmark
+
+[[file:images/2025-10-14_seinfeld.jpeg]]
+
 * [2025-10-13 Mon]
 
 Some [[https://overthewire.org/][bit scrubbing]] (these last days) and today!
