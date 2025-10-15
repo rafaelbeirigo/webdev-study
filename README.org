@@ -2,6 +2,20 @@
 
 Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Development Foundations Course from The Odin Project]].
 
+* [2025-10-14 Tue]
+
+The slope got steep at overthewire.org.
+Went to picoCTF for some structured intro.
+Today I read the Primer and worked on some playlists:
+- The Beginner's Guide to the picoGym: 25/25
+- Cryptography and picoGym Learning Intro 1/15
+- Low Level Binary Intro 38/46
+- Forensics in CTF's 6/17
+- Python in CTF's 13/19
+- Vault Door Series 1/8
+- Sleuthkit Series 2/2
+- PW Crack Series 5/5
+
 * [2025-10-13 Mon]
 
 Some [[https://overthewire.org/][bit scrubbing]] (these last days) and today!
