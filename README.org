@@ -9,6 +9,97 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 Studied the Box Model.
 This time with exercises: much better.
 
+** CTF
+
+Back to overthewire.
+picoCTF helped.
+It fealt really easier today.
+picoCTF /teaches/ things like how to use gdb.
+I could think of many different approaches today because of that.
+
+*** overthewire.org
+
+**** 3
+
+f0n8h2iWLP
+
+- setuid binary in home folder
+- ~ltrace~ showed a call to ~strcmp~ with the payload
+- input payload gives setuid shell
+
+#+begin_example
+leviathan3@leviathan:~$ ltrace ./level3 
+fgets(Enter the password> snlprintf
+"snlprintf\n", 256, 0xf7fae5c0)                                                                               = 0xffffd24c
+strcmp("snlprintf\n", "snlprintf\n")                                                                                = 0
+puts("[You've got shell]!"[You've got shell]!
+
+leviathan3@leviathan:~$ ./level3
+Enter the password> snlprintf
+[You've got shell]!
+$ id
+uid=12004(leviathan4) gid=12003(leviathan3) groups=12003(leviathan3)
+$ cat /etc/leviathan_pass/leviathan4
+#+end_example
+
+**** 4
+
+WG1egElCvO
+
+#+begin_example
+leviathan4@leviathan:~$ ll
+total 24
+drwxr-xr-x   3 root root       4096 Oct 14 09:27 ./
+drwxr-xr-x 150 root root       4096 Oct 14 09:29 ../
+-rw-r--r--   1 root root        220 Mar 31  2024 .bash_logout
+-rw-r--r--   1 root root       3851 Oct 14 09:19 .bashrc
+-rw-r--r--   1 root root        807 Mar 31  2024 .profile
+dr-xr-x---   2 root leviathan4 4096 Oct 14 09:27 .trash/
+leviathan4@leviathan:~$ find .trash/
+.trash/
+.trash/bin
+leviathan4@leviathan:~$ cd .trash/
+leviathan4@leviathan:~/.trash$ ll
+total 24
+dr-xr-x--- 2 root       leviathan4  4096 Oct 14 09:27 ./
+drwxr-xr-x 3 root       root        4096 Oct 14 09:27 ../
+-r-sr-x--- 1 leviathan5 leviathan4 14940 Oct 14 09:27 bin*
+leviathan4@leviathan:~/.trash$ file bin
+bin: setuid ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, BuildID[sha1]=52e379ac2e364243895250cb84038a8bf5d3e4e5, for GNU/Linux 3.2.0, not stripped
+leviathan4@leviathan:~/.trash$ ./bin
+00110000 01100100 01111001 01111000 01010100 00110111 01000110 00110100 01010001 01000100 00001010 
+#+end_example
+
+There's a binary that prints a binary sequence.
+Converted to ASCII, it give the next password.
+
+**** 5
+
+0dyxT7F4QD
+
+There is a setuid binary in the home folder.
+
+#+begin_example
+leviathan5@leviathan:~$ ./leviathan5 
+Cannot find /tmp/file.log
+#+end_example
+
+It wants a file.
+
+#+begin_example
+leviathan5@leviathan:~$ echo "abcdefg" > /tmp/file.log
+leviathan5@leviathan:~$ ./leviathan5 
+abcdefg
+#+end_example
+
+It spills out that file's contents.
+
+#+begin_example
+leviathan5@leviathan:~$ ln -s /etc/leviathan_pass/leviathan6 /tmp/file.log
+leviathan5@leviathan:~$ ./leviathan5 
+szo7HDB88w
+#+end_example
+
 * [2025-10-14 Tue]
 
 The slope got steep at overthewire.org.
