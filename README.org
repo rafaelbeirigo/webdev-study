@@ -2,6 +2,13 @@
 
 Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Development Foundations Course from The Odin Project]].
 
+* [2025-10-15 Wed]
+
+** CSS
+
+Studied the Box Model.
+This time with exercises: much better.
+
 * [2025-10-14 Tue]
 
 The slope got steep at overthewire.org.
