@@ -17,6 +17,9 @@ It fealt really easier today.
 picoCTF /teaches/ things like how to use gdb.
 I could think of many different approaches today because of that.
 
+Finished Leviathan \o/
+Loved the challenges!
+
 *** overthewire.org
 
 **** 3
@@ -98,6 +101,71 @@ It spills out that file's contents.
 leviathan5@leviathan:~$ ln -s /etc/leviathan_pass/leviathan6 /tmp/file.log
 leviathan5@leviathan:~$ ./leviathan5 
 szo7HDB88w
+#+end_example
+
+**** 6
+
+szo7HDB88w
+
+***** DONE ~strings~ in the binary?  No
+
+***** Can I use gdb to see the pin code?
+
+#+begin_src shell
+leviathan6@leviathan:~$ gdb --args ./leviathan6 1234
+#+end_src
+
+After ~disassemble main~, I could see there's a comparison followed by ~jne~.
+
+#+begin_example
+=> 0x0804921a <+84>:    cmp    %eax,-0xc(%ebp)
+   0x0804921d <+87>:    jne    0x804924a <main+132>
+#+end_example
+
+Maybe it's here they're testing the input for equality.
+
+Examining the registers
+
+#+begin_example
+(gdb) info registers
+eax            0x4d2               1234
+ebp            0xffffd368          0xffffd368
+#+end_example
+
+- ~eax~ has the input
+- ~ebp~ has a memory address
+  - the comparison offsets that address by ~0xc~
+
+
+Examining the contents of that piece of memory:
+
+#+begin_example
+(gdb) x $ebp-0xc
+0xffffd35c:     0x00001bd3
+#+end_example
+
+~0x1bd3~ == 7123
+
+#+begin_example
+leviathan6@leviathan:~$ ./leviathan6 7123
+$ id
+uid=12007(leviathan7) gid=12006(leviathan6) groups=12006(leviathan6)
+$ cat /etc/leviathan_pass/leviathan7
+qEs5Io5yM8
+#+end_example
+
+**** 7
+qEs5Io5yM8
+
+#+begin_example
+leviathan7@leviathan:~$ ll
+total 24
+drwxr-xr-x   2 root       root       4096 Oct 14 09:27 ./
+drwxr-xr-x 150 root       root       4096 Oct 14 09:29 ../
+-rw-r--r--   1 root       root        220 Mar 31  2024 .bash_logout
+-rw-r--r--   1 root       root       3851 Oct 14 09:19 .bashrc
+-r--r-----   1 leviathan7 leviathan7  178 Oct 14 09:27 CONGRATULATIONS
+-rw-r--r--   1 root       root        807 Mar 31  2024 .profile
 #+end_example
 
 * [2025-10-14 Tue]
