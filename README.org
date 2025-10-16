@@ -6,7 +6,7 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 
 ** CSS: we got an assignment!
 
-Check it out here.
+Check it out [[https://github.com/rafaelbeirigo/odin-css-exercises/][here]].
 
 ** Pomodoro
 
