@@ -2,6 +2,135 @@
 
 Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Development Foundations Course from The Odin Project]].
 
+* [2025-10-16 Thu]
+
+** CSS: we got an assignment!
+
+Check it out here.
+
+** Pomodoro
+
+I may have spent more time than I should have "sharpening this axe"...
+Anyway, need a command-line Pomodoro?
+
+*** ~pomodoro~
+
+#+begin_src shell
+#!/bin/bash
+
+ME=$(basename $0)
+
+if [ $# -eq 1 ] && ( [ $1 == "-h" ] || [ $1 == "--help" ] )
+then
+    echo "Usage: $ME [POPUP_NOTIFICATION [OSD_COUNTDOWN [TITLE]]]
+
+POPUP_NOTIFICATION (boolean; default: \"false\")
+    Controls if a popup will be shown when time is up.
+OSD_COUNTDOWN (boolean; default: \"true\")
+    Controls if the countdown will be show on screen (using OSD).
+TITLE (string; default: \"Pomodoro\")
+     is the headliner of the popup notification.
+
+Boolean values should be \"true\" or \"false\"."
+    exit 0
+fi
+
+[ $# -ge 1 ] && POPUP_NOTIFICATION=$1 || POPUP_NOTIFICATION=false
+[ $# -ge 2 ] && OSD_COUNTDOWN=$2 || OSD_COUNTDOWN=true
+[ $# -ge 3 ] && TITLE=$3 || TITLE="Pomodoro"
+
+BIG_INTERVAL="25m"
+SHORT_INTERVAL="5m"
+
+TIMER_ARGS="$TITLE $POPUP_NOTIFICATION $OSD_COUNTDOWN"
+while [ true ]
+do
+    timer $BIG_INTERVAL $TIMER_ARGS
+    timer $SHORT_INTERVAL $TIMER_ARGS
+done
+#+end_src
+
+*** ~timer~
+
+#+begin_src shell
+#!/bin/bash
+
+ME=$(basename $0)
+
+USAGE="Usage: $ME TIME_AMOUNT [TITLE [POPUP_NOTIFICATION [OSD_COUNTDOWN]]]
+
+TITLE (string; default: \"Pomodoro\")
+     is the headliner of the popup notification.
+POPUP_NOTIFICATION (boolean; default: \"false\")
+    Controls if a popup will be shown when time is up.
+OSD_COUNTDOWN (boolean; default: \"true\")
+    Controls if the countdown will be show on screen (using OSD).
+
+Boolean values should be \"true\" or \"false\"."
+
+if [ $1 == "-h" ] || [ $1 == "--help" ]
+then
+    echo "$USAGE"
+    exit 0
+fi
+
+die () {
+    echo >&2 "$@"
+    exit 1
+}
+
+[ $# -ge 1 ] && TIME=$1 || die $USAGE
+[ $# -ge 2 ] && TITLE=$2 || TITLE="Timer"
+[ $# -ge 3 ] && POPUP_NOTIFICATION=$3
+[ $# -ge 4 ] && OSD_COUNTDOWN=$4
+
+OSD_CAT_FLAGS='--pos=top --align=right --delay=60 --shadow=3 --outline=0 --outlinecolour=black --color=cyan --font=-misc-fixed-medium-r-normal--75-*-*-*-*-*-*'
+
+# Determine the unit for the time (minutes or seconds, default to minutes)
+UNIT=${TIME: -1}
+if [[ $UNIT = @(m|s) ]];
+then
+    DIGITS=${TIME::-1}
+else
+    UNIT=m
+    DIGITS=$TIME
+fi
+
+for TIC in $(seq ${DIGITS} -1 1);
+do
+    # Display remaining time on the terminal
+    echo Remaining: $TIC$UNIT
+
+    # Display remaining time via OSD
+    if $OSD_COUNTDOWN
+    then
+        echo "${TIC}${UNIT}" | osd_cat $OSD_CAT_FLAGS &
+    fi
+
+    sleep 1$UNIT
+done
+
+# Pop-up notification at the end of the timer
+if $POPUP_NOTIFICATION
+then
+    notify-send --urgency=critical \
+                --expire-time=0 \
+                "$TITLE" \
+                "Time ($TIME) is up."
+fi
+
+# Give an audible cue that the timer is done
+ding
+#+end_src
+
+*** ~ding~
+
+#+begin_src shell
+#!/bin/bash
+
+mocp --play /usr/share/sounds/freedesktop/stereo/complete.oga
+#+end_src
+
 * [2025-10-15 Wed]
 
 ** CSS
