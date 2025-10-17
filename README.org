@@ -132,6 +132,10 @@ ding
 mocp --play /usr/share/sounds/freedesktop/stereo/complete.oga
 #+end_src
 
+** Seinfeld Checkmark
+
+[[file:images/2025-10-16_seinfeld.jpeg]]
+
 * [2025-10-15 Wed]
 
 ** CSS
