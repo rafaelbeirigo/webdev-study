@@ -935,7 +935,7 @@ openssl s_client -ign_eof -crlf -connect localhost:31790
 
 Got a private key :)
 
-#+begin_src id_rsa :tangle ~/.ssh/id_rsa_overthewire.org-bandit17
+#+begin_src id_rsa
 -----BEGIN RSA PRIVATE KEY-----
 MIIEogIBAAKCAQEAvmOkuifmMg6HL2YPIOjon6iWfbp7c3jx34YkYWqUH57SUdyJ
 imZzeyGC0gtZPGujUSxiJSWI/oTqexh+cAMTSMlOJf7+BrJObArnxd9Y7YT2bRPQ
@@ -1765,9 +1765,9 @@ ssh, cat, more, vi, ls, id, pwd
 
 There's a private key in bandit25's home dir:
 
-[[file:~/.ssh/id_rsa_overthewire.org-bandit26][s~/.ssh/id_rsa_overthewire.org-bandit26]] ≡
+~id_rsa_overthewire.org-bandit26~ ≡
 
-#+begin_src ssh-key :tangle ~/.ssh/id_rsa_overthewire.org-bandit26
+#+begin_src ssh-key
 -----BEGIN RSA PRIVATE KEY-----
 MIIEpQIBAAKCAQEApis2AuoooEqeYWamtwX2k5z9uU1Afl2F8VyXQqbv/LTrIwdW
 pTfaeRHXzr0Y0a5Oe3GB/+W2+PReif+bPZlzTY1XFwpk+DiHk1kmL0moEW8HJuT9
@@ -1935,9 +1935,9 @@ Difícil na mão.
 Usar um programa: expect.
 Precisa de um script.
 
-[[file:~/hack/overthewire.org/bandit26.expect][~/hack/overthewire.org/bandit26.expect]] ≡
+[[file:landit26.expect][bandit26.expect]] ≡
 
-#+begin_src expect :tangle ~/hack/overthewire.org/bandit26.expect
+#+begin_src expect
 #!/usr/bin/expect -f
 # bandit26-hit.exp — spawn ssh and immediately send a control byte, then hand control to you.
 
@@ -2412,7 +2412,7 @@ This has some face-related functions and settings, including the configuration o
 
 [[file:~/elisp/faces.el][~/elisp/faces.el]] ≡
 
-#+begin_src elisp :tangle ~/elisp/faces.el
+#+begin_src elisp
 <<define the functions>>
 <<reset the faces>>
 (face-set-after-frame-default (selected-frame))
@@ -2819,7 +2819,7 @@ First we tangle.
 
 [[file:~/dev/js-ChatGPT/2025-10-06.html][~/dev/js-ChatGPT/2025-10-06.html]] ≡
 
-#+begin_src html :tangle ~/dev/js-ChatGPT/2025-10-06.html
+#+begin_src html
 <!DOCTYPE html>
 
 <html lang="en">
@@ -2937,7 +2937,7 @@ The Standard says ~section~ and ~hr~ have some "equivalences"---let's experiment
 
 [[file:~/dev/webdev-study/pages/hr.html][~/dev/webdev-study/pages/hr.html]] ≡
 
-#+begin_src html :tangle pages/hr.html :mkdirp yes
+#+begin_src html
 <!DOCTYPE html>
 
 <html lang="en">
@@ -2975,7 +2975,7 @@ Visually, there's no explicit "equivalence"; maybe we need some CSS for that.
 
 [[file:pages/pre.html][pages/pre.html]] ≡
 
-#+begin_src html :tangle pages/pre.html
+#+begin_src html
 <!DOCTYPE html>
 
 <html lang="en">
@@ -3012,7 +3012,7 @@ Both use monospaced fonts.
 
 [[file:pages/kbd.html][pages/kbd.html]] ≡
 
-#+begin_src html :tangle pages/kbd.html
+#+begin_src html
 <!DOCTYPE html>
 
 <html lang="en">
@@ -3043,7 +3043,7 @@ Initial whitespace ("prefixing" w.) matters.
 
 [[file:pages/blockquote.html][pages/blockquote.html]] ≡
 
-#+begin_src html :tangle pages/blockquote.html
+#+begin_src html
 <!DOCTYPE html>
 
 <html lang="en">
@@ -3132,7 +3132,7 @@ Initial whitespace ("prefixing" w.) matters.
 
 [[file:pages/ol.html][pages/ol.html]] ≡
 
-#+begin_src html :tangle pages/ol.html
+#+begin_src html
 <!DOCTYPE html>
 
 <html lang="en">
@@ -3216,7 +3216,7 @@ Initial whitespace ("prefixing" w.) matters.
 
 [[file:pages/menu.html][pages/menu.html]] ≡
 
-#+begin_src html :tangle pages/menu.html
+#+begin_src html
 <!DOCTYPE html>
 
 <html lang="en">
@@ -3240,7 +3240,7 @@ Initial whitespace ("prefixing" w.) matters.
 
 [[file:pages/dl.html][pages/dl.html]] ≡
 
-#+begin_src html :tangle pages/dl.html
+#+begin_src html
 <!DOCTYPE html>
 
 <html lang="en">
@@ -3300,7 +3300,7 @@ Things with a caption.
 
 [[file:pages/figure.html][pages/figure.html]] ≡
 
-#+begin_src html :tangle pages/figure.html
+#+begin_src html
 <!DOCTYPE html>
 
 <html lang="en">
@@ -3356,7 +3356,7 @@ Things with a caption.
 
 [[file:pages/main.html][pages/main.html]] ≡
 
-#+begin_src html :tangle pages/main.html
+#+begin_src html
 <!DOCTYPE html>
 <html lang="en">
   <title>RPG System 17</title>
@@ -3394,7 +3394,7 @@ Things with a caption.
 
 [[file:pages/main-2.html][pages/main-2.html]] ≡
 
-#+begin_src html :tangle pages/main-2.html
+#+begin_src html
 <!doctype html>
 <html lang=en-CA>
 <meta charset=utf-8>
@@ -3435,7 +3435,7 @@ For small print.
 
 [[file:pages/small.html][pages/small.html]] ≡
 
-#+begin_src html :tangle pages/small.html
+#+begin_src html
 <!DOCTYPE html>
 
 <html lang="en">
@@ -3460,7 +3460,7 @@ For small print.
 
 [[file:pages/web-worker.html][pages/web-worker.html]] ≡
 
-#+begin_src html :tangle pages/web-worker.html
+#+begin_src html
 <!DOCTYPE HTML>
 <html lang="en">
  <head>
@@ -3482,7 +3482,7 @@ For small print.
 
 [[file:pages/worker.js][pages/worker.js]] ≡
 
-#+begin_src js :tangle pages/worker.js
+#+begin_src js
 var n = 1;
 search: while (true) {
   n += 1;
@@ -3525,7 +3525,7 @@ But learned a lot!
 
 [[file:pages/2025-10-05_1h.html][pages/2025-10-05_1h.html]] ≡
 
-#+begin_src html :tangle pages/2025-10-05_1h.html
+#+begin_src html
 <!DOCTYPE html>
 
 <html lang="en">
@@ -4154,7 +4154,7 @@ Create the structure for main HTML doc:
 
 [[file:odin/assignments/foundations/lists/index.html][odin/assignments/foundations/lists/index.html]] ≡
 
-#+begin_src html :tangle ~/dev/webdev-study/odin/assignments/foundations/lists/index.html
+#+begin_src html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -4261,7 +4261,7 @@ mkdir ./odin/assignments/foundations/odin-links-and-images
 
 [[file:odin/assignments/foundations/odin-links-and-images/index.html][odin/assignments/foundations/odin-links-and-images/index.html]] ≡
 
-#+begin_src html :tangle odin/assignments/foundations/odin-links-and-images/index.html
+#+begin_src html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -4339,7 +4339,7 @@ Create a page on our own server.
 
 [[file:odin/assignments/foundations/odin-links-and-images/about.html][odin/assignments/foundations/odin-links-and-images/pages/about.html]] ≡
 
-#+begin_src html :tangle odin/assignments/foundations/odin-links-and-images/pages/about.html
+#+begin_src html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -4452,7 +4452,7 @@ width="604" height="806"
 
 [[file:odin/assignments/foundations/interneting-links-and-images/links.html][odin/assignments/foundations/interneting-links-and-images/links.html]] ≡
 
-#+begin_src html :tangle odin/assignments/foundations/interneting-links-and-images/links.html
+#+begin_src html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -4472,7 +4472,7 @@ width="604" height="806"
 
 [[file:odin/assignments/foundations/interneting-links-and-images/images.html][odin/assignments/foundations/interneting-links-and-images/images.html]] ≡
 
-#+begin_src html :tangle odin/assignments/foundations/interneting-links-and-images/images.html
+#+begin_src html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -4492,7 +4492,7 @@ width="604" height="806"
 
 [[file:odin/assignments/foundations/interneting-links-and-images/misc/extras.html][odin/assignments/foundations/interneting-links-and-images/misc/extras.html]] ≡
 
-#+begin_src html :tangle odin/assignments/foundations/interneting-links-and-images/misc/extras.html :mkdirp yes
+#+begin_src html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -4751,7 +4751,7 @@ We're coding, baby!
 
 [[file:html-boilerplate/index.html][html-boilerplate/index.html]] ≡
 
-#+begin_src html :tangle html-boilerplate/index.html
+#+begin_src html
 <!DOCTYPE html>
 <html lang="en">
   <<head Block>>
@@ -4852,7 +4852,7 @@ You can use Lorem Ipsum to generate dummy text, in place of real text as you bui
 
 [[file:odin/assignments/foundations/working-with-text/index.html][odin/assignments/foundations/working-with-text/index.html]] ≡
 
-#+begin_src html :tangle odin/assignments/foundations/working-with-text/blog-post.html
+#+begin_src html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -4935,7 +4935,7 @@ A /cool/ first web page would be:
 
 [[file:hello-world.html][hello-world.html]] ≡
 
-#+begin_src html :tangle hello-world.html
+#+begin_src html
 <!DOCTYPE html>
 <html>
   <p>Hello, World!</p>
@@ -4979,7 +4979,7 @@ We'll put a ~<title>~ inside it.
 
 [[file:hello-world-fixed.html][hello-world-fixed.html]] ≡
 
-#+begin_src html :tangle hello-world-fixed.html
+#+begin_src html
 <!DOCTYPE html>
 <html>
   <head>
@@ -5001,7 +5001,7 @@ They give us /six/ of them: ~<h1>~ to ~<h6>~.
 
 [[file:headings.html][headings.html]] ≡
 
-#+begin_src html :tangle headings.html
+#+begin_src html
 <!DOCTYPE html>
 <html>
   <head>
@@ -5055,7 +5055,7 @@ Only the second one gets the expected result (well, at least on a big screen).
 
 [[file:br.html][br.html]] ≡
 
-#+begin_src html :tangle br.html
+#+begin_src html
 <!DOCTYPE html>
 <html>
   <head>
