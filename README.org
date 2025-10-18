@@ -2,6 +2,11 @@
 
 Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Development Foundations Course from The Odin Project]].
 
+* [2025-10-18 Sat]
+
+Took a step back, and worked on fundamentals, and also cleared my mind.
+It paid off: could solve yesterday's "humbling" challenge and some more today.
+
 * [2025-10-17 Fri]
 
 Tough day today.
