@@ -8,6 +8,10 @@ Tough day today.
 
 Took a beating on two CTFs; one expected, and the other humbling...
 
+** Seinfeld Checkmark
+
+[[file:images/2025-10-17_seinfeld.jpeg]]
+
 * [2025-10-16 Thu]
 
 ** CSS: we got assignment!
