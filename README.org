@@ -8,6 +8,10 @@ Worked on more challenges today.
 Made it a point of creating /tools/ in Emacs to make it easier.
 Weakest link is emotional regulation: I get anxious too easy, too fast, and this really clouds my thinking, and makes it more difficult to work on ergonomy and posture.
 
+** feat: add Seinfeld Checkmark 
+
+[[file:images/2025-10-19_seinfeld.jpeg]]
+
 * [2025-10-18 Sat]
 
 Took a step back, and worked on fundamentals, and also cleared my mind.
