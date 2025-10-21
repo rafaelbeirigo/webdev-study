@@ -860,6 +860,10 @@ Note: Unnecessary use of -X or --request, POST is already inferred.
 
 picoCTF{xff_byp4ss_brut3_1cc3b76e}
 
+** Seinfeld Checkmark
+
+[[file:images/2025-10-20_seinfeld.jpeg]]
+
 * [2025-10-19 Sun]
 
 Worked on more challenges today.
