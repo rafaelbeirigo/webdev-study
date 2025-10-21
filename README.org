@@ -2,6 +2,16 @@
 
 Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Development Foundations Course from The Odin Project]].
 
+* [2025-10-21 Tue]
+
+** Progress and tools
+
+It seems I got to a point where I should automate some work---and do it fast---and go *slow* on some other work---and *reflect* about it.
+
+Also, tired of the repetition.
+
+Need to freshen up!
+
 * [2025-10-20 Mon]
 
 ** picoCTF
