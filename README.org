@@ -2,6 +2,27 @@
 
 Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Development Foundations Course from The Odin Project]].
 
+* [2025-10-22 Wed]
+
+** CTF blog
+
+These past few days' work on CTFs motivated me to start a simple blog to document them.
+
+*** Small adaptation to publishing function
+
+I made a tiny adaptation to a function to make the publishing process esier---it asks for a directory if called in a specific manner.
+
+#+begin_src elisp
+(defun my-org-jekyll-md-export-to-md (&optional arg async subtreep visible-only)
+  "Export current buffer to a Markdown file adding some YAML front matter."
+  (interactive "P")
+  (let ((outfile (concat
+                  (when arg (concat (read-directory-name "dir: ") "/"))
+                  (org-jekyll-md-filename-date)
+                  (org-export-output-file-name ".md" subtreep))))
+    (org-export-to-file 'jekyll outfile async subtreep visible-only)))
+#+end_src
+
 * [2025-10-21 Tue]
 
 ** Progress and tools
