@@ -23,6 +23,21 @@ I made a tiny adaptation to a function to make the publishing process esier---it
     (org-export-to-file 'jekyll outfile async subtreep visible-only)))
 #+end_src
 
+*** Insert blog header info automatically
+
+This little function may help a lot!
+
+#+begin_src elisp
+(define-skeleton blog-header
+  "Insert a header for blogging."
+  nil
+  "#+TITLE: " (read-string "title: ") \n
+  "#+DATE: " (format-time-string "%Y-%m-%d %R" (org-read-date t t)) \n
+  "#+JEKYLL_LAYOUT: post" \n
+  "#+JEKYLL_CATEGORIES: " (read-string "categories: ") \n
+  "#+JEKYLL_TAGS: " (read-string "tags: "))
+#+end_src
+
 * [2025-10-21 Tue]
 
 ** Progress and tools
