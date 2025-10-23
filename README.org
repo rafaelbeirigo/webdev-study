@@ -8,7 +8,9 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 
 These past few days' work on CTFs motivated me to start a simple blog to document them.
 
-Here is [[https://rafaelbeirigo.github.io/cybersec-dojo/binary-exploitation/2025/10/22/picker-iv.html][my first blog post on Cybersecurity (well, a CTF writeup, but we all have to start somewhere, haven't we? :)]].
+Here is [[https://rafaelbeirigo.github.io/cybersec-dojo/binary-exploitation/2025/10/22/picoctf-picker-iv-writeup.html][my first blog post on Cybersecurity!]].
+
+Next steps include changing the theme for a more /cyber/-oriented :)
 
 *** Small adaptation to publishing function
 
