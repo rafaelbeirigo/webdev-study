@@ -40,6 +40,10 @@ This little function may help a lot!
   "#+JEKYLL_TAGS: " (read-string "tags: "))
 #+end_src
 
+** Seinfeld Checkmark
+
+[[file:images/2025-10-22_seinfeld.jpeg]]
+
 * [2025-10-21 Tue]
 
 ** Progress and tools
