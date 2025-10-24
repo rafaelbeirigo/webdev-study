@@ -34,8 +34,8 @@ But, as it turned out, I not only had, but hopefully /could/ add some changes---
 
 When writing about challenges, there is a /lot/ of command references, and they all have to be formatted ~like this~.
 To accomplish that, I must enclose the word between tildes, and this gets old /very/ fast!
-The brilliant---and /elegant/---idea of ChatGPT was to create a /minor-mode/ in Emacs  for just that: automatically enclose a word in tildes when applicable.
 
+The brilliant---and /elegant/---idea of ChatGPT was to create a /minor-mode/ in Emacs  for just that: automatically enclose a word in tildes when applicable.
 The initial idea was to /tilde/ every word Emacs recognizes as a /command/.
 I also told Emacs to tilde the words when they belonged to a special list: a list with filenames that are specific to the challenge at hand---they also must be enclosed in tildes.
 
