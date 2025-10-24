@@ -2,6 +2,96 @@
 
 Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Development Foundations Course from The Odin Project]].
 
+* [2025-10-23 Thu]
+
+** Blog got a new theme!
+
+After more hours than I am comfortable to count, I could finally change the theme on the [[https://rafaelbeirigo.github.io/cybersec-dojo/][blog]].
+I was trying really hard to make the obvious thing work: just changing the option.
+As it turns out, it is not that simple: each theme may have its own quirks and idiosyncrasies.
+
+But thankfuly, it wasn't that complicated, either.
+The key factor was a change in mindset: instead of consuming tutorials blindly, take a step back, identify the fundamental entities involved, and how I could apply my knowledge to solve it; also, think outside the box: remove the restriction of having to make the official package work.
+
+In the end, I could use official packages, and the latest releases, which is a relief (makes it easier to maintain, at least in theory, as obsolescence should be postponed, relatively to older packages).
+
+** Worked on several macros to make blogging easier (and funnier!)
+
+This one may look a bit *bold*, but it is used reasonably, I promise...
+
+#+begin_src elisp
+(defun git-commit-all (message)
+  "Stage and commit all changes in the repository."
+  (interactive "Mmessage: ")
+  (async-shell-command
+   (let* ((script "~/ctf-writeups/chore/git/commit/commit.sh")
+          (command (concat script " \"" message "\"")))
+     (async-shell-command command))))
+#+end_src
+
+This one came first as courtesy of ChatGPT.
+But, as it turned out, I not only had, but hopefully /could/ add some changes---and even improvements!---of my own.
+
+When writing about challenges, there is a /lot/ of command references, and they all have to be formatted ~like this~.
+To accomplish that, I must enclose the word between tildes, and this gets old /very/ fast!
+The brilliant---and /elegant/---idea of ChatGPT was to create a /minor-mode/ in Emacs  for just that: automatically enclose a word in tildes when applicable.
+
+The initial idea was to /tilde/ every word Emacs recognizes as a /command/.
+I also told Emacs to tilde the words when they belonged to a special list: a list with filenames that are specific to the challenge at hand---they also must be enclosed in tildes.
+
+This was fun, as I had the opportunity to work with file-local variables and learned a lot.
+
+#+begin_src elisp
+(defun my-mark-command-in-tilde ()
+  "Wrap shell commands in ~command~ when typed in Org, except inside src blocks.
+Triggers on non-word characters like space, ., ,, etc."
+  (when (and (eq major-mode 'org-mode)
+             (not (org-in-src-block-p))
+             (not (eq last-command-event ?~))  ;; avoid recursion
+             (not (memq (char-syntax last-command-event) '(?w ?_)))) ;; not word/underscore
+    (save-excursion
+      ;; Go to the start of the word.
+      (backward-word 1)
+      ;; Deal with words with "extensions" (e.g., foo.bar).
+      (while (or (looking-back "\\w" 1)
+                 (looking-back "\\." 1))
+        (backward-char))
+      (let ((start (point)))
+        (while (or (looking-at "\\w" 1)
+                   (looking-at "\\." 1))
+          (forward-char))
+        (let* ((end (point))
+               (word (buffer-substring-no-properties start end))
+               (really-is-a-command
+                ;; These commands could be just words; check with the user.
+                (if (member word (list "find" "file"))
+                    (yes-or-no-p "command?")
+                  t)))
+          (when
+              (and
+               (or (executable-find word)
+                   ;; Assets are filenames, usually defined with `assets' as
+                   ;; file-local variable.
+                   (and (local-variable-p 'assets) (member word assets)))
+               really-is-a-command
+               (and (not (eq (char-before start) ?~))
+                    (not (eq (char-after end) ?~))))
+            ;; Replace word with ~word~
+            (undo-boundary)
+            (delete-region start end)
+            (insert (format "~%s~" word))
+            (undo-boundary)))))))
+
+(define-minor-mode my-auto-mark-commands-mode
+  "Minor mode to auto-wrap shell commands in tildes (~) in Org buffers."
+  :lighter " ~Cmd~"
+  (if my-auto-mark-commands-mode
+      (add-hook 'post-self-insert-hook #'my-mark-command-in-tilde nil t)
+    (remove-hook 'post-self-insert-hook #'my-mark-command-in-tilde t)))
+
+(add-hook 'org-mode-hook #'my-auto-mark-commands-mode)
+#+end_src
+
 * [2025-10-22 Wed]
 
 ** CTF blog
