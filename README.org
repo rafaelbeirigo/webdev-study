@@ -92,6 +92,10 @@ Triggers on non-word characters like space, ., ,, etc."
 (add-hook 'org-mode-hook #'my-auto-mark-commands-mode)
 #+end_src
 
+** Seinfeld Checkmark
+
+[[file:images/2025-10-23_seinfeld.jpeg]]
+
 * [2025-10-22 Wed]
 
 ** CTF blog
