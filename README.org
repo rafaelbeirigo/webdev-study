@@ -1,4 +1,4 @@
-#+property: header-args :eval no
+#+property: header-args :eval no :noweb no
 
 Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Development Foundations Course from The Odin Project]].
 
@@ -12,13 +12,13 @@ It's somewhat tempting to take those shortcuts, especially when you are not /doi
 But if one is in it for the long run, it pays off to pause, learn how to do stuff properly, think, organize, and implement.
 Today was that day for me.
 
-It all started with Yasnippets, that help with abbreviations: when I type ~autotangle~, for instance, it expands to
+It all started with Yasnippets, that helps with abbreviations: when I type ~autotangle~, for instance, it expands to
 
 #+begin_src shell :eval no
 #-*- auto-fill-function: nil; eval: (add-hook 'after-save-hook (lambda () (org-babel-tangle) (load "/home/rafa/dev/webdev-study/README")) nil t); -*-
 #+end_src
 
-which tells Emacs to take what I just write, plus everything else in the buffer, /tangle/ it to the proper file, and apply listen to all that that file has to say.
+which tells Emacs to take what I just write, plus everything else in the buffer, /tangle/ it to the proper file, and listen to all that that file has to say.
 Very nice.
 
 30 minutes later I realized I was doing this for a lot of files, and those files were in the same directory.
