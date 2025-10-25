@@ -1,6 +1,158 @@
-# -*- auto-fill-function: nil; eval: (add-hook 'after-save-hook 'org-babel-tangle nil t); -*-
+#+property: header-args :eval no
 
 Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Development Foundations Course from The Odin Project]].
+
+* [2025-10-24 Fri]
+
+** Sharpening the axe (still)
+
+Working on tools (to make tools (...)) I came upon what could be called a semi-realization: it is also about commitment.
+When preparing Emacs to edit blog posts, there are always some "shortcuts" along the way---sub-optimal or not-so-best-practices forks in the path.
+It's somewhat tempting to take those shortcuts, especially when you are not /doing the thing/, but still /preparing to do the thing/.
+But if one is in it for the long run, it pays off to pause, learn how to do stuff properly, think, organize, and implement.
+Today was that day for me.
+
+It all started with Yasnippets, that help with abbreviations: when I type ~autotangle~, for instance, it expands to
+
+#+begin_src shell :eval no
+#-*- auto-fill-function: nil; eval: (add-hook 'after-save-hook (lambda () (org-babel-tangle) (load "/home/rafa/dev/webdev-study/README")) nil t); -*-
+#+end_src
+
+which tells Emacs to take what I just write, plus everything else in the buffer, /tangle/ it to the proper file, and apply listen to all that that file has to say.
+Very nice.
+
+30 minutes later I realized I was doing this for a lot of files, and those files were in the same directory.
+The Proper® way to do that became then to use a /directory local variable/.
+I had to go to the manual, remember how to do it, and iterate until it was done.
+Can't say I didn't have fun, though.
+
+Then my tug-of-war with Org and its colors for the fonts got a new episode today.
+The proper solution was to create a /minor-mode/, that has its own colors, just the way I like it, and Org doesn't have a say on it.
+The next section is all theirs.
+
+** A mode as a weapon
+
+~noweb.el~
+
+#+begin_src elisp :tangle no
+(defvar noweb-mode-map (make-sparse-keymap))
+
+(define-minor-mode  noweb-mode
+  "Minor mode for noweb hacking."
+  :global nil
+  :init-value nil
+  :lighter " Noweb"
+  :keymap noweb-mode-map
+
+  (set (make-local-variable 'comment-start) "#")
+
+  <<Resolve faces when enabling/disabling the mode>>)
+<<font-lock stuff>>
+<<functions>>
+(add-hook 'org-mode-hook 'noweb-mode)
+#+end_src
+
+# Can't tangle this because it contains `<<', and this upsets Org-babel's noweb
+# engine.
+#+begin_src elisp :tangle no
+(defun noweb-fix-function-thingy-buffer-wide ()
+  "Adds some ZERO WIDTH SPACE to avoid font-lock conflicts with Org."
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (while (re-search-forward "~<<\\(.*?\\)>> \\+≡~" nil t)
+      (replace-match (format "~<%s<\\1>> +≡%s~" "​" "​") t))))
+#+end_src
+
+*** Faces
+
+**** Create faces
+
+~<​<font-lock stuff>> +≡​~
+
+#+begin_src elisp :noweb-ref font-lock stuff
+(defface noweb-module-name-face
+  '((t (:foreground "green")))
+  "Face for `foo' in `<<foo>>'.")
+#+end_src
+
+**** Determine the keywords and their corresponding faces
+
+~<​<font-lock stuff>> +≡​~
+
+#+begin_src elisp :noweb-ref font-lock stuff :noweb no
+(defvar noweb-font-lock-keywords
+  '(("\\(<<.*>>\\)" 1 'noweb-module-name-face t)
+    ("~\\(<​<.*>>\\) \\+≡​~" 1 'noweb-module-name-face t))
+  "Font-lock keywords for `noweb-mode' minor mode.")
+#+end_src
+
+~<​<Resolve faces when enabling/disabling the mode>> +≡​~
+
+#+begin_src elisp :noweb-ref Resolve faces when enabling/disabling the mode
+(if noweb-mode
+    (font-lock-add-keywords nil noweb-font-lock-keywords t)
+  (font-lock-remove-keywords nil noweb-font-lock-keywords))
+(font-lock-flush)
+(font-lock-ensure)
+#+end_src
+
+*** *Load the tangled el.*  After tangling ~org~ files that generate a corresponding ~el~, it is sometimes useful to ~load~ that ~el~ file, applying all the goodness therein.  This function does just that.
+
+~<​<functions>> +≡​~
+
+#+begin_src elisp :noweb-ref functions
+(defun noweb-load-auto-tangled ()
+  "Call function `load' on the file with same name but `.el' extension."
+  (interactive)
+  (let ((filename
+         (file-name-sans-extension (buffer-file-name))))
+    (load filename) nil t))
+#+end_src
+
+** Getting closer to the thing proper
+
+Then at the end of the day I finally started working on a (nother) minor-mode, this time specifically to help me write the blog posts.
+
+*** This is the CTF minor mode.  I'll be using it to make CTF writeups.
+Besides editing facilities, it also does some /challenge-solving/ of its own.
+For example, after downloading a file, it looks at its type (as informed by the command ~file~), and potentially runs more commands, appropriate for that type of file.
+
+[[file:ctf-mode.el][ctf-mode.el]] ≡
+
+#+begin_src emacs-lisp :tangle no
+<<Define the minor mode>>
+(provide 'ctf-mode)
+#+end_src
+*** First, let's define it, add a nice lighter to it, and its own neat keymap.
+
+~<<Define the minor mode>> +≡~
+
+#+begin_src elisp :noweb-ref Define the minor mode
+(define-minor-mode ctf-mode
+  "Minor mode for CTF writeups."
+  :lighter " Ctf"
+  :keymap (make-sparse-keymap)
+  <<Minor mode definition>>
+  )
+#+end_src
+
+*** *Description Function.*  CTF writeups are all about the challenge.  Let's create a function that helps us when creating that description.
+
+#+begin_src elisp
+(define-skeleton blog-insert-description
+  "Insert ctf description for the blog."
+  nil
+  "* Description"
+  (nil \n \n (read-string "description: "))
+  \n \n "Hints"
+  ("hint: " '(org-return-and-maybe-indent) "- " str) | -7
+  (nil \n \n \n "*Link:* [[" (read-string "link: ") "]]")
+  '(delete-trailing-whitespace)
+  '(save-buffer)
+  '(git-commit-all "feat: add description"))
+#+end_src
+
 
 * [2025-10-23 Thu]
 
