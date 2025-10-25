@@ -153,6 +153,9 @@ For example, after downloading a file, it looks at its type (as informed by the 
   '(git-commit-all "feat: add description"))
 #+end_src
 
+** Seinfeld Checkmark
+
+[[file:images/2025-10-24_seinfeld.jpeg]]
 
 * [2025-10-23 Thu]
 
