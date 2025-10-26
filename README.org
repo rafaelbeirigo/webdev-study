@@ -285,9 +285,6 @@ print("✅ Extracted plain text and URLs to /tmp/plain.json")
     json-plist))
 #+end_src
 
-#+begin_src elisp
-#+end_src
-
 *** *Populate the writeup with the challenge info.*
 
 Use the extracted, clean info to populate the writeup.
