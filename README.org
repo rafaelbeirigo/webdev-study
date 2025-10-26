@@ -91,6 +91,51 @@ This is the code that makes the magic happens:
 
 #+end_src
 
+It calls this script:
+
+#+begin_src python
+import json
+from bs4 import BeautifulSoup
+
+# Load JSON from file
+with open("/tmp/html.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
+
+def html_to_text_and_urls(html_content):
+    """Convert HTML to plain text and extract all URLs."""
+    soup = BeautifulSoup(html_content, "html.parser")
+    text = soup.get_text(separator=" ", strip=True)
+    links = [a["href"] for a in soup.find_all("a", href=True)]
+    return text, links
+
+# Process the description
+desc_text, desc_urls = html_to_text_and_urls(data.get("description", ""))
+
+# Process the hints (list of HTML strings)
+plain_hints = []
+all_hint_urls = []
+for hint_html in data.get("hints", []):
+    hint_text, hint_urls = html_to_text_and_urls(hint_html)
+    plain_hints.append(hint_text)
+    all_hint_urls.extend(hint_urls)
+
+# Create clean version
+out_data = {
+    "id": data["id"],
+    "status": data["status"],
+    "description": desc_text,
+    "description_urls": desc_urls,
+    "hints": plain_hints,
+    "hint_urls": all_hint_urls,
+}
+
+# Save cleaned JSON
+with open("/tmp/plain.json", "w", encoding="utf-8") as f:
+    json.dump(out_data, f, indent=2, ensure_ascii=False)
+
+print("✅ Extracted plain text and URLs to /tmp/plain.json")
+#+end_src
+
 ** This is the literate programming version
 
 #+property: header-args :results replace
