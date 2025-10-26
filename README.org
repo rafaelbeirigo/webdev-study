@@ -326,6 +326,17 @@ It also helps on /adding/ the information: most of the time it may feel like it'
 ** Next steps
 
 As you can see, there are already a lot explicit of TODOs.
+But what will make a *HUGE* impact is to /automatically/
+1. Download each asset;
+2. Detect its file type;
+3. Automatically run the appropriate diagnostics based on that type.
+
+
+In the CTFs, they are files that must be inspected /very/ closely, and in /multiple/ ways.
+This investigative work involves running a /lot/ of commands!
+Automating this not only saves physical and mental energy, but also avoids forgetting to run important diagnostics.
+I have most of the code for that ready, just need to integrate it.
+
 Also, I want to:
 - Update the local cookie when it expires.
   This involves authentication in *two stages*:
