@@ -335,6 +335,10 @@ Also, I want to:
 
 I already have the functioning code for those two, now I just need to integrate it on the current code.
 
+** Seinfeld Checkmark
+
+[[file:images/2025-10-25_seinfeld.jpeg]]
+
 * [2025-10-24 Fri]
 
 ** Sharpening the axe (still)
