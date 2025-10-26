@@ -19,7 +19,7 @@ The pictures below show the info on the website and the editor.
 #+caption: Challenge info in the website and the editor.
 [[file:images/2025-10-25-ctf-insert-info.jpeg]]
 
-* Commands & snippets (so it's reproducible)
+* Code
 
 This is the code that makes the magic happens:
 
@@ -276,7 +276,7 @@ Use the extracted, clean info to populate the writeup.
 #+end_src
 
 
-* Outcome / notes / links
+* Outcome
 
 The process of making CTF writeups just got /much/ easier---and /enjoyable/!
 Instead of wasting mental energy on tedious tasks, I can focus on injecting precise, useful information.
