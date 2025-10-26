@@ -2,6 +2,298 @@
 
 Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Development Foundations Course from The Odin Project]].
 
+# Usar `webdev' template (yas).
+
+* [2025-10-25 Sat]
+
+* I created a program that automatically gets the CTF challenge info for me, so I don't have to type it.
+
+Writeups are about to get much easier and funnier!
+CTF writeups need a lot of context, and they sometimes come as a story, other times as just a question, but in any case, that must go into the writeup.
+So far I was copying/pasting, and then cleaning up the text.
+It was /very/ tedious!
+
+Today I created a small program that automatically goes to the website and grabs that info and inserts it necely inside my editor, in a pre-chosen template.
+The pictures below show the info on the website and the editor.
+
+#+caption: Challenge info in the website and the editor.
+[[file:images/2025-10-25-ctf-insert-info.jpeg]]
+
+* Commands & snippets (so it's reproducible)
+
+This is the code that makes the magic happens:
+
+#+begin_src elisp
+;; TODO: Consider this division:
+;; - ctf-fetch-json (or ctf-fetch-html)
+;; - ctf-parse-info (or ctf-parse-html)
+;; - ctf-insert-info
+(defvar ctf-picoctf-user nil
+  "Username to login on picoCTF.")
+(defvar ctf-html-to-plain-command nil
+  "Command to call when converting HTML to plain text.")
+(define-minor-mode ctf-mode
+  "Minor mode for CTF writeups."
+  :lighter " Ctf"
+  :keymap (make-sparse-keymap)
+  
+  )
+(defun ctf-info-from-id (id &optional user)
+  "Retrives the challenge's info from the website using ID."
+  (interactive "Mid: ")
+  (require (quote auth-source))
+  (let* ((user (or ctf-picoctf-user user))
+         (results (car (auth-source-search :host "play.picoctf.org" :user user :max 1)))       
+         (secret (plist-get results :secret))
+         (password (if (functionp secret) (funcall secret) secret))
+         (csrftoken (plist-get results :csrftoken))
+         (cookie (plist-get results :cookie))
+         ;; Get the challenge info and save it in JSON format in the file `/tmp/html.json'.
+         (command (format "curl --output '/tmp/html.json' 'https://play.picoctf.org/api/challenges/%s/instance/' -H 'Cookie: %s'" id cookie)))
+    (shell-command command))
+  ;; TODO (ChatGPT critique): The ctf-html-to-plain-command bit feels brittle — if
+  ;; the API returns HTML inside JSON, better to convert inside Emacs.  You can
+  ;; strip tags using shr-render-region or libxml-parse-html-region. Then you’re
+  ;; not shelling out to an external script unnecessarily.
+  
+  (shell-command ctf-html-to-plain-command)
+  (with-temp-buffer
+    (insert-file-contents "/tmp/plain.json")
+    (let* ((json-string (buffer-substring-no-properties (point-min) (point-max)))
+           (json-plist (json-parse-string json-string :object-type 'plist)))
+      json-plist))
+  ;; TODO: If that failed, get a new cookie and ask again
+  )
+;; TODO: Use `org-insert-link' for the links below.
+(defun ctf-insert-info (id)
+  "Insert the info from challenge ID into current buffer."
+  (interactive "Mid: ")
+  (let* ((info (ctf-info-from-id id))
+         (description (plist-get info :description))
+         (description-urls (seq-into (plist-get info :description_urls) 'list))
+         (hints (seq-into (plist-get info :hints) 'list))
+         (hints-urls (seq-into (plist-get info :hints_urls) 'list)))
+    (insert "* Description\n")
+    (insert (format "\n%s\n" description))
+    (when hints
+      (insert "\n* Hints\n")
+      (dolist (hint hints)
+        (insert (format "\n- %s\n" hint))))
+    (when hints-urls
+      (insert "\n* Hints URLs\n")
+      (dolist (hints-url hints-urls)
+        (insert (format "\n- [[%s]]\n" hints-url))))
+    (when description-urls
+      (insert "\n* Assets\n")
+      (dolist (description-url description-urls)
+        (insert (format "\n** [[%s]]\n" description-url))))))
+(provide 'ctf-mode)
+
+#+end_src
+
+** This is the literate programming version
+
+#+property: header-args :results replace
+
+*** This is the CTF minor mode.  I'll be using it to make CTF writeups.
+Besides editing facilities, it also does some /challenge-solving/ of its own.
+For example, after downloading a file, it looks at its type (as informed by the command ~file~), and potentially runs more commands, appropriate for that type of file.
+
+[[file:ctf-mode.el][ctf-mode.el]] ≡
+
+#+begin_src emacs-lisp :tangle ctf.el
+;; TODO: Consider this division:
+;; - ctf-fetch-json (or ctf-fetch-html)
+;; - ctf-parse-info (or ctf-parse-html)
+;; - ctf-insert-info
+<<Variable definitions>>
+<<Define the minor mode>>
+<<Function that gets the challenge info from an ID>>
+<<Populate the writeup with the challenge info>>
+(provide 'ctf-mode)
+#+end_src
+
+*** First, let's define it, add a nice lighter to it, and its own neat keymap.
+
+~<<Define the minor mode>> +≡~
+
+#+begin_src elisp :noweb-ref Define the minor mode
+(define-minor-mode ctf-mode
+  "Minor mode for CTF writeups."
+  :lighter " Ctf"
+  :keymap (make-sparse-keymap)
+  <<Minor mode definition>>
+  )
+#+end_src
+
+*** *Function that gets the challenge info from an ID.*  This process need authentication.  It first tries to use the credentials and cookie saved locally.  If that fails, it obtains a new cookie and tries again.
+
+~<​<Function that gets the challenge info from an ID>> +≡​~
+
+#+begin_src elisp :noweb-ref Function that gets the challenge info from an ID
+(defun ctf-info-from-id (id &optional user)
+  "Retrives the challenge's info from the website using ID."
+  (interactive "Mid: ")
+  <<Ask for the info with the current cookie>>
+  ;; TODO: If that failed, get a new cookie and ask again
+  )
+#+end_src
+
+**** *Ask for the info with the current cookie.*  Grab the local credentials and cookie and ask picoCTF for the information (description, hints and links) of a challenge whose ID is ~id~.  If it succeeds, the info is saved as a JSON file.
+
+~<​<Ask for the info with the current cookie>> +≡​~
+
+#+begin_src elisp :noweb-ref Ask for the info with the current cookie :results none
+(require (quote auth-source))
+(let* ((user (or ctf-picoctf-user user))
+       (results (car (auth-source-search :host "play.picoctf.org" :user user :max 1)))       
+       (secret (plist-get results :secret))
+       (password (if (functionp secret) (funcall secret) secret))
+       (csrftoken (plist-get results :csrftoken))
+       (cookie (plist-get results :cookie))
+       ;; Get the challenge info and save it in JSON format in the file `/tmp/html.json'.
+       (command (format "curl --output '/tmp/html.json' 'https://play.picoctf.org/api/challenges/%s/instance/' -H 'Cookie: %s'" id cookie)))
+  (shell-command command))
+#+end_src
+
+~<​<Variable definitions>> +≡​~
+
+#+begin_src elisp :noweb-ref Variable definitions
+(defvar ctf-picoctf-user nil
+  "Username to login on picoCTF.")
+#+end_src
+
+**** *Create a Python script to extract the text and URLs from the JSON file we got.*  This file we just got will contain the challenge info, but in HTML, with the markup elements, like ~<p>...</p>~, ~<a href ...>...</a>~, etc.  We need to clean that up.  We use Python for that.  First we create the script, then we call it.  This script will create a new file called ~plain.json~ with the challenge's info ready to be inserted into the writeup.
+
+3. JSON and shell handling
+
+#+begin_src python :tangle html-to-plain.py
+import json
+from bs4 import BeautifulSoup
+
+# Load JSON from file
+with open("/tmp/html.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
+
+def html_to_text_and_urls(html_content):
+    """Convert HTML to plain text and extract all URLs."""
+    soup = BeautifulSoup(html_content, "html.parser")
+    text = soup.get_text(separator=" ", strip=True)
+    links = [a["href"] for a in soup.find_all("a", href=True)]
+    return text, links
+
+# Process the description
+desc_text, desc_urls = html_to_text_and_urls(data.get("description", ""))
+
+# Process the hints (list of HTML strings)
+plain_hints = []
+all_hint_urls = []
+for hint_html in data.get("hints", []):
+    hint_text, hint_urls = html_to_text_and_urls(hint_html)
+    plain_hints.append(hint_text)
+    all_hint_urls.extend(hint_urls)
+
+# Create clean version
+out_data = {
+    "id": data["id"],
+    "status": data["status"],
+    "description": desc_text,
+    "description_urls": desc_urls,
+    "hints": plain_hints,
+    "hint_urls": all_hint_urls,
+}
+
+# Save cleaned JSON
+with open("/tmp/plain.json", "w", encoding="utf-8") as f:
+    json.dump(out_data, f, indent=2, ensure_ascii=False)
+
+print("✅ Extracted plain text and URLs to /tmp/plain.json")
+#+end_src
+
+~<​<Ask for the info with the current cookie>> +≡​~
+
+#+begin_src elisp :noweb-ref Ask for the info with the current cookie
+;; TODO (ChatGPT critique): The ctf-html-to-plain-command bit feels brittle — if
+;; the API returns HTML inside JSON, better to convert inside Emacs.  You can
+;; strip tags using shr-render-region or libxml-parse-html-region. Then you’re
+;; not shelling out to an external script unnecessarily.
+
+(shell-command ctf-html-to-plain-command)
+#+end_src
+
+~<​<Variable definitions>> +≡​~
+
+#+begin_src elisp :noweb-ref Variable definitions
+(defvar ctf-html-to-plain-command nil
+  "Command to call when converting HTML to plain text.")
+#+end_src
+
+**** Get the challeng info from ~plain.json~ and store it into a variable that the function will return
+
+~<​<Ask for the info with the current cookie>> +≡​~
+
+#+begin_src elisp :noweb-ref Ask for the info with the current cookie
+(with-temp-buffer
+  (insert-file-contents "/tmp/plain.json")
+  (let* ((json-string (buffer-substring-no-properties (point-min) (point-max)))
+         (json-plist (json-parse-string json-string :object-type 'plist)))
+    json-plist))
+#+end_src
+
+#+begin_src elisp
+#+end_src
+
+*** *Populate the writeup with the challenge info.*
+
+Use the extracted, clean info to populate the writeup.
+
+~<​<Populate the writeup with the challenge info>> +≡​~
+
+#+begin_src elisp :noweb-ref Populate the writeup with the challenge info
+;; TODO: Use `org-insert-link' for the links below.
+(defun ctf-insert-info (id)
+  "Insert the info from challenge ID into current buffer."
+  (interactive "Mid: ")
+  (let* ((info (ctf-info-from-id id))
+         (description (plist-get info :description))
+         (description-urls (seq-into (plist-get info :description_urls) 'list))
+         (hints (seq-into (plist-get info :hints) 'list))
+         (hints-urls (seq-into (plist-get info :hints_urls) 'list)))
+    (insert "* Description\n")
+    (insert (format "\n%s\n" description))
+    (when hints
+      (insert "\n* Hints\n")
+      (dolist (hint hints)
+        (insert (format "\n- %s\n" hint))))
+    (when hints-urls
+      (insert "\n* Hints URLs\n")
+      (dolist (hints-url hints-urls)
+        (insert (format "\n- [[%s]]\n" hints-url))))
+    (when description-urls
+      (insert "\n* Assets\n")
+      (dolist (description-url description-urls)
+        (insert (format "\n** [[%s]]\n" description-url))))))
+#+end_src
+
+
+* Outcome / notes / links
+
+The process of making CTF writeups just got /much/ easier---and /enjoyable/!
+Instead of wasting mental energy on tedious tasks, I can focus on injecting precise, useful information.
+It also helps on /adding/ the information: most of the time it may feel like it's not worth the effort, but having that information at hand while reading the writeup makes a /huge/ difference: many times the path towards a solution depends on some subtle information in the description!
+
+* Next steps
+
+As you can see, there are already a lot explicit of TODOs.
+Also, I want to:
+- Update the local cookie when it expires.
+  This involves authentication in *two stages*:
+  1. Pass a Cloudfare challenge and get a key.  For this, I'll use Puppeteer in headless mode.
+  2. Authenticate with that key, user and password, obtaining a new cookie.
+
+
+I already have the functioning code for those two, now I just need to integrate it on the current code.
+
 * [2025-10-24 Fri]
 
 ** Sharpening the axe (still)
