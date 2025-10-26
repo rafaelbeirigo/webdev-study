@@ -6,7 +6,7 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 
 * [2025-10-25 Sat]
 
-* I created a program that automatically gets the CTF challenge info for me, so I don't have to type it.
+** I created a program that automatically gets the CTF challenge info for me, so I don't have to type it.
 
 Writeups are about to get much easier and funnier!
 CTF writeups need a lot of context, and they sometimes come as a story, other times as just a question, but in any case, that must go into the writeup.
@@ -19,7 +19,7 @@ The pictures below show the info on the website and the editor.
 #+caption: Challenge info in the website and the editor.
 [[file:images/2025-10-25-ctf-insert-info.jpeg]]
 
-* Code
+** Code
 
 This is the code that makes the magic happens:
 
@@ -136,11 +136,11 @@ with open("/tmp/plain.json", "w", encoding="utf-8") as f:
 print("✅ Extracted plain text and URLs to /tmp/plain.json")
 #+end_src
 
-** This is the literate programming version
+*** This is the literate programming version
 
 #+property: header-args :results replace
 
-*** This is the CTF minor mode.  I'll be using it to make CTF writeups.
+**** This is the CTF minor mode.  I'll be using it to make CTF writeups.
 Besides editing facilities, it also does some /challenge-solving/ of its own.
 For example, after downloading a file, it looks at its type (as informed by the command ~file~), and potentially runs more commands, appropriate for that type of file.
 
@@ -158,7 +158,7 @@ For example, after downloading a file, it looks at its type (as informed by the 
 (provide 'ctf-mode)
 #+end_src
 
-*** First, let's define it, add a nice lighter to it, and its own neat keymap.
+**** First, let's define it, add a nice lighter to it, and its own neat keymap.
 
 ~<<Define the minor mode>> +≡~
 
@@ -171,7 +171,7 @@ For example, after downloading a file, it looks at its type (as informed by the 
   )
 #+end_src
 
-*** *Function that gets the challenge info from an ID.*  This process need authentication.  It first tries to use the credentials and cookie saved locally.  If that fails, it obtains a new cookie and tries again.
+**** *Function that gets the challenge info from an ID.*  This process need authentication.  It first tries to use the credentials and cookie saved locally.  If that fails, it obtains a new cookie and tries again.
 
 ~<​<Function that gets the challenge info from an ID>> +≡​~
 
@@ -184,7 +184,7 @@ For example, after downloading a file, it looks at its type (as informed by the 
   )
 #+end_src
 
-**** *Ask for the info with the current cookie.*  Grab the local credentials and cookie and ask picoCTF for the information (description, hints and links) of a challenge whose ID is ~id~.  If it succeeds, the info is saved as a JSON file.
+***** *Ask for the info with the current cookie.*  Grab the local credentials and cookie and ask picoCTF for the information (description, hints and links) of a challenge whose ID is ~id~.  If it succeeds, the info is saved as a JSON file.
 
 ~<​<Ask for the info with the current cookie>> +≡​~
 
@@ -208,7 +208,7 @@ For example, after downloading a file, it looks at its type (as informed by the 
   "Username to login on picoCTF.")
 #+end_src
 
-**** *Create a Python script to extract the text and URLs from the JSON file we got.*  This file we just got will contain the challenge info, but in HTML, with the markup elements, like ~<p>...</p>~, ~<a href ...>...</a>~, etc.  We need to clean that up.  We use Python for that.  First we create the script, then we call it.  This script will create a new file called ~plain.json~ with the challenge's info ready to be inserted into the writeup.
+***** *Create a Python script to extract the text and URLs from the JSON file we got.*  This file we just got will contain the challenge info, but in HTML, with the markup elements, like ~<p>...</p>~, ~<a href ...>...</a>~, etc.  We need to clean that up.  We use Python for that.  First we create the script, then we call it.  This script will create a new file called ~plain.json~ with the challenge's info ready to be inserted into the writeup.
 
 3. JSON and shell handling
 
@@ -273,7 +273,7 @@ print("✅ Extracted plain text and URLs to /tmp/plain.json")
   "Command to call when converting HTML to plain text.")
 #+end_src
 
-**** Get the challeng info from ~plain.json~ and store it into a variable that the function will return
+***** Get the challeng info from ~plain.json~ and store it into a variable that the function will return
 
 ~<​<Ask for the info with the current cookie>> +≡​~
 
@@ -285,7 +285,7 @@ print("✅ Extracted plain text and URLs to /tmp/plain.json")
     json-plist))
 #+end_src
 
-*** *Populate the writeup with the challenge info.*
+**** *Populate the writeup with the challenge info.*
 
 Use the extracted, clean info to populate the writeup.
 
@@ -317,14 +317,13 @@ Use the extracted, clean info to populate the writeup.
         (insert (format "\n** [[%s]]\n" description-url))))))
 #+end_src
 
-
-* Outcome
+** Outcome
 
 The process of making CTF writeups just got /much/ easier---and /enjoyable/!
 Instead of wasting mental energy on tedious tasks, I can focus on injecting precise, useful information.
 It also helps on /adding/ the information: most of the time it may feel like it's not worth the effort, but having that information at hand while reading the writeup makes a /huge/ difference: many times the path towards a solution depends on some subtle information in the description!
 
-* Next steps
+** Next steps
 
 As you can see, there are already a lot explicit of TODOs.
 Also, I want to:
