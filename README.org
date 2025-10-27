@@ -72,6 +72,10 @@ But the automatic execution presented a bug: it sometimes gets confused with pre
 # what’s your forward action or next goal. This closes the loop and keeps the momentum.
 # Example: “Add error handling and make it general for all CTF challenges” or “Write a tutorial for the PDF trick.”
 
+** Seinfeld Checkmark
+
+[[file:images/2025-10-26_seinfeld.jpeg]]
+
 * [2025-10-25 Sat]
 
 ** I created a program that automatically gets the CTF challenge info for me, so I don't have to type it.
