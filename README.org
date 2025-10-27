@@ -4,6 +4,75 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 
 # Usar `webdev' template (yas).
 
+* [2025-10-26 Sun]
+
+** Work
+
+*** Automated the credentials renewal
+As the previous work included a lot of tests and back and forth with ChatGPT involving credentials, I had to renew those.
+Instead of manually updating my local copies of those credentials, I used the opportunity to automate this process with code.
+I had it all ready, only needed to integrate them.
+
+*** Added automatic insertion of the metadata needed by Jekyll to create a blog post.
+
+In order to post the CTF writeup, Jekyll needs some metadata that goes into the file header.
+Here is an example:
+
+#+begin_example
+#+TITLE: buffer overflow 0 (picoCTF)—CTF Writeup
+#+DATE: 2025-10-26 20:46
+#+JEKYLL_LAYOUT: post
+#+JEKYLL_CATEGORIES: "CTF Writeup"
+#+JEKYLL_TAGS: binary-exploitation ctf writeup
+#+end_example
+
+Today I automated the insertion of this snippet.
+I also discovered that /title/ and /tags/ somehow skip the current info gathering process.
+As fixing this would involve too much of a detour, I added that to the TODO.
+
+*** Implemented automatic download and diagnostics of the assets
+
+This is *huge*!
+The program now automatically downloads the assets, checks its type, and run the appropriate diagnostics for that type of file.
+The writeup is populated with that data in a structured form.
+This saves me a *lot* of time and mental energy when making the writeups!
+But the automatic execution presented a bug: it sometimes gets confused with previous results.
+
+
+** Outcome
+
+- Usually, to update the login credentials automatically, you use a program that does that without a browser.
+  But picoCTF added an additional level of security in the form of a Cloudfare challenge.
+  To pass this challenge you /must/ use a browser.
+  To do that automatically, I called Puppeteer, using  Node.js.
+  This was new for me, and I'm glad to add that tool to the box!
+- To deal with all the data flying around when inserting the challenge's info, I used two different types of lists: ~plist~ and ~alist~.
+  They are new to me, and I'm still getting used to their quirks.
+  One that tripped me at first was the difference between two types of creating a list: ~'(1 2 (+ 3 4))~ and ~(list 1 2 (+ 3 4))~.
+  They have a subtle, but very important difference in evaluation: the first form does /not/ evaluate ~(+ 3 4)~ when creating the list.
+  This got me by surprise, and it took me a while to understand what was happening when the code didn't act as I expected!
+- The automatic download and diagnostics is the most important part of all this for me.
+  It was where I learned a lot today too.
+  Here I applied all the new knowledge about the lists and new functions I am learning in Elisp.
+  One that I'm really interested is a function that maps functions to Org entities.
+  This is potentially very powerful and useful, as I use Org a lot.
+  This creates very interesting possibilities for future projects!
+
+** Next
+
+- Automatically fetch challenge's title and tags.
+- Fix the automatic diagnostics of the assets.
+- Put development on hold, and start making the writeups for tests.
+
+# Immediate next steps or goals.
+# Could be tweaks, follow-ups, or completely new experiments.
+# Keep it small and actionable.
+# Examples:
+# Add error handling for missing or malformed JSON.
+# Write mini writeup for team on the automation process.
+# what’s your forward action or next goal. This closes the loop and keeps the momentum.
+# Example: “Add error handling and make it general for all CTF challenges” or “Write a tutorial for the PDF trick.”
+
 * [2025-10-25 Sat]
 
 ** I created a program that automatically gets the CTF challenge info for me, so I don't have to type it.
