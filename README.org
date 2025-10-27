@@ -38,7 +38,6 @@ The writeup is populated with that data in a structured form.
 This saves me a *lot* of time and mental energy when making the writeups!
 But the automatic execution presented a bug: it sometimes gets confused with previous results.
 
-
 ** Outcome
 
 - Usually, to update the login credentials automatically, you use a program that does that without a browser.
