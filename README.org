@@ -77,6 +77,10 @@ But could manage to fix the bug, improve it a little bit, and integrate it to th
 - Refactoring is always high-adrenaline, and I tried to micro-test as often as I could.
   Ended up discovering some simple little tricks that are a big help to keep tests light to the brain.
 - Avoiding the need to call an external Python script was a big win for today!
+- Feeling /this/ tired today raised a big red flag!
+  I really need to pay attention to ealy signs of low healthy routines.
+  This time I believe it may be food.
+  I've been eating a lot of /fresh/ liver lately (I usually eat it /dried/), and that stuff can get heavy on the body sometimes.
 
 ** Next
 # Immediate next steps or goals.
@@ -94,6 +98,14 @@ But could manage to fix the bug, improve it a little bit, and integrate it to th
   This will also give me the opportunity to /test/ the current version.
   It is prepare for automatic diagnostics only for /executables/, which restricts the appropriate CTFs to Binary Exploitation and maybe some Reverse Engineering.
   But that' /more/ than OK :)
+
+** Seinfeld Checkmark
+
+[[file:images/2025-10-27_seinfeld.jpeg]]
+
+- Today's Scores
+  - Fun: 3/5 (feeling sick is no fun, but meeting me where I'm at, and showing up for that is; glad I allowed myself some light work today)
+  - Energy: 2/5 (/very/ tired!)
 
 * [2025-10-26 Sun]
 
