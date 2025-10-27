@@ -4,6 +4,97 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 
 # Usar `webdev' template (yas).
 
+* [2025-10-27 Mon]
+
+** Work
+# What I actually did today.
+# Experiments, coding, debugging, learning.
+# (Be honest. Even chaos counts.)
+# Examples:
+# Refactored the login automation script.
+# Experimented with parsing JSON from PicoCTF API challenges.
+# the effort or activity you put in. Think of it as your actions, experiments, coding sessions, research, debugging.
+# Example: “Refactored the login automation script” or “Analyzed the PDF forensic challenge.”
+
+I was feeling sick today, and very tired.
+But could get some small victories!
+
+- The dev work had gotten to a point where my mind couldn't aprehend it anymore---model bigger that brain.
+  I thought of either studying theory or restarting the program from scratch---greats say wonders about this.
+  But after staring---literally---at the code for a while, thinking a bit, I ended up doing some refactoring, and could even get some new work done.
+- I was really annoyed by the fact that I still had to type in the title and tags.
+  Despite the fear of rabbit-holing, I gave a tiny little peek at the page, and ended up realizing the solution is much easier than I thought: I just need another request for a different URL.
+  This inpired the refactoring of the fetching code (credentials, login, and download).
+- Added internal HTML parsing to avoid the need to call an external Python script for that.
+  Also added the use of tempfiles.
+- The way I was doing Literate Programming ended up hiding some dirt: there was some repetition of code.
+  I cleaned that up with some new function.s
+  
+** Output
+# Tangible things that exist because of today’s work.
+# The tangible artifact you produced. This is your deliverable, whatever someone could use or look at.
+# Scripts, writeups, data, visualizations, prototypes.
+# If nothing usable yet, write “Prototype / Draft.”
+# Examples:
+# “Working Python script” or “Documented step-by-step writeup” or even “Updated CSV dataset.”
+# Cleaned Python script that logs in and fetches challenge info.
+# Sample JSON file saved locally for testing.
+
+I'm particularly proud of this little snippet.
+ChatGPT helped me with it, but it had a bug.
+I was feeling particularly sick at that time.
+But could manage to fix the bug, improve it a little bit, and integrate it to the code.
+
+#+begin_src elisp
+(defun html-get-text (html)
+  "Return text in HTML."
+  (interactive "Mhtml: ")
+  (with-temp-buffer
+    (insert html)
+    (let* ((dom (libxml-parse-html-region (point-min) (point-max)))
+           (text (mapcar (lambda (a) (dom-text a))
+                          (dom-by-tag dom 'p)))
+           (text (string-join text " "))
+           (text (split-string text nil t))
+           (text (string-join text " ")))
+      text)))
+#+end_src
+
+** Outcome
+# What happened as a result of the work + output.
+# Insights, results, solved problems, new questions.
+# Even failures are outcomes: they teach.
+# Examples:
+# Script now reliably fetches challenges without manual cookie handling.
+# Learned nuances of auth headers and session management.
+# the result or effect of the work and output. Did it solve the problem? Did it teach you something? Did it help others?
+# Example: “Script successfully logs in automatically” or “Found hidden flag in the PDF.”
+
+- Despite not being 100% I could still show up to the work.
+  This small victory helps building habit and identity, and I am very proud of that.
+- The analysis, mental work, and refactoring helped build a better mental model.
+  This prevents tiredness and ultimately burn out, of which I have to be /very/ aware in order not to go there again!
+- Refactoring is always high-adrenaline, and I tried to micro-test as often as I could.
+  Ended up discovering some simple little tricks that are a big help to keep tests light to the brain.
+- Avoiding the need to call an external Python script was a big win for today!
+
+** Next
+# Immediate next steps or goals.
+# Could be tweaks, follow-ups, or completely new experiments.
+# Keep it small and actionable.
+# Examples:
+# Add error handling for missing or malformed JSON.
+# Write mini writeup for team on the automation process.
+# what’s your forward action or next goal. This closes the loop and keeps the momentum.
+# Example: “Add error handling and make it general for all CTF challenges” or “Write a tutorial for the PDF trick.”
+
+- Start the proper output.
+  Finish the HTML parsing, put the dev on hold for a while, and restart the writeups.
+  I want the system to start /producing/!
+  This will also give me the opportunity to /test/ the current version.
+  It is prepare for automatic diagnostics only for /executables/, which restricts the appropriate CTFs to Binary Exploitation and maybe some Reverse Engineering.
+  But that' /more/ than OK :)
+
 * [2025-10-26 Sun]
 
 ** Work
