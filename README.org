@@ -4,8 +4,6 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 
 # Usar `webdev' template (yas).
 
-#
-# I'll use this to save the pic from wpp.
 * [2025-10-28 Tue]
 
 ** Work
