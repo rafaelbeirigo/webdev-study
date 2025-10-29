@@ -4,6 +4,81 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 
 # Usar `webdev' template (yas).
 
+#
+# I'll use this to save the pic from wpp.
+* [2025-10-28 Tue]
+
+** Work
+# What I actually did today.
+# Experiments, coding, debugging, learning.
+# (Be honest. Even chaos counts.)
+# Examples:
+# Refactored the login automation script.
+# Experimented with parsing JSON from PicoCTF API challenges.
+# the effort or activity you put in. Think of it as your actions, experiments, coding sessions, research, debugging.
+# Example: “Refactored the login automation script” or “Analyzed the PDF forensic challenge.”
+
+- Spent the morning studying Elisp fundamentals;
+- Spent the evening writing a new CTF writeup.
+
+** Outcome
+# What happened as a result of the work + output.
+# Insights, results, solved problems, new questions.
+# Even failures are outcomes: they teach.
+# Examples:
+# Script now reliably fetches challenges without manual cookie handling.
+# Learned nuances of auth headers and session management.
+# the result or effect of the work and output. Did it solve the problem? Did it teach you something? Did it help others?
+# Example: “Script successfully logs in automatically” or “Found hidden flag in the PDF.”
+
+The Elisp study started as a necessity: I was feeling my mind was "heavy", and thought it was weak foundations (lots of very important doubts and uncertainties accumulated).
+I could finish the first phase of the text, which are the most dense.
+It turned out to be very helpful, could better understand a lot of concepts, and close some conceptual gaps.
+Coding should get much more productive and fun now!
+
+The writeup was fun!
+But it was tricky: I kept trying to add more and more, polish, and so on...
+It was infinite!
+Then I focused on some key aspects:
+
+1. Show the solution;
+2. Convey the /mindset/ necessary for the solution when possible;
+3. Teach the use of tools, and show some useful tricks;
+4. Explain the steps in detail, but keep it light, give pointers;
+
+
+I also added a lot of material after showing the solution.
+Something very interesting happened: a severe security breach that was not in the scope of that particular challenge.
+I explored that a little.
+Then I was ready to post, but asked ChatGPT for some critique.
+Well, if he had some!
+And they were good: /I/ could learn a lot!
+I'll work on that tomorrow, so no output for today, unfortunately!
+
+I put the development on hold for today, but took notes of things to improve; and there are already some!
+
+** Next
+# Immediate next steps or goals.
+# Could be tweaks, follow-ups, or completely new experiments.
+# Keep it small and actionable.
+# Examples:
+# Add error handling for missing or malformed JSON.
+# Write mini writeup for team on the automation process.
+# what’s your forward action or next goal. This closes the loop and keeps the momentum.
+# Example: “Add error handling and make it general for all CTF challenges” or “Write a tutorial for the PDF trick.”
+
+- Integrate ChatGPT's critique on the blog post.
+- Continue with the Elisp studies (but less time, focus on writeups).
+
+** Seinfeld Checkmark
+# (my-copy-seinfeld-jpeg-filename-to-clipboard)
+
+[[file:images/2025-10-27_seinfeld.jpeg]]
+
+- Today's Scores
+  - Fun: 4/5 (CTFs are fun!)
+  - Energy: 3/5 (recovered, but not 100% yet)
+
 * [2025-10-27 Mon]
 
 ** Work
