@@ -4,6 +4,82 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 
 # Usar `webdev' template (yas).
 
+* [2025-10-29 Wed]
+
+** Work
+# What I actually did today.
+# Experiments, coding, debugging, learning.
+# (Be honest. Even chaos counts.)
+# Examples:
+# Refactored the login automation script.
+# Experimented with parsing JSON from PicoCTF API challenges.
+# the effort or activity you put in. Think of it as your actions, experiments, coding sessions, research, debugging.
+# Example: “Refactored the login automation script” or “Analyzed the PDF forensic challenge.”
+
+More variety today, including /webdev/ proper!
+
+- Studied Elisp in the morning, 1h.
+- Webdev studies, also 1h.
+- A bit of blogging CTF writeups in the morning, a lot in the evening.
+
+** Outcome
+# What happened as a result of the work + output.
+# Insights, results, solved problems, new questions.
+# Even failures are outcomes: they teach.
+# Examples:
+# Script now reliably fetches challenges without manual cookie handling.
+# Learned nuances of auth headers and session management.
+# the result or effect of the work and output. Did it solve the problem? Did it teach you something? Did it help others?
+# Example: “Script successfully logs in automatically” or “Found hidden flag in the PDF.”
+
+- In Elisp, today's chapter was about the basics of function calls, clarifying that Elisp deals with /text/ editing a lot, thus the /theme/ of the code around that.
+  In this case, the examples were about /buffer/---size and positioning/navigation within---, and /point/ (-/min/​/​-/max/).
+- In Webdev, continuing with CSS, this time the /Flex/ Model.
+  Great improvements over The Box Model.
+  But the Grid is the way to go.
+  Still some time until we get there.
+  Again, lots of confusing rules and exceptions.
+  I gave up trying to aprehend those: will focus on the /results/: get the final product to look as intended.
+  I see no point in trying to make sense of this much confusion when my goal is not implement a web client, nor contribute with the specifications.
+- In the CTF Writeups, in the morning I went out for a long walk, thought a lot about how I would like to have the writeups.
+  I want it to be /real/.
+  The idea is to /backtrack/ the solution: start with TL;DR, and give the solution right away.
+  Then trace the steps back with an investigation of /why/ that solution worked.
+  This way
+  - It is more realistic, as the solutions often happen after trying out a lot of ideas: it is not /planned/, so it is not realistic to think that the person (me) who solved the challenge knew all that to begin with.
+  - The reader may stop as soon as they are satisfied with the depth, starting from just the solution and no depth at all, and going all the way to the core of the /why/ the solution worked in the first place.
+  In the evening worked on integrating ChatGPT's critique.
+  It was much more difficult that I thought.
+  - I had to learn a lot of new ~gdb~ commands
+  - Apparently ChatGPT was wrong (I believe, will check tomorrow) about the reason why the segfault occurred.
+    This made my life a little more difficult, as I had to investigate other possible reasons.
+    It was a slow process, and I thought about just giving up and finishing the post as it is (which would not be the end of the world, as it is reasonably deep).
+    But I want to learn it myself!
+    This are the foundations for Binary Exploitation, and skipping it will just hinder my progress moving forward.
+    But I'm tired!
+
+** Next
+# Immediate next steps or goals.
+# Could be tweaks, follow-ups, or completely new experiments.
+# Keep it small and actionable.
+# Examples:
+# Add error handling for missing or malformed JSON.
+# Write mini writeup for team on the automation process.
+# what’s your forward action or next goal. This closes the loop and keeps the momentum.
+# Example: “Add error handling and make it general for all CTF challenges” or “Write a tutorial for the PDF trick.”
+
+- Continue with Elisp and Webdev studies, try 1h again each, as it worked well today.
+- This time work alongside ChatGPT on the solution.
+
+** Seinfeld Checkmark
+# (my-copy-seinfeld-jpeg-filename-to-clipboard)
+
+[[file:images/2025-10-27_seinfeld.jpeg]]
+
+- Today's Scores
+  - Fun: 4/5 (meeting me where I was at: go for a walk and think; prioritize my /vision/ and /skill building/ instead of just public output.
+  - Energy: 4/5 getting energized!
+
 * [2025-10-28 Tue]
 
 ** Work
@@ -118,7 +194,7 @@ ChatGPT helped me with it, but it had a bug.
 I was feeling particularly sick at that time.
 But could manage to fix the bug, improve it a little bit, and integrate it to the code.
 
-#+begin_src elisp
+#+begin_src elisp :noweb no
 (defun html-get-text (html)
   "Return text in HTML."
   (interactive "Mhtml: ")
@@ -271,7 +347,7 @@ The pictures below show the info on the website and the editor.
 
 This is the code that makes the magic happens:
 
-#+begin_src elisp
+#+begin_src elisp :noweb no
 ;; TODO: Consider this division:
 ;; - ctf-fetch-json (or ctf-fetch-html)
 ;; - ctf-parse-info (or ctf-parse-html)
@@ -341,7 +417,7 @@ This is the code that makes the magic happens:
 
 It calls this script:
 
-#+begin_src python
+#+begin_src python :noweb no
 import json
 from bs4 import BeautifulSoup
 
@@ -394,7 +470,7 @@ For example, after downloading a file, it looks at its type (as informed by the 
 
 [[file:ctf-mode.el][ctf-mode.el]] ≡
 
-#+begin_src emacs-lisp :tangle ctf.el
+#+begin_src emacs-lisp :tangle ctf.el :noweb no
 ;; TODO: Consider this division:
 ;; - ctf-fetch-json (or ctf-fetch-html)
 ;; - ctf-parse-info (or ctf-parse-html)
@@ -410,7 +486,7 @@ For example, after downloading a file, it looks at its type (as informed by the 
 
 ~<<Define the minor mode>> +≡~
 
-#+begin_src elisp :noweb-ref Define the minor mode
+#+begin_src elisp :noweb-ref Define the minor mode :noweb no
 (define-minor-mode ctf-mode
   "Minor mode for CTF writeups."
   :lighter " Ctf"
@@ -423,7 +499,7 @@ For example, after downloading a file, it looks at its type (as informed by the 
 
 ~<​<Function that gets the challenge info from an ID>> +≡​~
 
-#+begin_src elisp :noweb-ref Function that gets the challenge info from an ID
+#+begin_src elisp :noweb-ref Function that gets the challenge info from an ID :noweb no
 (defun ctf-info-from-id (id &optional user)
   "Retrives the challenge's info from the website using ID."
   (interactive "Mid: ")
@@ -436,7 +512,7 @@ For example, after downloading a file, it looks at its type (as informed by the 
 
 ~<​<Ask for the info with the current cookie>> +≡​~
 
-#+begin_src elisp :noweb-ref Ask for the info with the current cookie :results none
+#+begin_src elisp :noweb-ref Ask for the info with the current cookie :results none :noweb no
 (require (quote auth-source))
 (let* ((user (or ctf-picoctf-user user))
        (results (car (auth-source-search :host "play.picoctf.org" :user user :max 1)))       
@@ -451,7 +527,7 @@ For example, after downloading a file, it looks at its type (as informed by the 
 
 ~<​<Variable definitions>> +≡​~
 
-#+begin_src elisp :noweb-ref Variable definitions
+#+begin_src elisp :noweb-ref Variable definitions :noweb no
 (defvar ctf-picoctf-user nil
   "Username to login on picoCTF.")
 #+end_src
@@ -460,7 +536,7 @@ For example, after downloading a file, it looks at its type (as informed by the 
 
 3. JSON and shell handling
 
-#+begin_src python :tangle html-to-plain.py
+#+begin_src python :tangle html-to-plain.py :noweb no
 import json
 from bs4 import BeautifulSoup
 
@@ -505,7 +581,7 @@ print("✅ Extracted plain text and URLs to /tmp/plain.json")
 
 ~<​<Ask for the info with the current cookie>> +≡​~
 
-#+begin_src elisp :noweb-ref Ask for the info with the current cookie
+#+begin_src elisp :noweb-ref Ask for the info with the current cookie :noweb no
 ;; TODO (ChatGPT critique): The ctf-html-to-plain-command bit feels brittle — if
 ;; the API returns HTML inside JSON, better to convert inside Emacs.  You can
 ;; strip tags using shr-render-region or libxml-parse-html-region. Then you’re
@@ -516,7 +592,7 @@ print("✅ Extracted plain text and URLs to /tmp/plain.json")
 
 ~<​<Variable definitions>> +≡​~
 
-#+begin_src elisp :noweb-ref Variable definitions
+#+begin_src elisp :noweb-ref Variable definitions :noweb no
 (defvar ctf-html-to-plain-command nil
   "Command to call when converting HTML to plain text.")
 #+end_src
@@ -525,7 +601,7 @@ print("✅ Extracted plain text and URLs to /tmp/plain.json")
 
 ~<​<Ask for the info with the current cookie>> +≡​~
 
-#+begin_src elisp :noweb-ref Ask for the info with the current cookie
+#+begin_src elisp :noweb-ref Ask for the info with the current cookie :noweb no
 (with-temp-buffer
   (insert-file-contents "/tmp/plain.json")
   (let* ((json-string (buffer-substring-no-properties (point-min) (point-max)))
@@ -539,7 +615,7 @@ Use the extracted, clean info to populate the writeup.
 
 ~<​<Populate the writeup with the challenge info>> +≡​~
 
-#+begin_src elisp :noweb-ref Populate the writeup with the challenge info
+#+begin_src elisp :noweb-ref Populate the writeup with the challenge info :noweb no
 ;; TODO: Use `org-insert-link' for the links below.
 (defun ctf-insert-info (id)
   "Insert the info from challenge ID into current buffer."
@@ -610,7 +686,7 @@ Today was that day for me.
 
 It all started with Yasnippets, that helps with abbreviations: when I type ~autotangle~, for instance, it expands to
 
-#+begin_src shell :eval no
+#+begin_src shell :eval no :noweb no
 #-*- auto-fill-function: nil; eval: (add-hook 'after-save-hook (lambda () (org-babel-tangle) (load "/home/rafa/dev/webdev-study/README")) nil t); -*-
 #+end_src
 
@@ -630,7 +706,7 @@ The next section is all theirs.
 
 ~noweb.el~
 
-#+begin_src elisp :tangle no
+#+begin_src elisp :tangle no :noweb no
 (defvar noweb-mode-map (make-sparse-keymap))
 
 (define-minor-mode  noweb-mode
@@ -650,7 +726,7 @@ The next section is all theirs.
 
 # Can't tangle this because it contains `<<', and this upsets Org-babel's noweb
 # engine.
-#+begin_src elisp :tangle no
+#+begin_src elisp :tangle no :noweb no
 (defun noweb-fix-function-thingy-buffer-wide ()
   "Adds some ZERO WIDTH SPACE to avoid font-lock conflicts with Org."
   (interactive)
@@ -666,7 +742,7 @@ The next section is all theirs.
 
 ~<​<font-lock stuff>> +≡​~
 
-#+begin_src elisp :noweb-ref font-lock stuff
+#+begin_src elisp :noweb-ref font-lock stuff :noweb no
 (defface noweb-module-name-face
   '((t (:foreground "green")))
   "Face for `foo' in `<<foo>>'.")
@@ -676,7 +752,7 @@ The next section is all theirs.
 
 ~<​<font-lock stuff>> +≡​~
 
-#+begin_src elisp :noweb-ref font-lock stuff :noweb no
+#+begin_src elisp :noweb-ref font-lock stuff :noweb no :noweb no
 (defvar noweb-font-lock-keywords
   '(("\\(<<.*>>\\)" 1 'noweb-module-name-face t)
     ("~\\(<​<.*>>\\) \\+≡​~" 1 'noweb-module-name-face t))
@@ -685,7 +761,7 @@ The next section is all theirs.
 
 ~<​<Resolve faces when enabling/disabling the mode>> +≡​~
 
-#+begin_src elisp :noweb-ref Resolve faces when enabling/disabling the mode
+#+begin_src elisp :noweb-ref Resolve faces when enabling/disabling the mode :noweb no
 (if noweb-mode
     (font-lock-add-keywords nil noweb-font-lock-keywords t)
   (font-lock-remove-keywords nil noweb-font-lock-keywords))
@@ -697,7 +773,7 @@ The next section is all theirs.
 
 ~<​<functions>> +≡​~
 
-#+begin_src elisp :noweb-ref functions
+#+begin_src elisp :noweb-ref functions :noweb no
 (defun noweb-load-auto-tangled ()
   "Call function `load' on the file with same name but `.el' extension."
   (interactive)
@@ -716,7 +792,7 @@ For example, after downloading a file, it looks at its type (as informed by the 
 
 [[file:ctf-mode.el][ctf-mode.el]] ≡
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp :tangle no :noweb no
 <<Define the minor mode>>
 (provide 'ctf-mode)
 #+end_src
@@ -724,7 +800,7 @@ For example, after downloading a file, it looks at its type (as informed by the 
 
 ~<<Define the minor mode>> +≡~
 
-#+begin_src elisp :noweb-ref Define the minor mode
+#+begin_src elisp :noweb-ref Define the minor mode :noweb no
 (define-minor-mode ctf-mode
   "Minor mode for CTF writeups."
   :lighter " Ctf"
@@ -735,7 +811,7 @@ For example, after downloading a file, it looks at its type (as informed by the 
 
 *** *Description Function.*  CTF writeups are all about the challenge.  Let's create a function that helps us when creating that description.
 
-#+begin_src elisp
+#+begin_src elisp :noweb no
 (define-skeleton blog-insert-description
   "Insert ctf description for the blog."
   nil
@@ -770,7 +846,7 @@ In the end, I could use official packages, and the latest releases, which is a r
 
 This one may look a bit *bold*, but it is used reasonably, I promise...
 
-#+begin_src elisp
+#+begin_src elisp :noweb no
 (defun git-commit-all (message)
   "Stage and commit all changes in the repository."
   (interactive "Mmessage: ")
@@ -792,7 +868,7 @@ I also told Emacs to tilde the words when they belonged to a special list: a lis
 
 This was fun, as I had the opportunity to work with file-local variables and learned a lot.
 
-#+begin_src elisp
+#+begin_src elisp :noweb no
 (defun my-mark-command-in-tilde ()
   "Wrap shell commands in ~command~ when typed in Org, except inside src blocks.
 Triggers on non-word characters like space, ., ,, etc."
@@ -861,7 +937,7 @@ Next steps include changing the theme for a more /cyber/-oriented :)
 
 I made a tiny adaptation to a function to make the publishing process esier---it asks for a directory if called in a specific manner.
 
-#+begin_src elisp
+#+begin_src elisp :noweb no
 (defun my-org-jekyll-md-export-to-md (&optional arg async subtreep visible-only)
   "Export current buffer to a Markdown file adding some YAML front matter."
   (interactive "P")
@@ -876,7 +952,7 @@ I made a tiny adaptation to a function to make the publishing process esier---it
 
 This little function may help a lot!
 
-#+begin_src elisp
+#+begin_src elisp :noweb no
 (define-skeleton blog-header
   "Insert a header for blogging."
   nil
@@ -956,7 +1032,7 @@ We are also given the following Hints:
 - You can rotate fake IPs to bypass rate limits.
 
 **** Download assets
-#+begin_src shell
+#+begin_src shell :noweb no
 2>&1 wget https://challenge-files.picoctf.net/c_amiable_citadel/d168d254b68d30726076de06aab9b9b74c5470344ec974360f5a9045c6398b17/passwords.txt
 #+end_src
 
@@ -1005,7 +1081,7 @@ M707m17w
 I tried to login via the web page once, and got the command below.
 Running it again here, using cURL.
 
-#+begin_src shell
+#+begin_src shell :noweb no
 2>&1 curl -v 'http://amiable-citadel.picoctf.net:57381/login' \
   -X POST \
   -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0' \
@@ -1060,7 +1136,7 @@ It applied the rate-limiting.
 
 Now trying again, using the header ~X-Forwarded-For~ to spoof my IP.
 
-#+begin_src shell
+#+begin_src shell :noweb no
 2>&1 curl -v 'http://amiable-citadel.picoctf.net:57381/login' \
   -X POST \
   -H 'X-Forwarded-For: 1.2.3.4' \
@@ -1119,7 +1195,7 @@ It did *not* apply the rate-limiting!
 
 [[file:login.sh][login.sh]] ≡
 
-#+begin_src shell
+#+begin_src shell :noweb no
 #!/bin/bash
 
 # Part of the IP that will change for each request
@@ -1810,7 +1886,7 @@ Anyway, need a command-line Pomodoro?
 
 *** ~pomodoro~
 
-#+begin_src shell
+#+begin_src shell :noweb no
 #!/bin/bash
 
 ME=$(basename $0)
@@ -1847,7 +1923,7 @@ done
 
 *** ~timer~
 
-#+begin_src shell
+#+begin_src shell :noweb no
 #!/bin/bash
 
 ME=$(basename $0)
@@ -1920,7 +1996,7 @@ ding
 
 *** ~ding~
 
-#+begin_src shell
+#+begin_src shell :noweb no
 #!/bin/bash
 
 mocp --play /usr/share/sounds/freedesktop/stereo/complete.oga
@@ -2039,7 +2115,7 @@ szo7HDB88w
 
 ***** Can I use gdb to see the pin code?
 
-#+begin_src shell
+#+begin_src shell :noweb no
 leviathan6@leviathan:~$ gdb --args ./leviathan6 1234
 #+end_src
 
@@ -2143,7 +2219,7 @@ Data for the levels can be found in the homedirectories. You can look at /etc/le
 
 **** Automatically assemble SSH command from given user and password (C-. C-.)
 
-#+begin_src elisp :results none
+#+begin_src elisp :results none :noweb no
 (defun hack-ctf-overthewire-dot-org-leviathan-ssh-command
     (arg user password)
   "Read USER and PASSWORD then return complete ssh command.
@@ -2524,7 +2600,7 @@ Preciso achar um arquivo:
 
 Será que o comando ~find~ dá isso?
 
-#+begin_src bash
+#+begin_src bash :noweb no
 find . -type f -size 1033c -exec cat {} +
 #+end_src
 
@@ -2538,7 +2614,7 @@ file that:
     - owned by group bandit6
     - 33 bytes in size
 
-#+begin_src shell
+#+begin_src shell :noweb no
 find / 2>/dev/null -user bandit7 -group bandit6 -size 33c -exec cat {} \;
 #+end_src
 
@@ -2561,7 +2637,7 @@ FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
 
 Nesse tem uma string codificada em base64.
 
-#+begin_src shell
+#+begin_src shell :noweb no
 base64 -d data.txt
 #+end_src
 
@@ -2575,7 +2651,7 @@ Essa é uma cifra conhecida já, a tal da ROT13.
 26 letras no falnalabeto: f == f^{-1}.
 ROT13 é sua própria inversa.
 
-#+begin_src shell
+#+begin_src shell :noweb no
 tr 'A-Za-z' 'N-ZA-Mn-za-m' < data.txt
 #+end_src
 
@@ -2589,7 +2665,7 @@ They tell it's a file that was compressed multiple times.
 I need to get the file that generated that hexdump.
 This can be done with:
 
-#+begin_src shell
+#+begin_src shell :noweb no
 xxd -r data.txt
 #+end_src
 
@@ -2611,7 +2687,7 @@ Note: localhost is a hostname that refers to the machine you are working on
 2. Then I renamed it to ~id_rsa~.
 3. Then
 
-#+begin_src shell
+#+begin_src shell :noweb no
 ssh bandit.labs.overthewire.org -p 2220 -i ~/.ssh/id_rsa_overthewire.org-bandit14-private-key -l bandit14
 #+end_src
 
@@ -2628,7 +2704,7 @@ I want to send that string (those bytes) to localhost on port 30000.
 
 After readin man telnet.
 
-#+begin_src shell
+#+begin_src shell :noweb no
 telnet localhost 30000
 #+end_src
 
@@ -2646,7 +2722,7 @@ The password for the next level can be retrieved by submitting the password of t
 I connected to the server/port using ~openssl~.
 It's the same procedure as the telnet, but Secure®.
 
-#+begin_src shell
+#+begin_src shell :noweb no
 openssl s_client -crlf -connect localhost:30001
 #+end_src
 
@@ -2675,7 +2751,7 @@ PORT      STATE SERVICE
 31960/tcp open  unknown
 #+end_example
 
-#+begin_src shell
+#+begin_src shell :noweb no
 for p in 31046 31518 31691 31790 31960; do openssl s_client -crlf -connect localhost:$p; done;
 #+end_src
 
@@ -2702,19 +2778,19 @@ This happened because the sent data started with a *k*, that has a meaning in th
 
 [[https://stackoverflow.com/a/58574851][This answer on Stackoverflow]] suggests to avoid using the interactive session with ~ign_eof~:
 
-#+begin_src shell
+#+begin_src shell :noweb no
 for p in 31046 31518 31691 31790 31960; do openssl s_client -ign_eof -crlf -connect localhost:$p; done;
 #+end_src
 
 The correct one was:
 
-#+begin_src shell
+#+begin_src shell :noweb no
 openssl s_client -ign_eof -crlf -connect localhost:31790
 #+end_src
 
 Got a private key :)
 
-#+begin_src id_rsa
+#+begin_src id_rsa :noweb no
 -----BEGIN RSA PRIVATE KEY-----
 MIIEogIBAAKCAQEAvmOkuifmMg6HL2YPIOjon6iWfbp7c3jx34YkYWqUH57SUdyJ
 imZzeyGC0gtZPGujUSxiJSWI/oTqexh+cAMTSMlOJf7+BrJObArnxd9Y7YT2bRPQ
@@ -2744,7 +2820,7 @@ vBgsyi/sN3RqRBcGU40fOoZyfAMT8s1m/uYv52O6IgeuZ/ujbjY=
 -----END RSA PRIVATE KEY-----
 #+end_src
 
-#+begin_src shell
+#+begin_src shell :noweb no
 chmod 600 ~/.ssh/id_rsa_overthewire.org-bandit17
 #+end_src
 
@@ -2773,7 +2849,7 @@ When you connect via SSH and specify a command to execute directly (e.g., ssh us
 
 I did this (intructions told about ~readme~):
 
-#+begin_src shell
+#+begin_src shell :noweb no
 ssh bandit.labs.overthewire.org -p 2220 -l bandit18 "cat readme"
 #+end_src
 
@@ -2786,7 +2862,7 @@ Achei que o programa iria /modificar/ o proprietário do arquivo com a senha.
 
 Quando rodei o comando para saber o que fazer (conforme instruído), recebi a seguinte saída:
 
-#+begin_src shell
+#+begin_src shell :noweb no
 bandit19@bandit:~$ ./bandit20-do
 Run a command as another user.
   Example: ./bandit20-do id
@@ -2797,7 +2873,7 @@ Eu não li a primeira linha da saída e achei que tinha que descobrir o meu ~id~
 Depois eu acabei rodando o comando de novo e li a primeira linha.
 Daí rodei:
 
-#+begin_src shell
+#+begin_src shell :noweb no
 bandit19@bandit:/etc/bandit_pass$ ~/bandit20-do cat bandit20
 #+end_src
 
@@ -2807,7 +2883,7 @@ e obtive a senha:
 
 O executável ~bandit20-do~ foi setado com o user bandit20 e o meu grupo.
 
-#+begin_src shell
+#+begin_src shell :noweb no
 bandit19@bandit:~$ stat bandit20-do
   File: bandit20-do
   Size: 14884           Blocks: 32         IO Block: 4096   regular file
@@ -2906,7 +2982,7 @@ Nmap done: 1 IP address (1 host up) scanned in 0.05 seconds
 I tried connecting both ~suconnect~ and ~telnet~ to port 1111 (has "social" in the name); suconnect with '&'; and then send the password through telnet.
 I expect to receive an answer from suconnect, because it is in the same "chat".
 
-#+begin_src shell
+#+begin_src shell :noweb no
 telnet 1111 &
 telnet 1111
 Hello, there!
@@ -2917,7 +2993,7 @@ It says something like "job /stopped/"; I wonder if I need to keep it running in
 
 Let's try a different port: 30000.
 
-#+begin_src shell
+#+begin_src shell :noweb no
 bandit20@bandit:~$ ./suconnect 30000 &
 [1] 69995
 bandit20@bandit:~$ telnet localhost 30000
@@ -2934,7 +3010,7 @@ Let's test it.
 That Bandit is 14.
 Let's re-run it:
 
-#+begin_src shell
+#+begin_src shell :noweb no
 bandit20@bandit:~$ telnet localhost 30000
 Trying 127.0.0.1...
 Connected to localhost.
@@ -3010,13 +3086,13 @@ I tried using ~screen~ to run the daemon, and another session to connect to it.
 
 I created a dedicated session for ~suconnect~:
 
-#+begin_src shell
+#+begin_src shell :noweb no
 screen -S suconnect
 #+end_src
 
 Then I started the ~suconnect~ daemon.
 
-#+begin_src shell
+#+begin_src shell :noweb no
 ./suconnect 30001
 #+end_src
 
@@ -3024,7 +3100,7 @@ Then I detached the screen session with ~C-a d~.
 
 Then I connected and sent the password using ~nc~.
 
-#+begin_src shell
+#+begin_src shell :noweb no
 nc localhost 30001
 #+end_src
 
@@ -3032,7 +3108,7 @@ I was disconnected, as expected.
 
 Then I reattached to the ~screen~ running ~suconnect~ with
 
-#+begin_src shell
+#+begin_src shell :noweb no
 screen -x suconnect
 #+end_src
 
@@ -3071,7 +3147,7 @@ Listening on 0.0.0.0 30003
 Then I dettached and attached to ~suconnect~'s ~screen~.
 I started ~suconnect~ there using the same port.
 
-#+begin_src shell
+#+begin_src shell :noweb no
 ./suconnect 30003
 #+end_src
 
@@ -3378,7 +3454,7 @@ The processing of each file occurs as follows:
 
 ~<<process each file>> +≡~
 
-#+begin_src x :noweb-ref process each file
+#+begin_src x :noweb-ref process each file :noweb no
 echo "Handling $i"
 owner="$(stat --format "%U" ./$i)"
 if [ "${owner}" = "bandit23" ]; then
@@ -3390,7 +3466,7 @@ rm -f ./$i
 It runs /my/ scripts inside ~/var/spool/bandit24/foo~.
 I will try to inject a script there that somehow gives me ~bandit24~'s password.
 
-#+begin_src shell
+#+begin_src shell :noweb no
 #!/bin/bash
 MY_PASS_FILE=/etc/bandit_pass/bandit24
 TARGET=zoiaum
@@ -3546,7 +3622,7 @@ There's a private key in bandit25's home dir:
 
 ~id_rsa_overthewire.org-bandit26~ ≡
 
-#+begin_src ssh-key
+#+begin_src ssh-key :noweb no
 -----BEGIN RSA PRIVATE KEY-----
 MIIEpQIBAAKCAQEApis2AuoooEqeYWamtwX2k5z9uU1Afl2F8VyXQqbv/LTrIwdW
 pTfaeRHXzr0Y0a5Oe3GB/+W2+PReif+bPZlzTY1XFwpk+DiHk1kmL0moEW8HJuT9
@@ -3576,7 +3652,7 @@ IZdtF5HXs2S5CADTwniUS5mX1HO9l5gUkk+h0cH5JnPtsMCnAUM+BRY=
 -----END RSA PRIVATE KEY-----
 #+end_src
 
-#+begin_src shell
+#+begin_src shell :noweb no
 chmod 600 ~/.ssh/id_rsa_overthewire.org-bandit26
 #+end_src
 
@@ -3716,7 +3792,7 @@ Precisa de um script.
 
 [[file:landit26.expect][bandit26.expect]] ≡
 
-#+begin_src expect
+#+begin_src expect :noweb no
 #!/usr/bin/expect -f
 # bandit26-hit.exp — spawn ssh and immediately send a control byte, then hand control to you.
 
@@ -3742,7 +3818,7 @@ expect {
 interact
 #+end_src
 
-#+begin_src shell
+#+begin_src shell :noweb no
 chmod +x bandit26.expect
 #+end_src
 
@@ -3833,7 +3909,7 @@ git
 
 Basic clone structure.
 
-#+begin_src shell
+#+begin_src shell :noweb no
 export SERVER=bandit29-git@bandit.labs.overthewire.org
 export PORT=2220
 export REMOTE_FOLDER=/home/bandit29-git/repo
@@ -3846,7 +3922,7 @@ Essential in this problem: mirror the remote repository.
 This way we get all the branches.
 The password turned out to be on a branch ~dev~, that was not fetched with the normal ~git clone~ command.
 
-#+begin_src shell
+#+begin_src shell :noweb no
 export GIT_FLAGS="--mirror"
 echo git clone $GIT_FLAGS $REMOTE_REPO $REPO
 #+end_src
@@ -3869,7 +3945,7 @@ Commands you may need to solve this level
 git
 #+end_quote
 
-#+begin_src shell
+#+begin_src shell :noweb no
 export BANDIT=bandit30-git
 export URL=${BANDIT}@bandit.labs.overthewire.org
 export PORT=2220
@@ -3910,7 +3986,7 @@ Commands you may need to solve this level
 git
 #+end_quote
 
-#+begin_src shell
+#+begin_src shell :noweb no
 export BANDIT=bandit31-git
 export URL=${BANDIT}@bandit.labs.overthewire.org
 export PORT=2220
@@ -3925,7 +4001,7 @@ echo git clone $GIT_FLAGS $REMOTE_REPO $REPO
 #+RESULTS:
 : git clone --mirror ssh://bandit31-git@bandit.labs.overthewire.org:2220/home/bandit31-git/repo /home/rafa/hack/overthewire.org/bandit31-git-repo-mirror
 
-#+begin_src shell
+#+begin_src shell :noweb no
 PASSWORD=fb5S2xb7bRyFmAvQYQGEqsbhVyJqhnDy
 URL=bandit.labs.overthewire.org
 PORT=2220
@@ -3953,7 +4029,7 @@ bandit31@bandit:~$ cat .gitconfig
         name = bandit31
 #+end_example
 
-#+begin_src shell
+#+begin_src shell :noweb no
 git ls-remote
 #+end_src
 
@@ -4002,7 +4078,7 @@ I want to
 
 Clone without mirror.
 
-#+begin_src shell
+#+begin_src shell :noweb no
 export BANDIT=bandit31-git
 export URL=${BANDIT}@bandit.labs.overthewire.org
 export PORT=2220
@@ -4019,7 +4095,7 @@ echo git clone $GIT_FLAGS $REMOTE_REPO $REPO
 I need to add the user info I found on 31's home folder .gitconfig:
 Add it to the repo's .git/config file.
 
-#+begin_src gitconfig /home/rafa/hack/overthewire.org/bandit31-git-repo/.git/.gitconfig
+#+begin_src gitconfig /home/rafa/hack/overthewire.org/bandit31-git-repo/.git/.gitconfig :noweb no
 [user]
         email = bandit31@overthewire.org
         name = bandit31
@@ -4103,7 +4179,7 @@ Commands you may need to solve this level
 sh, man
 #+end_quote
 
-#+begin_src shell
+#+begin_src shell :noweb no
 PASSWORD=3O9RfhqyAlVBEZpVb6LYStshZoqoSx5K
 URL=bandit.labs.overthewire.org
 PORT=2220
@@ -4191,7 +4267,7 @@ This has some face-related functions and settings, including the configuration o
 
 [[file:~/elisp/faces.el][~/elisp/faces.el]] ≡
 
-#+begin_src elisp
+#+begin_src elisp :noweb no
 <<define the functions>>
 <<reset the faces>>
 (face-set-after-frame-default (selected-frame))
@@ -4205,7 +4281,7 @@ Reset face: all settings to default.
 
 ~<<reset the faces>> +≡~
 
-#+begin_src elisp :noweb-ref reset the faces
+#+begin_src elisp :noweb-ref reset the faces :noweb no
 (face-reset 'default)
 #+end_src
 
@@ -4215,14 +4291,14 @@ Go nuclear: Reset all Org faces.
 
 ~<<reset the faces>> +≡~
 
-#+begin_src elisp :noweb-ref reset the faces
+#+begin_src elisp :noweb-ref reset the faces :noweb no
 <<push all known Org faces into a list>>
 <<reset all Org faces from that list>>
 #+end_src
 
 ~<<push all known Org faces into a list>> +≡~
 
-#+begin_src elisp :noweb-ref push all known Org faces into a list
+#+begin_src elisp :noweb-ref push all known Org faces into a list :noweb no
 ;; Collect all org faces
 (setq org-faces (seq-filter
                  (lambda (face)
@@ -4232,7 +4308,7 @@ Go nuclear: Reset all Org faces.
 
 ~<<reset all Org faces from that list>> +≡~
 
-#+begin_src elisp :noweb-ref reset all Org faces from that list
+#+begin_src elisp :noweb-ref reset all Org faces from that list :noweb no
 (face-reset-list org-faces)
 #+end_src
 
@@ -4240,7 +4316,7 @@ Go nuclear: Reset all Org faces.
 
 ~<<define the functions>> +≡~
 
-#+begin_src elisp :noweb-ref define the functions
+#+begin_src elisp :noweb-ref define the functions :noweb no
 <<define a function to reset a face>>
 <<define a function to reset a list of faces>>
 #+end_src
@@ -4249,7 +4325,7 @@ Go nuclear: Reset all Org faces.
 
 ~<<define a function to reset a face>> +≡~
 
-#+begin_src elisp :noweb-ref define a function to reset a face
+#+begin_src elisp :noweb-ref define a function to reset a face :noweb no
 (defun face-reset (face)
   "Sets FACE attributes to absolute and average values."
   (interactive)
@@ -4272,7 +4348,7 @@ of attributes for new frames.
 
 ~<<FRAME>> +≡~
 
-#+begin_src elisp :noweb-ref FRAME
+#+begin_src elisp :noweb-ref FRAME :noweb no
 t
 #+end_src
 
@@ -4280,7 +4356,7 @@ t
 
 ~<<&rest ARGS>> +≡~
 
-#+begin_src elisp  :noweb-ref &rest ARGS
+#+begin_src elisp  :noweb-ref &rest ARGS :noweb no
 :family "Lat15Fixed16"
 :foundry "PfEd"
 #+end_src
@@ -4296,7 +4372,7 @@ I am not sure what it means, or how it is calculated.
 
 ~<<&rest ARGS>> +≡~
 
-#+begin_src elisp :noweb-ref &rest ARGS
+#+begin_src elisp :noweb-ref &rest ARGS :noweb no
 :width 'normal
 :height 128
 #+end_src
@@ -4305,7 +4381,7 @@ I am not sure what it means, or how it is calculated.
 
 ~<<&rest ARGS>> +≡~
 
-#+begin_src elisp :noweb-ref &rest ARGS
+#+begin_src elisp :noweb-ref &rest ARGS :noweb no
 :weight 'medium
 :slant 'normal
 #+end_src
@@ -4314,7 +4390,7 @@ I am not sure what it means, or how it is calculated.
 
 ~<<&rest ARGS>> +≡~
 
-#+begin_src elisp :noweb-ref &rest ARGS
+#+begin_src elisp :noweb-ref &rest ARGS :noweb no
 :foreground "dark gray"
 :background "black"
 #+end_src
@@ -4323,7 +4399,7 @@ I am not sure what it means, or how it is calculated.
 
 ~<<&rest ARGS>> +≡~
 
-#+begin_src elisp :noweb-ref &rest ARGS
+#+begin_src elisp :noweb-ref &rest ARGS :noweb no
 :underline nil
 :overline nil
 :strike-through nil
@@ -4334,7 +4410,7 @@ I am not sure what it means, or how it is calculated.
 
 ~<<&rest ARGS>> +≡~
 
-#+begin_src elisp :noweb-ref &rest ARGS
+#+begin_src elisp :noweb-ref &rest ARGS :noweb no
 :inverse-video nil
 #+end_src
 
@@ -4342,7 +4418,7 @@ I am not sure what it means, or how it is calculated.
 
 ~<<&rest ARGS>> +≡~
 
-#+begin_src elisp :noweb-ref &rest ARGS
+#+begin_src elisp :noweb-ref &rest ARGS :noweb no
 :stipple nil
 #+end_src
 
@@ -4350,7 +4426,7 @@ I am not sure what it means, or how it is calculated.
 
 ~<<&rest ARGS>> +≡~
 
-#+begin_src elisp :noweb-ref &rest ARGS
+#+begin_src elisp :noweb-ref &rest ARGS :noweb no
 :extend nil
 #+end_src
 
@@ -4362,7 +4438,7 @@ Don't see the need for this.
 
 **** ~inherit~
 
-#+begin_src elisp :noweb-ref &rest ARGS
+#+begin_src elisp :noweb-ref &rest ARGS :noweb no
 :inherit nil
 #+end_src
 
@@ -4370,7 +4446,7 @@ Don't see the need for this.
 
 ~<<define a function to reset a list of faces>> +≡~
 
-#+begin_src elisp :noweb-ref define a function to reset a list of faces
+#+begin_src elisp :noweb-ref define a function to reset a list of faces :noweb no
 (defun face-reset-list (face-list)
   "Apply function `face-reset' to a list of faces."
   (interactive)
@@ -4484,7 +4560,7 @@ Lots of quirks.
 The one thing I really think would be useful is: when setting a property valeu, being able to reference the /current/ value.
 For instance: If I want to make the first letter of a paragraph twice as big, I could say something like:
 
-#+begin_src css
+#+begin_src css :noweb no
 p::first-letter {
   font-size: calc(current * 2);  /* or  '2*'  */
 }
@@ -4492,7 +4568,7 @@ p::first-letter {
 
 Or if I wanted it to be 10 pixels bigger:
 
-#+begin_src css
+#+begin_src css :noweb no
 p::first-letter {
   font-size: calc(current + 10px);
 }
@@ -4527,7 +4603,7 @@ CSS has its own tree, the *box tree*, derived from the DOM.
 
 [[file:pages/css2.1-margins-padding-border.html][pages/css2.1-margins-padding-border.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <HTML>
   <HEAD>
@@ -4598,7 +4674,7 @@ First we tangle.
 
 [[file:~/dev/js-ChatGPT/2025-10-06.html][~/dev/js-ChatGPT/2025-10-06.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE html>
 
 <html lang="en">
@@ -4630,7 +4706,7 @@ Learn: event.key.
 
 ~<<html>> +≡~
 
-#+begin_src html :noweb-ref html
+#+begin_src html :noweb-ref html :noweb no
 <dt>Keyboard Events</dt>
 <dd><p id="pKeyPress"></p></dd>
 #+end_src
@@ -4642,7 +4718,7 @@ Will add it to ~window~.
 
 ~<<js>> +≡~
 
-#+begin_src js :noweb-ref js
+#+begin_src js :noweb-ref js :noweb no
 const pKeyPress = document.getElementById("pKeyPress");
 window.addEventListener("keydown", (e) => {
     pKeyPress.textContent = e.key;
@@ -4668,7 +4744,7 @@ Will use a ~dl~.
 
 ~<<html>> +≡~
 
-#+begin_src html :noweb-ref html
+#+begin_src html :noweb-ref html :noweb no
 <dt>Guess the number</dt>
 <dd>Enter a number between 1 and 10</dd>
 <dd><input id="inputGuessNumber" type="text"><button id="buttonGuessNumber">Go!</button></dd>
@@ -4680,7 +4756,7 @@ Create a function to choose a random number between 1 and 10.
 
 ~<<js>> +≡~
 
-#+begin_src js :noweb-ref js
+#+begin_src js :noweb-ref js :noweb no
 <<allow user to press Enter instead of clicking the button>>
 let number = Math.floor(Math.random() * 10) + 1;
 const ddGuessNumberResult = document.getElementById("ddGuessNumberResult");
@@ -4716,7 +4792,7 @@ The Standard says ~section~ and ~hr~ have some "equivalences"---let's experiment
 
 [[file:~/dev/webdev-study/pages/hr.html][~/dev/webdev-study/pages/hr.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE html>
 
 <html lang="en">
@@ -4754,7 +4830,7 @@ Visually, there's no explicit "equivalence"; maybe we need some CSS for that.
 
 [[file:pages/pre.html][pages/pre.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE html>
 
 <html lang="en">
@@ -4791,7 +4867,7 @@ Both use monospaced fonts.
 
 [[file:pages/kbd.html][pages/kbd.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE html>
 
 <html lang="en">
@@ -4822,7 +4898,7 @@ Initial whitespace ("prefixing" w.) matters.
 
 [[file:pages/blockquote.html][pages/blockquote.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE html>
 
 <html lang="en">
@@ -4911,7 +4987,7 @@ Initial whitespace ("prefixing" w.) matters.
 
 [[file:pages/ol.html][pages/ol.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE html>
 
 <html lang="en">
@@ -4995,7 +5071,7 @@ Initial whitespace ("prefixing" w.) matters.
 
 [[file:pages/menu.html][pages/menu.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE html>
 
 <html lang="en">
@@ -5019,7 +5095,7 @@ Initial whitespace ("prefixing" w.) matters.
 
 [[file:pages/dl.html][pages/dl.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE html>
 
 <html lang="en">
@@ -5079,7 +5155,7 @@ Things with a caption.
 
 [[file:pages/figure.html][pages/figure.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE html>
 
 <html lang="en">
@@ -5135,7 +5211,7 @@ Things with a caption.
 
 [[file:pages/main.html][pages/main.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE html>
 <html lang="en">
   <title>RPG System 17</title>
@@ -5173,7 +5249,7 @@ Things with a caption.
 
 [[file:pages/main-2.html][pages/main-2.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!doctype html>
 <html lang=en-CA>
 <meta charset=utf-8>
@@ -5214,7 +5290,7 @@ For small print.
 
 [[file:pages/small.html][pages/small.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE html>
 
 <html lang="en">
@@ -5239,7 +5315,7 @@ For small print.
 
 [[file:pages/web-worker.html][pages/web-worker.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE HTML>
 <html lang="en">
  <head>
@@ -5261,7 +5337,7 @@ For small print.
 
 [[file:pages/worker.js][pages/worker.js]] ≡
 
-#+begin_src js
+#+begin_src js :noweb no
 var n = 1;
 search: while (true) {
   n += 1;
@@ -5304,7 +5380,7 @@ But learned a lot!
 
 [[file:pages/2025-10-05_1h.html][pages/2025-10-05_1h.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE html>
 
 <html lang="en">
@@ -5445,7 +5521,7 @@ JavaScript, for focus on current major learning goals.
 Exercism, HackerRank, LeetCode, all very advanced problems.
 Then asked ChatGPT for some, and this is what I got:
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE html>
 
 <html lang="en">
@@ -5585,7 +5661,7 @@ After I submitted my solutions, ChatGPT
   Instead of converting textContent back and forth each click, you could keep a separate variable:
   #+end_quote
 
-  #+begin_src js
+  #+begin_src js :noweb no
   let counter = 0;
   function updateCounter() {
     leCounterP.textContent = counter;
@@ -5604,7 +5680,7 @@ After I submitted my solutions, ChatGPT
   My version is more compact, but looks clumsier.
   I could have also done away with the ~`...`~, as it accepts numbers.
 
-  #+begin_src js
+  #+begin_src js :noweb no
   leCounterButtonPlus.addEventListener("click", function () {
       leCounterP.textContent = `${Number(leCounterP.textContent) + 1}`;
   });
@@ -5833,7 +5909,7 @@ Then ChatGPT inspired me to change gears.
 
       1. Open a terminal and run the command
 
-         #+begin_src shell
+         #+begin_src shell :noweb no
          gpg --gen-key
          #+end_src
 
@@ -5849,7 +5925,7 @@ Then ChatGPT inspired me to change gears.
 
 3. Change the permissions of the file to make it more secure
 
-   #+begin_src shell
+   #+begin_src shell :noweb no
    chmod 600 ~/.authinfo.gpg
    #+end_src
 
@@ -5862,7 +5938,7 @@ It
 
 2. Sets the environment variables needed by =ma-github=.
 
-#+begin_src elisp
+#+begin_src elisp :noweb no
 ;; ensure auth-source uses the default backends (it does by default)
 ;; Here is a tiny helper that reads the token and (optionally) sets env var:
 
@@ -5933,7 +6009,7 @@ Create the structure for main HTML doc:
 
 [[file:odin/assignments/foundations/lists/index.html][odin/assignments/foundations/lists/index.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5956,7 +6032,7 @@ Create the structure for main HTML doc:
 
 ~<<food>> +≡~
 
-#+begin_src html :noweb-ref food
+#+begin_src html :noweb-ref food :noweb no
 <h1>My favorite foods</h1>
 <ul>
   <li>Lasagna</li>
@@ -5973,7 +6049,7 @@ Create the structure for main HTML doc:
 
 ~<<todos>> +≡~
 
-#+begin_src html :noweb-ref todos
+#+begin_src html :noweb-ref todos :noweb no
 <h1>Todos for Todays</h1>
 <ol>
   <li>Code a minimum of 1h</li>
@@ -5990,7 +6066,7 @@ Create the structure for main HTML doc:
 
 ~<<places>> +≡~
 
-#+begin_src html :noweb-ref places
+#+begin_src html :noweb-ref places :noweb no
 <h1>Places I want to visit</h1>
 <ul>
   <li>Paris</li>
@@ -6007,7 +6083,7 @@ Create the structure for main HTML doc:
 
 ~<<games>> +≡~
 
-#+begin_src html :noweb-ref games
+#+begin_src html :noweb-ref games :noweb no
 <h1>My favorite games of all time</h1>
 <ol>
   <li>Zelda (Ocarina)</li>
@@ -6027,7 +6103,7 @@ Create the structure for main HTML doc:
 1. Create a new directory named odin-links-and-images.
 #+end_quote
 
-#+begin_src bash
+#+begin_src bash :noweb no
 mkdir ./odin/assignments/foundations/odin-links-and-images
 #+end_src
 
@@ -6040,7 +6116,7 @@ mkdir ./odin/assignments/foundations/odin-links-and-images
 
 [[file:odin/assignments/foundations/odin-links-and-images/index.html][odin/assignments/foundations/odin-links-and-images/index.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6062,7 +6138,7 @@ mkdir ./odin/assignments/foundations/odin-links-and-images
 
 ~<<body Content odin-links-and-images>> +≡~
 
-#+begin_src html :noweb-ref body Content odin-links-and-images
+#+begin_src html :noweb-ref body Content odin-links-and-images :noweb no
 <h1>Homepage</h1>
 #+end_src
 
@@ -6077,7 +6153,7 @@ We'll leave a placeholder for the attributes.
 
 ~<<body Content odin-links-and-images>> +≡~
 
-#+begin_src html :noweb-ref body Content odin-links-and-images :noweb-seb nil
+#+begin_src html :noweb-ref body Content odin-links-and-images :noweb-seb nil :noweb no
 <a
   <<attributes for Odin about page href>>
   >About the Odin Project.</a>
@@ -6087,7 +6163,7 @@ The first attribute contains the /link/ itself, and is called *href*.
 
 ~<<attributes for Odin about page href>> +≡~
 
-#+begin_src html :noweb-ref attributes for Odin about page href
+#+begin_src html :noweb-ref attributes for Odin about page href :noweb no
 href="https://www.theodinproject.com/about"
 #+end_src
 
@@ -6096,7 +6172,7 @@ Let's open in a new one, using the attribute *target*.
 
 ~<<attributes for Odin about page href>> +≡~
 
-#+begin_src html :noweb-ref attributes for Odin about page href
+#+begin_src html :noweb-ref attributes for Odin about page href :noweb no
 target="_blank"
 #+end_src
 
@@ -6106,7 +6182,7 @@ Possible attacks include phishing and tabnabbing.
 
 ~<<attributes for Odin about page href>> +≡~
 
-#+begin_src html :noweb-ref attributes for Odin about page href
+#+begin_src html :noweb-ref attributes for Odin about page href :noweb no
 rel="noopener noreferrer"
 #+end_src
 
@@ -6118,7 +6194,7 @@ Create a page on our own server.
 
 [[file:odin/assignments/foundations/odin-links-and-images/about.html][odin/assignments/foundations/odin-links-and-images/pages/about.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6137,13 +6213,13 @@ Add a /relative/ link to it on the main page.
 
 ~<<body Content odin-links-and-images>> +≡~
 
-#+begin_src html :noweb-ref body Content odin-links-and-images
+#+begin_src html :noweb-ref body Content odin-links-and-images :noweb no
 <a href="pages/about.html">About</a>
 #+end_src
 
 Let's organize it: add a folder for all the other pages besides =index.html=.
 
-#+begin_src shell :dir ~/dev/webdev-study/odin/assignments/foundations/odin-links-and-images/
+#+begin_src shell :dir ~/dev/webdev-study/odin/assignments/foundations/odin-links-and-images/ :noweb no
 mkdir pages
 #+end_src
 
@@ -6151,7 +6227,7 @@ mkdir pages
 
 And move =about.html= there.
 
-#+begin_src shell :dir ~/dev/webdev-study/odin/assignments/foundations/odin-links-and-images/
+#+begin_src shell :dir ~/dev/webdev-study/odin/assignments/foundations/odin-links-and-images/ :noweb no
 mv about.html pages
 #+end_src
 
@@ -6168,7 +6244,7 @@ Assignment.
 1. Create a new directory named images within the odin-links-and-images project.
 #+end_quote
 
-#+begin_src shell
+#+begin_src shell :noweb no
 mkdir images
 #+end_src
 
@@ -6179,7 +6255,7 @@ mkdir images
 3. Rename the image to dog.jpg.
 #+end_quote
 
-#+begin_src shell
+#+begin_src shell :noweb no
 wget --output-document=images/dog.jpg https://unsplash.com/photos/Mv9hjnEUHR4/download?force=true&w=640
 #+end_src
 
@@ -6191,7 +6267,7 @@ Let's give them a placeholder.
 
 ~<<body Content odin-links-and-images>> +≡~
 
-#+begin_src html :noweb-ref body Content odin-links-and-images
+#+begin_src html :noweb-ref body Content odin-links-and-images :noweb no
 <img src="./images/dog.jpg"
 <<dog pic attributes>>
   >
@@ -6201,7 +6277,7 @@ Now add the pic to the About page, using a relative path to the parent folder.
 
 ~<<le Charles>> +≡~
 
-#+begin_src html :noweb-ref le Charles
+#+begin_src html :noweb-ref le Charles :noweb no
 <img src="../images/dog.jpg"
 <<dog pic attributes>>
   >
@@ -6211,7 +6287,7 @@ Add the alternative text.
 
 ~<<dog pic attributes>> +≡~
 
-#+begin_src html :noweb-ref dog pic attributes
+#+begin_src html :noweb-ref dog pic attributes :noweb no
 alt="A black dog (pug) with a gray wool blanket."
 #+end_src
 
@@ -6220,7 +6296,7 @@ Now the size attributes.
 
 ~<<dog pic attributes>> +≡~
 
-#+begin_src html :noweb-ref dog pic attributes
+#+begin_src html :noweb-ref dog pic attributes :noweb no
 width="604" height="806"
 #+end_src
 
@@ -6231,7 +6307,7 @@ width="604" height="806"
 
 [[file:odin/assignments/foundations/interneting-links-and-images/links.html][odin/assignments/foundations/interneting-links-and-images/links.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6251,7 +6327,7 @@ width="604" height="806"
 
 [[file:odin/assignments/foundations/interneting-links-and-images/images.html][odin/assignments/foundations/interneting-links-and-images/images.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6271,7 +6347,7 @@ width="604" height="806"
 
 [[file:odin/assignments/foundations/interneting-links-and-images/misc/extras.html][odin/assignments/foundations/interneting-links-and-images/misc/extras.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6302,7 +6378,7 @@ width="604" height="806"
 
 Unzip images.
 
-#+begin_src shell :dir odin/assignments/foundations/interneting-links-and-images/
+#+begin_src shell :dir odin/assignments/foundations/interneting-links-and-images/ :noweb no
 unzip images-4149f7.zip
 rm images-4149f7.zip
 #+end_src
@@ -6315,7 +6391,7 @@ Absolute links.
 
 ~<<links>> +≡~
 
-#+begin_src html :noweb-ref links
+#+begin_src html :noweb-ref links :noweb no
 <li>Absolute links, like to
   <a href='https://developer.mozilla.org/en-US/docs/Web/HTML'
     target='_blank'>Mozilla
@@ -6328,14 +6404,14 @@ Relative Links.
 
 ~<<links>> +≡~
 
-#+begin_src html :noweb-ref links
+#+begin_src html :noweb-ref links :noweb no
 <li>Relative links, like to our <a href='misc/extras.html'>extras page</a>.
 </li>
 #+end_src
 
 ~<<links>> +≡~
 
-#+begin_src html :noweb-ref links
+#+begin_src html :noweb-ref links :noweb no
 <!-- This won't work for our local HTML files -->
 <li>Root-relative links, like to the
   <a href='/'>home page</a>
@@ -6348,7 +6424,7 @@ First a JPG, good for *pictures* (large color palettes).
 
 ~<<images>> +≡~
 
-#+begin_src html :noweb-ref images
+#+begin_src html :noweb-ref images :noweb no
 <h2>JPGs</h2>
 <p>JPG images are good for photos.</p>
 <img src='images/mochi.jpg' width='75'
@@ -6360,7 +6436,7 @@ Then a GIF, for *animations*, (short color palettes, crude transparency).
 
 ~<<images>> +≡~
 
-#+begin_src html :noweb-ref images
+#+begin_src html :noweb-ref images :noweb no
 <h2>GIFs</h2>
 <p>GIFs are good for animations.</p>
 <img src='images/mochi.gif' width='75'
@@ -6373,7 +6449,7 @@ Useful for small images that need good transparency, like icons and logos.
 
 ~<<images>> +≡~
 
-#+begin_src html :noweb-ref images
+#+begin_src html :noweb-ref images :noweb no
 <h2>PNGs</h2>
 <p>PNGs are good for icons and logos.</p>
 <img src='images/mochi.png' width='75'
@@ -6386,7 +6462,7 @@ Use them instead of PNGs whenever possible.
 
 ~<<images>> +≡~
 
-#+begin_src html :noweb-ref images
+#+begin_src html :noweb-ref images :noweb no
 <h2>SVGs</h2>
 <p>SVGs are <em>amazing</em>. Use them wherever you can.</p>
 <img src='images/mochi.svg' width='75'
@@ -6396,31 +6472,31 @@ Use them instead of PNGs whenever possible.
 
 ~<<alt jpg>> +≡~
 
-#+begin_src html :noweb-ref alt jpg
+#+begin_src html :noweb-ref alt jpg :noweb no
 alt='A mochi ball in a bubble'
 #+end_src
 
 ~<<alt gif>> +≡~
 
-#+begin_src html :noweb-ref alt gif
+#+begin_src html :noweb-ref alt gif :noweb no
 alt='A dancing mochi ball'
 #+end_src
 
 ~<<alt png>> +≡~
 
-#+begin_src html :noweb-ref alt png
+#+begin_src html :noweb-ref alt png :noweb no
 alt='A mochi ball'
 #+end_src
 
 ~<<alt svg>> +≡~
 
-#+begin_src html :noweb-ref alt svg
+#+begin_src html :noweb-ref alt svg :noweb no
 alt='A mochi ball with Bézier handles'
 #+end_src
 
 ~<<Curly Quotes>> +≡~
 
-#+begin_src html :noweb-ref Curly Quotes
+#+begin_src html :noweb-ref Curly Quotes :noweb no
 <p>If you&rsquo;re into &ldquo;web typography,&rdquo; you&rsquo;ll also find
    yourself using curly quotes quite a bit.
 </p>
@@ -6429,7 +6505,7 @@ alt='A mochi ball with Bézier handles'
 **** Reserved Characters
 ~<<Reserved Characters>> +≡~
 
-#+begin_src html :noweb-ref Reserved Characters
+#+begin_src html :noweb-ref Reserved Characters :noweb no
 <h2>HTML Entities</h2>
 <p> There are three reserved characters in HTML:
   <strong>&lt;</strong> <strong>&gt;</strong> and <strong>&amp;</strong>.
@@ -6496,7 +6572,7 @@ It's a bit more complicated, because involves accessing the DOM.
 Let's simplify it.
 Just sum the contents of two variables, and assign it to another variable.
 
-#+begin_src js
+#+begin_src js :noweb no
 function sum (a, b) {
     let total = a + b;
     return total;
@@ -6530,7 +6606,7 @@ We're coding, baby!
 
 [[file:html-boilerplate/index.html][html-boilerplate/index.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE html>
 <html lang="en">
   <<head Block>>
@@ -6545,7 +6621,7 @@ Always the first element inside =<html>=.
 
 ~<head Block> +≡~
 
-#+begin_src html :noweb-ref head Block
+#+begin_src html :noweb-ref head Block :noweb no
 <head>
   <<charset>>
   <<title>>
@@ -6556,7 +6632,7 @@ Let's make sure all glyphs show correctly.
 
 ~<<charset>> +≡~
 
-#+begin_src html :noweb-ref charset
+#+begin_src html :noweb-ref charset :noweb no
 <meta charset="UTF-8">
 #+end_src
 
@@ -6564,13 +6640,13 @@ Now the title.
 
 ~<<title>> +≡~
 
-#+begin_src html :noweb-ref title
+#+begin_src html :noweb-ref title :noweb no
 <title>My first page from Odin</title>
 #+end_src
 
 ~<<body Block>> +≡~
 
-#+begin_src html :noweb-ref body Block
+#+begin_src html :noweb-ref body Block :noweb no
 <body>
   <<body Contents>>
 </body>
@@ -6578,7 +6654,7 @@ Now the title.
 
 Now add this to Emacs =web-mode=.
 
-#+begin_src elisp
+#+begin_src elisp :noweb no
 (add-to-list 'web-mode-snippets
                '("my-odin-html-boilerplate"
                  "<!DOCTYPE html>
@@ -6596,7 +6672,7 @@ Now add this to Emacs =web-mode=.
 
 ~<<body Contents>> +≡~
 
-#+begin_src html :noweb-ref body Contents
+#+begin_src html :noweb-ref body Contents :noweb no
 <h1>Hello, World!</h1>
 #+end_src
 
@@ -6631,7 +6707,7 @@ You can use Lorem Ipsum to generate dummy text, in place of real text as you bui
 
 [[file:odin/assignments/foundations/working-with-text/index.html][odin/assignments/foundations/working-with-text/index.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6689,7 +6765,7 @@ To make things easier, we have:
 
 A minimal html page [[https://html.spec.whatwg.org/multipage/syntax.html?utm_source=chatgpt.com#writing][must have]]:
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE html>
 <html>
 </html>
@@ -6714,7 +6790,7 @@ A /cool/ first web page would be:
 
 [[file:hello-world.html][hello-world.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE html>
 <html>
   <p>Hello, World!</p>
@@ -6731,7 +6807,7 @@ Only two tags should be immediately inside it: ~<head>~ and ~<body>~.
 Then, each element of the page is either inside ~<head>~ or ~<body>~.
 This is illustrated below.
 
-#+begin_src
+#+begin_src :noweb no
 <html>
 |
 +- <head>
@@ -6758,7 +6834,7 @@ We'll put a ~<title>~ inside it.
 
 [[file:hello-world-fixed.html][hello-world-fixed.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE html>
 <html>
   <head>
@@ -6780,7 +6856,7 @@ They give us /six/ of them: ~<h1>~ to ~<h6>~.
 
 [[file:headings.html][headings.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE html>
 <html>
   <head>
@@ -6834,7 +6910,7 @@ Only the second one gets the expected result (well, at least on a big screen).
 
 [[file:br.html][br.html]] ≡
 
-#+begin_src html
+#+begin_src html :noweb no
 <!DOCTYPE html>
 <html>
   <head>
