@@ -69,7 +69,7 @@ More variety today, including /webdev/ proper!
 # Example: “Add error handling and make it general for all CTF challenges” or “Write a tutorial for the PDF trick.”
 
 - Continue with Elisp and Webdev studies, try 1h again each, as it worked well today.
-- This time work alongside ChatGPT on the solution.
+- CTF Writeup: this time work alongside ChatGPT on the solution.
 
 ** Seinfeld Checkmark
 # (my-copy-seinfeld-jpeg-filename-to-clipboard)
