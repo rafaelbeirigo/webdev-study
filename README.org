@@ -33,7 +33,7 @@ More variety today, including /webdev/ proper!
 # Example: “Script successfully logs in automatically” or “Found hidden flag in the PDF.”
 
 - In Elisp, today's chapter was about the basics of function calls, clarifying that Elisp deals with /text/ editing a lot, thus the /theme/ of the code around that.
-  In this case, the examples were about /buffer/---size and positioning/navigation within---, and /point/ (-/min/​/​-/max/).
+  In this case, the examples were about /buffer/---size and positioning/navigation within---, and /point/.
 - In Webdev, continuing with CSS, this time the /Flex/ Model.
   Great improvements over The Box Model.
   But the Grid is the way to go.
