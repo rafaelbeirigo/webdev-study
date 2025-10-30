@@ -74,7 +74,7 @@ More variety today, including /webdev/ proper!
 ** Seinfeld Checkmark
 # (my-copy-seinfeld-jpeg-filename-to-clipboard)
 
-[[file:images/2025-10-27_seinfeld.jpeg]]
+[[file:images/2025-10-29_seinfeld.jpeg]]
 
 - Today's Scores
   - Fun: 4/5 (meeting me where I was at: go for a walk and think; prioritize my /vision/ and /skill building/ instead of just public output.
@@ -147,7 +147,7 @@ I put the development on hold for today, but took notes of things to improve; an
 ** Seinfeld Checkmark
 # (my-copy-seinfeld-jpeg-filename-to-clipboard)
 
-[[file:images/2025-10-27_seinfeld.jpeg]]
+[[file:images/2025-10-28_seinfeld.jpeg]]
 
 - Today's Scores
   - Fun: 4/5 (CTFs are fun!)
