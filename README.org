@@ -57,6 +57,11 @@ This are the exercises I did today.
   Skipped the exercises, though.
   Feel like it went faster that yesterday.
 
+
+- In webdev, I liked doing today's exercises.
+  I resisted a lot, but publishing the before/after really made it /real/ for me.
+  Good habit to cultivate.
+
 ** Next
 # Immediate next steps or goals.
 # Could be tweaks, follow-ups, or completely new experiments.
