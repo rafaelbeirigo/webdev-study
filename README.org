@@ -55,7 +55,7 @@ More variety today, including /webdev/ proper!
     This made my life a little more difficult, as I had to investigate other possible reasons.
     It was a slow process, and I thought about just giving up and finishing the post as it is (which would not be the end of the world, as it is reasonably deep).
     But I want to learn it myself!
-    This are the foundations for Binary Exploitation, and skipping it will just hinder my progress moving forward.
+    These are the foundations of Binary Exploitation, and skipping it will just hinder my progress moving forward.
     But I'm tired!
 
 ** Next
