@@ -16,8 +16,9 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 # the effort or activity you put in. Think of it as your actions, experiments, coding sessions, research, debugging.
 # Example: “Refactored the login automation script” or “Analyzed the PDF forensic challenge.”
 
-- Studied Elisp, 2h
+- Studied Elisp, 2h.
 - Webdev, 1h, 3 exercises.
+- CTF writeup: studied dynamic linking, PLT/GOT.
 
 ** Output
 # Tangible things that exist because of today’s work.
@@ -56,11 +57,19 @@ This are the exercises I did today.
   Practicing that.
   Skipped the exercises, though.
   Feel like it went faster that yesterday.
+  Today's chapter is way longer than yesterday's, so I couldn't finish it.
 
 
 - In webdev, I liked doing today's exercises.
   I resisted a lot, but publishing the before/after really made it /real/ for me.
   Good habit to cultivate.
+
+
+- In the CTF writeups, I had to study some new concepts involving /dynamically linked/ binaries, as is the case of the binary for current writeup.
+  These are completely new concepts to me, and I am very excited to learn about them.
+  There are several security implications involving dynamic linkage, and the current writeup touches on some of them.
+  I've got to a specially /dense/ point at the end of today's study session.
+  I'm using basically ChatGPT as source, but this may not be optimal; willing to experiment with more sources.
 
 ** Next
 # Immediate next steps or goals.
@@ -72,14 +81,18 @@ This are the exercises I did today.
 # what’s your forward action or next goal. This closes the loop and keeps the momentum.
 # Example: “Add error handling and make it general for all CTF challenges” or “Write a tutorial for the PDF trick.”
 
+- Elisp: 1h was good again, keep that.
+- Webdev: be more pragmatic, try to finish the assignments faster without compromising learning.
+- CTF writeups: try another sources for dynamic linking.
+
 ** Seinfeld Checkmark
 # (my-copy-seinfeld-jpeg-filename-to-clipboard)
 
 [[file:images/2025-10-30_seinfeld.jpeg]]
 
 - Today's Scores
-  - Fun: /5
-  - Energy: /5
+  - Fun: 4.5/5 (new, important concepts are fun!) 
+  - Energy: 4.5/5 (dried meat back to the menu)
 
 * [2025-10-29 Wed]
 
