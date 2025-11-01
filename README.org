@@ -4,6 +4,68 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 
 # Usar `webdev' template (yas).
 
+* [2025-11-01 Sat]
+
+** Work
+# What I actually did today.
+# Experiments, coding, debugging, learning.
+# (Be honest. Even chaos counts.)
+# Examples:
+# Refactored the login automation script.
+# Experimented with parsing JSON from PicoCTF API challenges.
+# the effort or activity you put in. Think of it as your actions, experiments, coding sessions, research, debugging.
+# Example: “Refactored the login automation script” or “Analyzed the PDF forensic challenge.”
+
+- Studied Elisp for 1h.
+  Read the sections about:
+  - ~let~, with a brief discussion about /dynamic/ versus /lexical scoping/, and
+  - ~if~.
+
+** Output
+# Tangible things that exist because of today’s work.
+# The tangible artifact you produced. This is your deliverable, whatever someone could use or look at.
+# Scripts, writeups, data, visualizations, prototypes.
+# If nothing usable yet, write “Prototype / Draft.”
+# Examples:
+# “Working Python script” or “Documented step-by-step writeup” or even “Updated CSV dataset.”
+# Cleaned Python script that logs in and fetches challenge info.
+# Sample JSON file saved locally for testing.
+
+** Outcome
+# What happened as a result of the work + output.
+# Insights, results, solved problems, new questions.
+# Even failures are outcomes: they teach.
+# Examples:
+# Script now reliably fetches challenges without manual cookie handling.
+# Learned nuances of auth headers and session management.
+# the result or effect of the work and output. Did it solve the problem? Did it teach you something? Did it help others?
+# Example: “Script successfully logs in automatically” or “Found hidden flag in the PDF.”
+
+- In Elisp, ~let~ and ~if~ are known fellas; not much new here.
+  But the scoping part /was/ new.
+  Also new was the /self reliance/ while reading the corresponding Wikipedia article!
+  It felt like I /could/---and therefore /should/---learn that new piece of the puzzle.
+  This seems to be related to the disposition of reading CS:APP, which is a kind of /commitment/---or /contract/---with a "serious" /programmer identity/.
+
+** Next
+# Immediate next steps or goals.
+# Could be tweaks, follow-ups, or completely new experiments.
+# Keep it small and actionable.
+# Examples:
+# Add error handling for missing or malformed JSON.
+# Write mini writeup for team on the automation process.
+# what’s your forward action or next goal. This closes the loop and keeps the momentum.
+# Example: “Add error handling and make it general for all CTF challenges” or “Write a tutorial for the PDF trick.”
+
+** Seinfeld Checkmark
+# (my-copy-seinfeld-jpeg-filename-to-clipboard)
+
+[[file:images/2025-11-01_seinfeld.jpeg]]
+
+- Today's Scores
+  - Fun: /5
+  - Energy: /5
+
 * [2025-10-31 Fri]
 
 ** Work
