@@ -62,6 +62,8 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
   I made a rookie mistake today that made me waste several minutes: forgot the comma to share the rules among two classes.
   My second mistake was to focus only on one possible culprit: I spent all the time thinking the problem was with ~ul~, when in fact it was elsewhere.
   I want to keep a more clear and open mind when facing challenges.
+  Following ChatGPT's tips, I'll also follow a simple formatting rule: when using /multiple selectors/, like in this case, I'll keep each selector on its own line.
+  This way I'll have a /visible/ cue when I make this mistake again.
 
 ** Next
 # Immediate next steps or goals.
