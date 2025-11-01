@@ -21,6 +21,7 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
   - ~let~, with a brief discussion about /dynamic/ versus /lexical scoping/, and
   - ~if~.
 - Studied Webdev for 2h.
+- Cybersec blog: Worked on a new research post, 3h.
 
 ** Output
 # Tangible things that exist because of today’s work.
@@ -31,6 +32,8 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 # “Working Python script” or “Documented step-by-step writeup” or even “Updated CSV dataset.”
 # Cleaned Python script that logs in and fetches challenge info.
 # Sample JSON file saved locally for testing.
+
+- New blog post: [[https://rafaelbeirigo.github.io/cybersec-dojo/research/2025/11/01/how-to-get-the-got-address-from-a-plt-stub-using-gdb.html][How to get the GOT address from a PLT stub using gdb]]
 
 - Webdev.  This are the exercises I did today.
   - Upper-left: how it started
@@ -65,6 +68,20 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
   Following ChatGPT's tips, I'll also follow a simple formatting rule: when using /multiple selectors/, like in this case, I'll keep each selector on its own line.
   This way I'll have a /visible/ cue when I make this mistake again.
 
+- Cybersec blog: I was banging my head about how to convey the concepts in a palatable manner.
+  It was difficult because:
+  - The subject is pretty advanced, and avoided even in specialized books;
+  - The terminology is plentiful, which represents a immesely huge barrier for newcomers.
+  The process per se is not very complicated, though.
+  This was the motivation to include it on a /beginner/-level CTF writeup, in the first place.
+  The discussion with ChatGPT was pretty agitated; he had a lot of difficulty grasping my intention.
+  In the end, he summarized it in a very truthful motto:
+  - "High-fidelity technical explanation, low-friction terminology."
+  Terminology can be a barrier, and I dislike that.
+  I believe every concept should be made immediately accessible to the most people possible.
+  The /interested/ readers will then learn the terminology while they go deeper and deeper in the subject.
+  This is especially true for my target audience: /hackers/.
+
 ** Next
 # Immediate next steps or goals.
 # Could be tweaks, follow-ups, or completely new experiments.
@@ -75,14 +92,17 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 # what’s your forward action or next goal. This closes the loop and keeps the momentum.
 # Example: “Add error handling and make it general for all CTF challenges” or “Write a tutorial for the PDF trick.”
 
+- I got a bit tired today.
+  Tomorrow I'll take the day out, maybe a long walk with the dogs, change the scenery.
+
 ** Seinfeld Checkmark
 # (my-copy-seinfeld-jpeg-filename-to-clipboard)
 
 [[file:images/2025-11-01_seinfeld.jpeg]]
 
 - Today's Scores
-  - Fun: /5
-  - Energy: /5
+  - Fun: 4.5/5 (banging the head can also be fun)
+  - Energy: 4/5 (end of the week fuel tank)
 
 * [2025-10-31 Fri]
 
