@@ -4,6 +4,66 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 
 # Usar `webdev' template (yas).
 
+* [2025-10-31 Fri]
+
+** Work
+# What I actually did today.
+# Experiments, coding, debugging, learning.
+# (Be honest. Even chaos counts.)
+# Examples:
+# Refactored the login automation script.
+# Experimented with parsing JSON from PicoCTF API challenges.
+# the effort or activity you put in. Think of it as your actions, experiments, coding sessions, research, debugging.
+# Example: “Refactored the login automation script” or “Analyzed the PDF forensic challenge.”
+
+- Studied Dynamic Linking in the morning, 3h.
+- Started studying Computer Systems in the evening, 3h.
+
+** Outcome
+# What happened as a result of the work + output.
+# Insights, results, solved problems, new questions.
+# Even failures are outcomes: they teach.
+# Examples:
+# Script now reliably fetches challenges without manual cookie handling.
+# Learned nuances of auth headers and session management.
+# the result or effect of the work and output. Did it solve the problem? Did it teach you something? Did it help others?
+# Example: “Script successfully logs in automatically” or “Found hidden flag in the PDF.”
+
+- The humble CTF writeup of a beginner challenge ended up taking me on a whole new journey.
+  Something unexpected ocurred, that got me curious.
+  While trying to figure it out with the help of ChatGPT, I embarked on a quest for answers.
+  ChatGPT apparently tried to simplify it, but each time I had a question, there was some new concept drop.
+  I got very difficult to piece things together, to the point I asked ChatGPT for book recommendations.
+  One of them was /Computer Systems: A Programmer's Perspective/, which I started reading.
+  The premise is very simple: teach the /system/ for /programmers/.
+  Just finished the first chapter, which gives an overview of the system.
+  It appears to be a good use of my time, let's see.
+
+** Next
+# Immediate next steps or goals.
+# Could be tweaks, follow-ups, or completely new experiments.
+# Keep it small and actionable.
+# Examples:
+# Add error handling for missing or malformed JSON.
+# Write mini writeup for team on the automation process.
+# what’s your forward action or next goal. This closes the loop and keeps the momentum.
+# Example: “Add error handling and make it general for all CTF challenges” or “Write a tutorial for the PDF trick.”
+
+- Keep reading CS:APP.
+- Finish the writeup with the current available knowledge.
+  Move on to the next writeup.
+- Keep studying Elisp.
+- Keep studying Webdev.
+
+** Seinfeld Checkmark
+# (my-copy-seinfeld-jpeg-filename-to-clipboard)
+
+[[file:images/2025-10-31_seinfeld.jpeg]]
+
+- Today's Scores
+  - Fun: 5/5 (finding a good book is fun!)
+  - Energy: 4.5/5 (sport, maybe?)
+
 * [2025-10-30 Thu]
 
 ** Work
