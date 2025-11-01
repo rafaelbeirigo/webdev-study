@@ -60,9 +60,8 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 - Webdev: had fun working on more realistic page layouts.
   Still working with ~flex~, and want to go for ~grid~ soon (this is what I'll probably use the most, as it is more modern, more powerful, and, ironically, more /flexible/).
   I made a rookie mistake today that made me waste several minutes: forgot the comma to share the rules among two classes.
-  I couldn't figure out what was happening, and gave up.
-  Only to see that what was missing was that little comma...
-  Well, try and be smarter next time!
+  My second mistake was to focus only on one possible culprit: I spent all the time thinking the problem was with ~ul~, when in fact it was elsewhere.
+  I want to keep a more clear and open mind when facing challenges.
 
 ** Next
 # Immediate next steps or goals.
