@@ -20,6 +20,7 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
   Read the sections about:
   - ~let~, with a brief discussion about /dynamic/ versus /lexical scoping/, and
   - ~if~.
+- Studied Webdev for 2h.
 
 ** Output
 # Tangible things that exist because of today’s work.
@@ -30,6 +31,15 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 # “Working Python script” or “Documented step-by-step writeup” or even “Updated CSV dataset.”
 # Cleaned Python script that logs in and fetches challenge info.
 # Sample JSON file saved locally for testing.
+
+- Webdev.  This are the exercises I did today.
+  - Upper-left: how it started
+  - Upper-right: my solution
+  - Lower-right: desired outcome
+
+    [[file:images/2025-11-01-115645_1920x1080_scrot.png]]
+    [[file:images/2025-11-01-115520_1920x1080_scrot.png]]
+    [[file:images/2025-11-01-125912_1920x1080_scrot.png]]
 
 ** Outcome
 # What happened as a result of the work + output.
@@ -46,6 +56,13 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
   Also new was the /self reliance/ while reading the corresponding Wikipedia article!
   It felt like I /could/---and therefore /should/---learn that new piece of the puzzle.
   This seems to be related to the disposition of reading CS:APP, which is a kind of /commitment/---or /contract/---with a "serious" /programmer identity/.
+
+- Webdev: had fun working on more realistic page layouts.
+  Still working with ~flex~, and want to go for ~grid~ soon (this is what I'll probably use the most, as it is more modern, more powerful, and, ironically, more /flexible/).
+  I made a rookie mistake today that made me waste several minutes: forgot the comma to share the rules among two classes.
+  I couldn't figure out what was happening, and gave up.
+  Only to see that what was missing was that little comma...
+  Well, try and be smarter next time!
 
 ** Next
 # Immediate next steps or goals.
