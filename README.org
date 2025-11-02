@@ -82,6 +82,10 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
   The /interested/ readers will then learn the terminology while they go deeper and deeper in the subject.
   This is especially true for my target audience: /hackers/.
 
+- Went to read CS:APP at the end of the day.
+  I was tired, but not unmotivated to do it.
+  This was a good surprise, as it suggested /alignment/ with the activity and intrinsic motivation.
+
 ** Next
 # Immediate next steps or goals.
 # Could be tweaks, follow-ups, or completely new experiments.
