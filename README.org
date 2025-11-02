@@ -22,6 +22,7 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
   - ~if~.
 - Studied Webdev for 2h.
 - Cybersec blog: Worked on a new research post, 3h.
+- Studied CS:APP, 45min.
 
 ** Output
 # Tangible things that exist because of today’s work.
@@ -85,6 +86,7 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 - Went to read CS:APP at the end of the day.
   I was tired, but not unmotivated to do it.
   This was a good surprise, as it suggested /alignment/ with the activity and intrinsic motivation.
+  Did my first two assignments, good-ol' bit-scrubbing!
 
 ** Next
 # Immediate next steps or goals.
