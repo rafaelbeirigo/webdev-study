@@ -52,6 +52,7 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
   As it turned out, the problem was that /I/ had fixed it in an earlier step, thinking that was necessary.
   When I removed it, ~flex~ would automatically adjust it (/flex/ it).
   The takeaway is to /minimize/ the rules, and always be /criterious/ about them.
+  This was the *last* CSS exercise of the /Foundations Course/!
 
 ** Next
 # Immediate next steps or goals.
@@ -62,6 +63,10 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 # Write mini writeup for team on the automation process.
 # what’s your forward action or next goal. This closes the loop and keeps the momentum.
 # Example: “Add error handling and make it general for all CTF challenges” or “Write a tutorial for the PDF trick.”
+
+- Webdev: start working on the final project of the CSS module: a /landing page/.
+  For this one, they just give us a /picture/ of the desired outcome, nothing else, so I'll have to start from nothing...
+  This challenge gets me excited!
 
 ** Seinfeld Checkmark
 # (my-copy-seinfeld-jpeg-filename-to-clipboard)
