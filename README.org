@@ -46,7 +46,7 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 # the result or effect of the work and output. Did it solve the problem? Did it teach you something? Did it help others?
 # Example: “Script successfully logs in automatically” or “Found hidden flag in the PDF.”
 
-- In Webdev, had my first contact with the Holy Grail layout.
+- In Webdev, had my first contact with the /Holy Grail/ layout.
   Apparently, this was very difficult to achieve back in the day, without modern alternatives, like CSS ~flex~.
   I had to peek at the solution for height auto-sizing, though...Mine was keeping a fixed size.
   As it turned out, the problem was that /I/ had fixed it in an earlier step, thinking that was necessary.
