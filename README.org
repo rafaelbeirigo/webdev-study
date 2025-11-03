@@ -4,6 +4,74 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 
 # Usar `webdev' template (yas).
 
+* [2025-11-03 Mon]
+
+** Work
+# What I actually did today.
+# Experiments, coding, debugging, learning.
+# (Be honest. Even chaos counts.)
+# Examples:
+# Refactored the login automation script.
+# Experimented with parsing JSON from PicoCTF API challenges.
+# the effort or activity you put in. Think of it as your actions, experiments, coding sessions, research, debugging.
+# Example: “Refactored the login automation script” or “Analyzed the PDF forensic challenge.”
+
+- Studied Webdev, 1h.
+
+** Output
+# Tangible things that exist because of today’s work.
+# The tangible artifact you produced. This is your deliverable, whatever someone could use or look at.
+# Scripts, writeups, data, visualizations, prototypes.
+# If nothing usable yet, write “Prototype / Draft.”
+# Examples:
+# “Working Python script” or “Documented step-by-step writeup” or even “Updated CSV dataset.”
+# Cleaned Python script that logs in and fetches challenge info.
+# Sample JSON file saved locally for testing.
+
+- Webdev: simplified Holy Grail layout, with cards.
+
+[[file:images/2025-11-03-100938_1920x1080_scrot.png]]
+
+[[file:images/2025-11-03-100925_1920x1080_scrot.png]]
+
+[[file:images/2025-11-03-100917_1920x1080_scrot.png]]
+
+** Outcome
+# What happened as a result of the work + output.
+# Insights, results, solved problems, new questions.
+# Even failures are outcomes: they teach.
+# Examples:
+# Script now reliably fetches challenges without manual cookie handling.
+# Learned nuances of auth headers and session management.
+# the result or effect of the work and output. Did it solve the problem? Did it teach you something? Did it help others?
+# Example: “Script successfully logs in automatically” or “Found hidden flag in the PDF.”
+
+- In Webdev, had my first contact with the Holy Grail layout.
+  Apparently, this was very difficult to achieve back in the day, without modern alternatives, like CSS ~flex~.
+  I had to peek at the solution for height auto-sizing, though...Mine was keeping a fixed size.
+  As it turned out, the problem was that /I/ had fixed it in an earlier step, thinking that was necessary.
+  When I removed it, ~flex~ would automatically adjust it (/flex/ it).
+  The takeaway is to /minimize/ the rules, and always be /criterious/ about them.
+
+** Next
+# Immediate next steps or goals.
+# Could be tweaks, follow-ups, or completely new experiments.
+# Keep it small and actionable.
+# Examples:
+# Add error handling for missing or malformed JSON.
+# Write mini writeup for team on the automation process.
+# what’s your forward action or next goal. This closes the loop and keeps the momentum.
+# Example: “Add error handling and make it general for all CTF challenges” or “Write a tutorial for the PDF trick.”
+
+** Seinfeld Checkmark
+# (my-copy-seinfeld-jpeg-filename-to-clipboard)
+
+[[file:images/2025-11-03_seinfeld.jpeg]]
+
+- Today's Scores
+  - Fun: /5
+  - Energy: /5
+
 * [2025-11-02 Sun]
 
 ** Work
