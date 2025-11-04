@@ -19,6 +19,7 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 - Read K&R C to refresh on pointers, 30min.
 - In bloggin, did some automation setup, 15min.
 - In webdev, added the Github setup.
+- Studied CS:APP, 2h in the morning.
 
 ** Output
 # Tangible things that exist because of today’s work.
@@ -47,6 +48,10 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
   Decided to make it with Literate Programming, like the previous project.
   This helps a lot with the thinking process, but makes it difficult the Github part: feels like I type the same thing while coding in LP /and/ commiting...
   Maybe this means the processes are aligned, and this is a good thing, who knows?
+- Started reading some other books I've always wanted...
+  Need to be careful here not to derail, though.
+  This was relatively tiring too...
+  Better focus!
 
 ** Next
 # Immediate next steps or goals.
