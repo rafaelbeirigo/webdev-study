@@ -17,6 +17,7 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 # Example: “Refactored the login automation script” or “Analyzed the PDF forensic challenge.”
 
 - Studied Webdev, 1h.
+- Studied CS:APP, 5h.
 
 ** Output
 # Tangible things that exist because of today’s work.
@@ -46,6 +47,12 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 # the result or effect of the work and output. Did it solve the problem? Did it teach you something? Did it help others?
 # Example: “Script successfully logs in automatically” or “Found hidden flag in the PDF.”
 
+- In CS:APP, advanced through the second chapter.
+  Trying to practice all the theory.
+  Making a good effort to be patient with myself, and get in touch with my intrinsic motivation.
+  Avoid comparisons, give myself the time I need.
+  Let it flow as it flows.
+
 - In Webdev, had my first contact with the /Holy Grail/ layout.
   Apparently, this was very difficult to achieve back in the day, without modern alternatives, like CSS ~flex~.
   I had to peek at the solution for height auto-sizing, though...Mine was keeping a fixed size.
@@ -53,6 +60,8 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
   When I removed it, ~flex~ would automatically adjust it (/flex/ it).
   The takeaway is to /minimize/ the rules, and always be /criterious/ about them.
   This was the *last* CSS exercise of the /Foundations Course/!
+
+- Didn't blog, nor study Elisp, CS:APP was flowing, got lost there!
 
 ** Next
 # Immediate next steps or goals.
@@ -68,14 +77,18 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
   For this one, they just give us a /picture/ of the desired outcome, nothing else, so I'll have to start from nothing...
   This challenge gets me excited!
 
+- Do at least 30 minutes of Elisp and blogging.
+
+- Get in touch with myself on CS:APP.
+
 ** Seinfeld Checkmark
 # (my-copy-seinfeld-jpeg-filename-to-clipboard)
 
 [[file:images/2025-11-03_seinfeld.jpeg]]
 
 - Today's Scores
-  - Fun: /5
-  - Energy: /5
+  - Fun: 3/5 (i need myself to be more patient!)
+  - Energy: 3.5/5 (evening studies needed a lot of effort today, because i was tired)
 
 * [2025-11-02 Sun]
 
