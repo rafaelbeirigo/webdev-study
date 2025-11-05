@@ -19,7 +19,8 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 - Read K&R C to refresh on pointers, 30min.
 - In bloggin, did some automation setup, 15min.
 - In webdev, added the Github setup.
-- Studied CS:APP, 2h in the morning.
+- Studied CS:APP, 2h in the morning, 1h in the evening.
+- In Elisp, read 15min.
 
 ** Output
 # Tangible things that exist because of today’s work.
@@ -52,6 +53,9 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
   Need to be careful here not to derail, though.
   This was relatively tiring too...
   Better focus!
+- In CS:APP, was kinda tired and foggy, a bit irritated; things didn't flow really well.
+  Tomorrow is another day!
+- Finished the chapter and decided to end the session after just 15min.
 
 ** Next
 # Immediate next steps or goals.
@@ -64,6 +68,8 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 # Example: “Add error handling and make it general for all CTF challenges” or “Write a tutorial for the PDF trick.”
 
 - In webdev, add the main ~div~s for the page.
+- Blog: determine where I can use the recent PLT/GOT trick in the last post.
+- CS:APP, write some test cases.
 
 ** Seinfeld Checkmark
 # (my-copy-seinfeld-jpeg-filename-to-clipboard)
@@ -71,8 +77,8 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 [[file:images/2025-11-04_seinfeld.jpeg]]
 
 - Today's Scores
-  - Fun: /5
-  - Energy: /5
+  - Fun: 5/5 (reconnecting with my self programmer is fun!; giving myself freedom to learn stuff is also fun!)
+  - Energy: 3/5 (tired!)
 
 * [2025-11-03 Mon]
 
