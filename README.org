@@ -29,7 +29,7 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 # Cleaned Python script that logs in and fetches challenge info.
 # Sample JSON file saved locally for testing.
 
-- Emacs ​~pdf-tools~​: added a [[https://github.com/vedang/pdf-tools/pull/331][pull request]] with my contributions.
+- Emacs ~pdf-tools~: added a [[https://github.com/vedang/pdf-tools/pull/331][pull request]] with my contributions.
 
 ** Outcome
 # What happened as a result of the work + output.
