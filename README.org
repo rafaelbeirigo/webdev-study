@@ -4,6 +4,60 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 
 # Usar `webdev' template (yas).
 
+* [2025-11-05 Wed]
+
+** Work
+# What I actually did today.
+# Experiments, coding, debugging, learning.
+# (Be honest. Even chaos counts.)
+# Examples:
+# Refactored the login automation script.
+# Experimented with parsing JSON from PicoCTF API challenges.
+# the effort or activity you put in. Think of it as your actions, experiments, coding sessions, research, debugging.
+# Example: “Refactored the login automation script” or “Analyzed the PDF forensic challenge.”
+
+- In webdev, added a functionality for automatic insertion of code block: default language and tangling behavior.
+- Blog: changed the tone for professional, instead of jovial (for portfolio reasons)
+- Elisp: fixed page numbering in Emacs while viewing a pdf.
+  Also continued with the chapter on functions, with overview.
+- CS:APP, exercises.
+
+** Outcome
+# What happened as a result of the work + output.
+# Insights, results, solved problems, new questions.
+# Even failures are outcomes: they teach.
+# Examples:
+# Script now reliably fetches challenges without manual cookie handling.
+# Learned nuances of auth headers and session management.
+# the result or effect of the work and output. Did it solve the problem? Did it teach you something? Did it help others?
+# Example: “Script successfully logs in automatically” or “Found hidden flag in the PDF.”
+
+- Started using more of Emacs to help with the work:
+  - Bookmarks for the project files, making it easier to switch between tasks;
+  - Read PDFs inside Emacs, making it easier to annotate them, and also allowing for the use of bookmarks.
+- Switching between tasks can be refreshing; experimenting a bit here.
+
+** Next
+# Immediate next steps or goals.
+# Could be tweaks, follow-ups, or completely new experiments.
+# Keep it small and actionable.
+# Examples:
+# Add error handling for missing or malformed JSON.
+# Write mini writeup for team on the automation process.
+# what’s your forward action or next goal. This closes the loop and keeps the momentum.
+# Example: “Add error handling and make it general for all CTF challenges” or “Write a tutorial for the PDF trick.”
+
+- Check if free flow is better than fixed allocated time.
+
+** Seinfeld Checkmark
+# (my-copy-seinfeld-jpeg-filename-to-clipboard)
+
+[[file:images/2025-11-05_seinfeld.jpeg]]
+
+- Today's Scores
+  - Fun: 5/5 (easy task switching is fun!)
+  - Energy: 4/5 (fells like improving...)
+
 * [2025-11-04 Tue]
 
 ** Work
