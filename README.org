@@ -18,6 +18,8 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 
 - Contributed to free software:
   - Added the options to show original PDF page /labels/ to Emacs ~pdf-tools~.
+- Studied CS:APP, 1h.
+- In webdev, added the header to the page from the second project.
 
 ** Output
 # Tangible things that exist because of today’s work.
@@ -30,6 +32,7 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 # Sample JSON file saved locally for testing.
 
 - Emacs ~pdf-tools~: added a [[https://github.com/vedang/pdf-tools/pull/331][pull request]] with my contributions.
+- The [[https://rafaelbeirigo.github.io/odin-project-02-landing-page][project page now has a header]]!
 
 ** Outcome
 # What happened as a result of the work + output.
@@ -41,6 +44,10 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 # the result or effect of the work and output. Did it solve the problem? Did it teach you something? Did it help others?
 # Example: “Script successfully logs in automatically” or “Found hidden flag in the PDF.”
 
+- In CS:APP, I'm currently not behind schedule, but also not progressing quickly.
+- I may have to focus more; maybe work on /flow/.
+- In webdev, had to /hack/ to Github-deploy---it should be Provisory®.
+
 ** Next
 # Immediate next steps or goals.
 # Could be tweaks, follow-ups, or completely new experiments.
@@ -51,14 +58,16 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 # what’s your forward action or next goal. This closes the loop and keeps the momentum.
 # Example: “Add error handling and make it general for all CTF challenges” or “Write a tutorial for the PDF trick.”
 
+- Webdev: fix the provisory solution.
+
 ** Seinfeld Checkmark
 # (my-copy-seinfeld-jpeg-filename-to-clipboard)
 
 [[file:images/2025-11-06_seinfeld.jpeg]]
 
 - Today's Scores
-  - Fun: /5
-  - Energy: /5
+  - Fun: 5/5 (contributing to FOSS is fun!)
+  - Energy: 4.5/5 (ate some pizza :P)
 
 * [2025-11-05 Wed]
 
