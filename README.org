@@ -4,6 +4,96 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 
 # Usar `webdev' template (yas).
 
+* [2025-11-08 Sat]
+
+** Work
+# What I actually did today.
+# Experiments, coding, debugging, learning.
+# (Be honest. Even chaos counts.)
+# Examples:
+# Refactored the login automation script.
+# Experimented with parsing JSON from PicoCTF API challenges.
+# the effort or activity you put in. Think of it as your actions, experiments, coding sessions, research, debugging.
+# Example: “Refactored the login automation script” or “Analyzed the PDF forensic challenge.”
+
+- Studied CS:APP, 3h.
+- Watched computer videos, several hours.
+
+** Outcome
+# What happened as a result of the work + output.
+# Insights, results, solved problems, new questions.
+# Even failures are outcomes: they teach.
+# Examples:
+# Script now reliably fetches challenges without manual cookie handling.
+# Learned nuances of auth headers and session management.
+# the result or effect of the work and output. Did it solve the problem? Did it teach you something? Did it help others?
+# Example: “Script successfully logs in automatically” or “Found hidden flag in the PDF.”
+
+- I've been neglecting some other activities.
+  But I'm searching myself with the aids of some computer videos.
+  One particularly "useful" is [[https://youtu.be/OmVHkL0IWk4?si=3iWX6vBDgNb1xe4f][this 4h monster interview with Ken Thompson (creator of Unix, Go, grep, and much more)]].
+  He talks about (/en passant/) about /focus/.
+  Got me thinking a lot (and trying to focus, too).
+
+** Next
+# Immediate next steps or goals.
+# Could be tweaks, follow-ups, or completely new experiments.
+# Keep it small and actionable.
+# Examples:
+# Add error handling for missing or malformed JSON.
+# Write mini writeup for team on the automation process.
+# what’s your forward action or next goal. This closes the loop and keeps the momentum.
+# Example: “Add error handling and make it general for all CTF challenges” or “Write a tutorial for the PDF trick.”
+
+- Go back to the other activities.
+- Focus!
+
+** Seinfeld Checkmark
+# (my-copy-seinfeld-jpeg-filename-to-clipboard)
+
+[[file:images/2025-11-08_seinfeld.jpeg]]
+
+- Today's Scores
+  - Fun: 4.5/5 (ate half a chicken today!)
+  - Energy: 5/5 (idem, and lots of fun computer videos)
+
+* [2025-11-07 Fri]
+
+** Work
+# What I actually did today.
+# Experiments, coding, debugging, learning.
+# (Be honest. Even chaos counts.)
+# Examples:
+# Refactored the login automation script.
+# Experimented with parsing JSON from PicoCTF API challenges.
+# the effort or activity you put in. Think of it as your actions, experiments, coding sessions, research, debugging.
+# Example: “Refactored the login automation script” or “Analyzed the PDF forensic challenge.”
+
+- Studied CS:APP, some hours.
+
+** Outcome
+# What happened as a result of the work + output.
+# Insights, results, solved problems, new questions.
+# Even failures are outcomes: they teach.
+# Examples:
+# Script now reliably fetches challenges without manual cookie handling.
+# Learned nuances of auth headers and session management.
+# the result or effect of the work and output. Did it solve the problem? Did it teach you something? Did it help others?
+# Example: “Script successfully logs in automatically” or “Found hidden flag in the PDF.”
+
+- Just focused on CS:APP.
+  Actually, "focus" seems to be the word of the day!
+  Lost access to the Internet, so couldn't post.
+
+** Seinfeld Checkmark
+# (my-copy-seinfeld-jpeg-filename-to-clipboard)
+
+[[file:images/2025-11-07_seinfeld.jpeg]]
+
+- Today's Scores
+  - Fun: 4/5 (focusing is fun)
+  - Energy: 4/5 (focusing is economical)
+
 * [2025-11-06 Thu]
 
 ** Work
