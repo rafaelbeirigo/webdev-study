@@ -28,7 +28,7 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 # the result or effect of the work and output. Did it solve the problem? Did it teach you something? Did it help others?
 # Example: “Script successfully logs in automatically” or “Found hidden flag in the PDF.”
 
-- Watched this [[https://youtu.be/jLOuMXnM5wk?si=8dZz53MpxNNZ9yXy][video /The best way to become good at something might surprise you - David Epstein/]], by TED-Ed.
+- Watched this video [[https://youtu.be/jLOuMXnM5wk?si=8dZz53MpxNNZ9yXy][The best way to become good at something might surprise you - David Epstein]], by TED-Ed.
   This inspired me to experiment with a freer, more experimental study approach.
   Tried doing a specific homework in this hands-on, exploratory manner.
   It was much more engagins, and I learned a lot, got less tired.
