@@ -4,6 +4,46 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 
 # Usar `webdev' template (yas).
 
+* [2025-11-12 Wed]
+
+** Work
+# What I actually did today.
+# Experiments, coding, debugging, learning.
+# (Be honest. Even chaos counts.)
+# Examples:
+# Refactored the login automation script.
+# Experimented with parsing JSON from PicoCTF API challenges.
+# the effort or activity you put in. Think of it as your actions, experiments, coding sessions, research, debugging.
+# Example: “Refactored the login automation script” or “Analyzed the PDF forensic challenge.”
+
+- Studied CS.
+
+** Outcome
+# What happened as a result of the work + output.
+# Insights, results, solved problems, new questions.
+# Even failures are outcomes: they teach.
+# Examples:
+# Script now reliably fetches challenges without manual cookie handling.
+# Learned nuances of auth headers and session management.
+# the result or effect of the work and output. Did it solve the problem? Did it teach you something? Did it help others?
+# Example: “Script successfully logs in automatically” or “Found hidden flag in the PDF.”
+
+- Watched this [[https://youtu.be/jLOuMXnM5wk?si=8dZz53MpxNNZ9yXy][video /The best way to become good at something might surprise you - David Epstein/]], by TED-Ed.
+  This inspired me to experiment with a freer, more experimental study approach.
+  Tried doing a specific homework in this hands-on, exploratory manner.
+  It was much more engagins, and I learned a lot, got less tired.
+  But also got very lost.
+  But while trying to find my way, I was more patient to learn some details and peculiarities---I believe this is a direct effect of the freedom: independence needs and promotes empowering through knowledge (?)
+
+** Seinfeld Checkmark
+# (my-copy-seinfeld-jpeg-filename-to-clipboard)
+
+[[file:images/2025-11-12_seinfeld.jpeg]]
+
+- Today's Scores
+  - Fun: 5/5
+  - Energy: 5/5
+
 * [2025-11-11 Tue]
 
 ** Work
