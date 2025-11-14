@@ -16,7 +16,7 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 # the effort or activity you put in. Think of it as your actions, experiments, coding sessions, research, debugging.
 # Example: “Refactored the login automation script” or “Analyzed the PDF forensic challenge.”
 
-
+- Studied some CS.
 
 ** Output
 # Tangible things that exist because of today’s work.
@@ -64,15 +64,9 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 # the result or effect of the work and output. Did it solve the problem? Did it teach you something? Did it help others?
 # Example: “Script successfully logs in automatically” or “Found hidden flag in the PDF.”
 
-** Next
-# Immediate next steps or goals.
-# Could be tweaks, follow-ups, or completely new experiments.
-# Keep it small and actionable.
-# Examples:
-# Add error handling for missing or malformed JSON.
-# Write mini writeup for team on the automation process.
-# what’s your forward action or next goal. This closes the loop and keeps the momentum.
-# Example: “Add error handling and make it general for all CTF challenges” or “Write a tutorial for the PDF trick.”
+- Keeping it exploratory has helped.
+  Surprisingly, exploring has helped me to /focus/: I love electronics, but I love more computers.
+  While watching a channel about electronics that I follow, suddenly I thought: it is not /worth/ going to the trouble of learning a complex concept in the video---I'd rather invest that mental energy on computers instead.
 
 ** Seinfeld Checkmark
 # (my-copy-seinfeld-jpeg-filename-to-clipboard)
@@ -80,8 +74,8 @@ Current project: [[https://github.com/rafaelbeirigo/odin-css-exercises/][Web Dev
 [[file:images/2025-11-13_seinfeld.jpeg]]
 
 - Today's Scores
-  - Fun: /5
-  - Energy: /5
+  - Fun: 4.75/5
+  - Energy: 4.25/5
 
 * [2025-11-12 Wed]
 
